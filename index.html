@@ -21,11 +21,44 @@
 <script src="./mainfiles/jquery-1.11.1.min.js" type="text/javascript"></script>
 
 <style>
-/* Default Global Font */
 body {
-  font-family: 'Noto Sans', 'Noto Sans KR', 'Noto Sans JP', 'Noto Sans SC',
-               'Apple Color Emoji', 'Segoe UI Emoji', sans-serif;
+  font-family:
+    "Segoe UI Emoji", 
+    "Apple Color Emoji",
+    "Noto Sans SC",  
+    "Noto Sans JP",  
+    "Noto Sans KR",  
+    "Noto Sans Georgian",
+    "Noto Sans Armenian",
+    "Noto Sans Tibetan",
+    "Noto Sans",
+    sans-serif;
 }
+
+#typed-text {
+  font-family:
+    "Segoe UI Emoji",
+    "Apple Color Emoji",
+    "Noto Sans SC",
+    "Noto Sans KR",
+    "Noto Sans JP",
+    "Noto Sans",
+    sans-serif;
+  font-size: 0.92em;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  margin-left: 6px;
+}
+
+#typed-text::after {
+  content: "|";
+  font-weight: 100;  
+  font-size: 1em;
+  margin-left: 2px;
+  opacity: 1;
+  animation: blink 0.7s infinite;
+}
+
 
 /* Paper thumbnails */
 .PaperThumbnail {
