@@ -120,7 +120,6 @@
         position: relative;
         padding: 60px 80px 20px 80px; 
         overflow: hidden;
-        /* 배경 그라데이션을 조금 더 밝게 조정하여 지도 대비감 향상 */
         background: linear-gradient(to bottom, #ffffff 0%, #f1f5f9 70%, #f9fafb 100%);
     }
 
@@ -139,18 +138,18 @@
         z-index: 1;
     }
 
-    /* Welcome Box Modified: More Transparent */
+    /* Welcome Box: Transparency Settings */
     .welcome-box {
-        /* 투명도 대폭 수정 (0.7 -> 0.35) */
-        background: rgba(255, 255, 255, 0.35); 
+        /* 투명도 조절: 배경이 잘 보이도록 0.4 설정 */
+        background: rgba(255, 255, 255, 0.4); 
         
-        backdrop-filter: blur(8px); /* 블러를 살짝 줄여서 뒤 배경 식별 용이하게 */
+        backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px);
         
         padding: 24px; 
         border-radius: 12px; 
         
-        /* 테두리도 더 투명하게 */
+        /* 테두리도 투명하게 */
         border: 1px solid rgba(255, 255, 255, 0.5); 
         box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
         
@@ -731,26 +730,37 @@ document.addEventListener("DOMContentLoaded", () => {
     const mapCtx = mapCanvas.getContext('2d');
     let mapW, mapH;
     
-    // SVG Paths for continents (Simplified World Map)
-    // 실제 지도 모양에 가까운 SVG 경로 데이터입니다.
+    // Improved SVG Paths for World Map (Roughly Robinson Projection)
+    // 좌표 범위: 대략 Width 1000, Height 500 기준
     const worldMapPaths = [
-        "M 25.3 18.2 L 23.9 19.3 L 23.3 22.8 L 26.6 22.5 L 30.6 19.8 L 33.5 17.5 L 37.6 15.6 L 44.5 15.6 L 46.9 14.8 L 47.7 13.0 L 41.6 11.3 L 36.9 8.2 L 29.8 8.1 L 23.4 9.4 L 18.0 10.4 L 14.9 12.0 L 12.0 16.0 L 12.8 20.2 L 15.7 26.0 L 17.9 29.5 L 18.6 34.0 L 21.3 36.6 L 24.0 36.8 L 26.3 34.2 L 26.3 29.0 L 24.3 25.1 L 25.3 18.2 Z", // North America
-        "M 27.5 37.5 L 29.8 38.6 L 35.8 44.1 L 37.0 49.3 L 34.4 56.5 L 31.3 58.8 L 29.3 55.5 L 28.1 49.3 L 26.5 45.0 L 26.0 41.5 L 27.5 37.5 Z", // South America
-        "M 55.4 33.1 L 52.6 30.0 L 52.8 27.0 L 49.5 25.1 L 49.6 22.8 L 51.5 21.6 L 56.4 21.8 L 60.0 23.8 L 63.0 22.5 L 67.5 22.5 L 70.0 25.0 L 68.3 32.5 L 66.8 34.5 L 65.0 34.6 L 62.1 39.5 L 61.3 45.6 L 62.6 49.6 L 60.1 53.0 L 56.1 53.0 L 53.3 49.1 L 49.6 43.1 L 46.3 37.8 L 47.8 35.3 L 55.4 33.1 Z", // Africa
-        "M 45.3 14.3 L 48.3 14.0 L 50.8 15.8 L 51.6 19.5 L 53.3 21.3 L 50.8 22.5 L 48.6 22.0 L 48.6 20.3 L 45.0 19.3 L 44.0 16.5 L 45.3 14.3 Z", // Europe (West)
-        "M 53.3 12.0 L 58.8 11.6 L 66.5 12.0 L 72.8 12.6 L 80.0 14.0 L 85.5 15.6 L 90.0 18.3 L 90.1 23.0 L 85.8 26.3 L 83.1 27.0 L 78.5 32.6 L 75.3 33.5 L 73.0 30.6 L 71.0 25.6 L 67.8 22.8 L 60.3 24.1 L 56.6 21.3 L 53.5 21.0 L 52.3 17.6 L 53.3 12.0 Z", // Asia
-        "M 79.0 46.0 L 84.6 45.5 L 89.1 48.6 L 88.6 54.0 L 83.8 55.5 L 79.5 53.5 L 77.8 49.0 L 79.0 46.0 Z"  // Australia
+        // North America
+        "M 160 50 L 220 50 L 280 40 L 350 30 L 380 40 L 400 35 L 360 100 L 320 120 L 280 150 L 220 180 L 190 200 L 150 160 L 110 130 L 80 80 L 120 60 Z", 
+        // Greenland (Abstracted)
+        "M 320 30 L 380 20 L 410 40 L 390 80 L 340 70 Z",
+        // South America
+        "M 240 210 L 320 230 L 360 280 L 340 360 L 300 420 L 270 360 L 250 300 L 230 250 Z",
+        // Europe
+        "M 450 60 L 490 50 L 530 55 L 560 80 L 530 110 L 490 120 L 460 110 L 440 80 Z",
+        // Africa
+        "M 440 130 L 510 130 L 550 160 L 580 220 L 560 300 L 500 350 L 460 300 L 430 220 L 420 160 Z",
+        // Asia
+        "M 550 60 L 650 50 L 750 60 L 850 70 L 900 120 L 880 180 L 820 220 L 750 240 L 700 200 L 650 180 L 600 150 L 570 100 Z",
+        // SE Asia / Islands (Abstracted)
+        "M 750 260 L 800 250 L 830 280 L 780 300 Z",
+        // Australia
+        "M 780 320 L 850 310 L 880 350 L 840 390 L 790 370 Z"
     ];
 
-    // 주요 도시 좌표 (대략적 위치, 0~100 스케일)
-    // SVG Path 좌표계(0~100)와 일치시킴
+    // 주요 거점 (대략적 좌표 - 1000x500 기준)
     const cities = [
-        {x: 20, y: 15}, {x: 25, y: 30}, // North America
-        {x: 32, y: 48}, // South America
-        {x: 48, y: 18}, {x: 52, y: 15}, // Europe
-        {x: 55, y: 40}, // Africa
-        {x: 75, y: 20}, {x: 82, y: 28}, {x: 88, y: 20}, // Asia
-        {x: 84, y: 50}  // Australia
+        {x: 220, y: 110}, // San Francisco/Seattle area
+        {x: 290, y: 130}, // NYC area
+        {x: 310, y: 300}, // Brazil
+        {x: 480, y: 90},  // London/Paris
+        {x: 520, y: 200}, // Central Africa
+        {x: 700, y: 150}, // India/Central Asia
+        {x: 820, y: 160}, // East Asia (Korea/Japan)
+        {x: 830, y: 340}  // Sydney
     ];
 
     let ripples = []; 
@@ -762,16 +772,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function spawnRipple() {
         const city = cities[Math.floor(Math.random() * cities.length)];
-        // 좌표 변환 (SVG 0-100 좌표계 -> 캔버스 좌표계)
-        const scale = 0.7; // 지도 크기 축소 (기존 0.85 -> 0.7)
-        const renderW = mapW * scale;
-        const renderH = mapW * scale * 0.6; // Aspect ratio 고려
+        
+        // 맵 렌더링 스케일 계산
+        const svgW = 1000;
+        const svgH = 500;
+        const scale = Math.min(mapW / svgW, mapH / svgH) * 0.85; // 화면 꽉차게 85%
+        
+        const renderW = svgW * scale;
+        const renderH = svgH * scale;
         const offsetX = (mapW - renderW) / 2;
         const offsetY = (mapH - renderH) / 2;
 
         ripples.push({
-            x: offsetX + (city.x / 100) * renderW,
-            y: offsetY + (city.y / 60) * renderH, // Y축 스케일 보정
+            x: offsetX + city.x * scale,
+            y: offsetY + city.y * scale,
             radius: 0,
             alpha: 1.0,
             speed: Math.random() * 0.4 + 0.3
@@ -781,20 +795,22 @@ document.addEventListener("DOMContentLoaded", () => {
     function drawMapAndRipples() {
         mapCtx.clearRect(0, 0, mapW, mapH);
 
-        // 지도 렌더링 설정
-        const scale = 0.7; // 전체 크기 조절 (0.7로 축소)
-        const renderW = mapW * scale;
-        const renderH = mapW * scale * 0.6; 
+        const svgW = 1000;
+        const svgH = 500;
+        // 화면 크기에 맞춰 비율 유지하며 축소/확대
+        const scale = Math.min(mapW / svgW, mapH / svgH) * 0.85;
+        
+        const renderW = svgW * scale;
+        const renderH = svgH * scale;
         const offsetX = (mapW - renderW) / 2;
         const offsetY = (mapH - renderH) / 2;
 
         mapCtx.save();
         mapCtx.translate(offsetX, offsetY);
-        // SVG 좌표계(0~100)를 캔버스 픽셀로 변환
-        mapCtx.scale(renderW / 100, renderH / 60);
+        mapCtx.scale(scale, scale);
 
         // 1. 세계지도 (대륙) 그리기
-        mapCtx.fillStyle = 'rgba(160, 190, 220, 0.5)'; // 색감 조정
+        mapCtx.fillStyle = 'rgba(160, 190, 220, 0.45)'; 
         worldMapPaths.forEach(pathStr => {
             const path = new Path2D(pathStr);
             mapCtx.fill(path);
@@ -802,21 +818,20 @@ document.addEventListener("DOMContentLoaded", () => {
         mapCtx.restore();
 
         // 2. 네트워크 선 (Connection Lines)
-        mapCtx.strokeStyle = 'rgba(0, 62, 128, 0.1)';
+        // 현재 Ripple 좌표 기준으로 도시 좌표를 변환하여 연결
+        const transformedCities = cities.map(c => ({
+            x: offsetX + c.x * scale,
+            y: offsetY + c.y * scale
+        }));
+
+        mapCtx.strokeStyle = 'rgba(0, 62, 128, 0.08)'; // 아주 연하게
         mapCtx.lineWidth = 1;
         mapCtx.beginPath();
         
-        // 도시 좌표 변환 및 연결
-        const transformedCities = cities.map(c => ({
-            x: offsetX + (c.x / 100) * renderW,
-            y: offsetY + (c.y / 60) * renderH
-        }));
-
         for (let i = 0; i < transformedCities.length; i++) {
             for (let j = i + 1; j < transformedCities.length; j++) {
                 const dist = Math.hypot(transformedCities[i].x - transformedCities[j].x, transformedCities[i].y - transformedCities[j].y);
-                // 너무 먼 거리는 연결하지 않음
-                if (dist < mapW * 0.3) {
+                if (dist < mapW * 0.4) {
                      mapCtx.moveTo(transformedCities[i].x, transformedCities[i].y);
                      const cpX = (transformedCities[i].x + transformedCities[j].x) / 2;
                      const cpY = (transformedCities[i].y + transformedCities[j].y) / 2 - dist * 0.15;
@@ -826,20 +841,20 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         mapCtx.stroke();
 
-        // 3. 사운드 리플 (Ripple) 업데이트 및 그리기
+        // 3. 사운드 리플 (Ripple)
         for (let i = ripples.length - 1; i >= 0; i--) {
             const r = ripples[i];
             r.radius += r.speed; 
-            r.alpha -= 0.01; 
+            r.alpha -= 0.008; 
 
             if (r.alpha <= 0) {
                 ripples.splice(i, 1);
             } else {
                 mapCtx.beginPath();
                 mapCtx.arc(r.x, r.y, r.radius, 0, Math.PI * 2);
-                mapCtx.fillStyle = `rgba(37, 99, 235, ${r.alpha * 0.3})`;
+                mapCtx.fillStyle = `rgba(37, 99, 235, ${r.alpha * 0.25})`;
                 mapCtx.fill();
-                mapCtx.strokeStyle = `rgba(37, 99, 235, ${r.alpha * 0.6})`;
+                mapCtx.strokeStyle = `rgba(37, 99, 235, ${r.alpha * 0.5})`;
                 mapCtx.lineWidth = 1;
                 mapCtx.stroke();
             }
