@@ -2,11 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Minu Kim | Computational Linguist</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minu Kim | Computational Linguist</title>
 
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
 
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mongolian&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mongolian&family=Noto+Sans+SC&family=Noto+Sans+TC&family=Noto+Sans+JP&family=Noto+Sans+KR&family=Noto+Sans+Arabic&family=Noto+Sans+Thai&display=swap" rel="stylesheet">
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z5JJ3B2GLH"></script>
 <script>
@@ -19,24 +22,24 @@
 <style>
     /* --- Global Styles --- */
     :root {
-        --primary-color: #003e80; /* KAIST Blue 계열 */
-        --bg-color: #f8f9fa;
-        --text-main: #212529;
-        --text-sub: #495057;
-        --accent: #3b82f6;
-        --sidebar-width: 260px;
+        --primary-color: #003e80; /* KAIST Navy */
+        --bg-color: #f9fafb;
+        --text-main: #1f2937;
+        --text-sub: #4b5563;
+        --accent: #2563eb;
+        --sidebar-width: 280px;
     }
 
     body {
-        font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+        font-family: "Pretendard", "Noto Sans KR", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
         background-color: var(--bg-color);
         color: var(--text-main);
         margin: 0;
-        line-height: 1.6;
-        display: flex; /* 전체 레이아웃 Flex */
+        line-height: 1.7;
+        display: flex;
     }
 
-    a { text-decoration: none; color: var(--primary-color); transition: 0.2s; }
+    a { text-decoration: none; color: var(--primary-color); transition: color 0.2s; }
     a:hover { color: var(--accent); text-decoration: underline; }
 
     /* --- Sidebar (Navigation) --- */
@@ -47,137 +50,215 @@
         position: fixed;
         padding: 40px 30px;
         box-sizing: border-box;
-        border-right: 1px solid #eee;
+        border-right: 1px solid #e5e7eb;
         overflow-y: auto;
         display: flex;
         flex-direction: column;
+        z-index: 100;
     }
 
+    .profile-section { margin-bottom: 30px; }
+    
     .profile-img {
-        width: 140px;
-        height: 140px;
-        border-radius: 50%; /* 원형 프로필 */
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
         object-fit: cover;
         margin-bottom: 20px;
-        border: 3px solid #eee;
-        align-self: flex-start;
+        border: 4px solid #f3f4f6;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     }
 
     .nav-links {
         display: flex;
         flex-direction: column;
-        gap: 12px;
-        margin-top: 30px;
+        gap: 8px;
     }
 
     .nav-links a {
         color: var(--text-sub);
         font-weight: 500;
+        padding: 8px 12px;
+        border-radius: 6px;
         font-size: 0.95rem;
+        transition: all 0.2s;
+        text-decoration: none;
     }
-    .nav-links a:hover { color: var(--primary-color); transform: translateX(5px); display:inline-block;}
+    .nav-links a:hover { 
+        background-color: #eff6ff; 
+        color: var(--accent); 
+        transform: translateX(4px);
+    }
 
     /* --- Main Content --- */
     .main-content {
         margin-left: var(--sidebar-width);
         padding: 60px 80px;
-        max-width: 900px;
+        max-width: 950px;
         width: 100%;
         box-sizing: border-box;
     }
 
-    /* --- Sections & Typography --- */
+    /* --- Typography & Sections --- */
     h1.name {
         font-size: 2.5rem;
         margin: 0 0 10px 0;
+        font-weight: 800;
         letter-spacing: -0.5px;
         color: #111;
+        line-height: 1.2;
     }
     
     .affiliation {
         font-size: 1.1rem;
         color: var(--text-sub);
-        margin-bottom: 30px;
+        margin-bottom: 20px;
     }
 
     .section-title {
         font-size: 1.5rem;
         font-weight: 700;
-        margin-top: 60px;
-        margin-bottom: 20px;
-        border-bottom: 2px solid #eee;
-        padding-bottom: 10px;
-        display: block;
+        margin-top: 70px;
+        margin-bottom: 24px;
+        padding-bottom: 12px;
+        border-bottom: 2px solid #e5e7eb;
         color: #111;
+        display: flex;
+        align-items: center;
+    }
+    
+    .year-header {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin: 20px 0 10px;
+        color: var(--primary-color);
+        display: block;
     }
 
-    /* --- Cards (Paper & History) --- */
-    .card-list {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
+    /* --- Card Design --- */
+    .card-list { display: flex; flex-direction: column; gap: 16px; }
 
     .card {
         background: white;
         border-radius: 12px;
-        padding: 20px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        padding: 24px;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+        border: 1px solid #f3f4f6;
         display: flex;
-        gap: 20px;
+        gap: 24px;
         transition: transform 0.2s, box-shadow 0.2s;
-        border: 1px solid #f0f0f0;
     }
 
     .card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+        border-color: #e5e7eb;
     }
 
     .date-col {
-        min-width: 120px;
+        min-width: 130px;
         font-weight: 600;
         color: var(--text-sub);
         font-size: 0.9rem;
+        flex-shrink: 0;
     }
 
     .content-col { flex: 1; }
-    
+    .content-col strong { color: #111; }
+
     .paper-thumb {
-        width: 130px;
+        width: 140px;
         height: 80px;
         border-radius: 6px;
         object-fit: cover;
-        background: #eee;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        background: #f3f4f6;
     }
 
-    /* --- Typing Effect Styling --- */
+    /* --- Lists (Teaching, Honors) --- */
+    .simple-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .simple-list li {
+        background: white;
+        padding: 16px 20px;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #f3f4f6;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    }
+
+    /* --- Gallery --- */
+    .hobby-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 16px;
+        margin-top: 20px;
+    }
+    .HobbyPhoto {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .HobbyPhoto:hover { transform: scale(1.03); }
+
+    /* --- Typing Effect Specifics --- */
     #typed-text {
         color: var(--accent);
-        font-weight: 600;
+        font-family: "Noto Sans", "Noto Sans SC", "Noto Sans TC", "Noto Sans JP", sans-serif;
+        display: inline-flex;
+        align-items: center;
+        min-width: 10px;
     }
     .mongolian-vertical {
         writing-mode: vertical-rl;
         text-orientation: sideways;
         font-family: 'Noto Sans Mongolian', sans-serif;
-        max-height: 40px;
+        max-height: 1.5em;
         vertical-align: middle;
+        margin-left: 5px;
+    }
+    .cursor::after {
+        content: "|";
+        font-weight: 100;
+        animation: blink 0.7s infinite;
+        margin-left: 2px;
+        color: #333;
+    }
+    @keyframes blink { 0%, 50% { opacity: 1; } 50.01%, 100% { opacity: 0; } }
+
+    /* --- Tags --- */
+    .tag-oral {
+        background-color: #dbeafe;
+        color: #1e40af;
+        font-size: 0.75rem;
+        padding: 2px 8px;
+        border-radius: 9999px;
+        font-weight: 700;
+        vertical-align: middle;
+        margin-left: 6px;
     }
 
     /* --- Mobile Responsive --- */
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
         body { flex-direction: column; }
         .sidebar { 
             position: relative; 
             width: 100%; 
             height: auto; 
             border-right: none; 
-            border-bottom: 1px solid #eee;
-            padding: 20px;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 30px 20px;
         }
-        .main-content { margin-left: 0; padding: 30px 20px; }
-        .card { flex-direction: column; }
-        .paper-thumb { width: 100%; height: auto; aspect-ratio: 16/9; }
+        .main-content { margin-left: 0; padding: 40px 20px; }
+        .card { flex-direction: column; gap: 16px; }
+        .paper-thumb { width: 100%; height: auto; max-width: 200px; aspect-ratio: 16/9; }
+        .nav-links { display: grid; grid-template-columns: 1fr 1fr; }
     }
 </style>
 </head>
@@ -185,10 +266,12 @@
 <body>
 
     <nav class="sidebar">
-        <img src="./mainfiles/picture.jpg" alt="Minu Kim" class="profile-img">
-        <div style="margin-bottom: 10px;">
-            <strong>Minu Kim</strong><br>
-            <span style="font-size: 0.9em; color: #666;">M.S. Student @ KAIST</span>
+        <div class="profile-section">
+            <img src="./mainfiles/picture.jpg" alt="Minu Kim" class="profile-img">
+            <div style="margin-top: 10px;">
+                <h2 style="margin:0; font-size:1.4rem;">Minu Kim</h2>
+                <span style="font-size: 0.9rem; color: #666; display:block; margin-top:4px;">M.S. Student @ KAIST</span>
+            </div>
         </div>
         
         <div class="nav-links">
@@ -196,34 +279,45 @@
             <a href="#education">Education</a>
             <a href="#publications">Publications</a>
             <a href="#experience">Research Experience</a>
-            <a href="#teaching">Teaching</a>
+            <a href="#teaching">Teaching Experience</a>
             <a href="#extra">Extracurricular</a>
+            <a href="#honors">Honors & Awards</a>
             <a href="#arts">Creative Interests</a>
         </div>
         
-        <div style="margin-top: auto; font-size: 0.8rem; color: #999; padding-top:20px;">
-            Updated: Dec 2025<br>
-            Daejeon, Korea
+        <div style="margin-top: auto; font-size: 0.8rem; color: #9ca3af; padding-top:40px;">
+            Daejeon, Republic of Korea<br>
+            Updated: 2025
         </div>
     </nav>
 
     <main class="main-content" id="home">
         
         <header>
-            <h1 class="name">Minu Kim <span style="font-weight:300; font-size: 0.7em;">|</span> <span id="typed-text"></span></h1>
+            <h1 class="name">
+                Minu Kim 
+                <span style="font-weight:300; font-size: 0.6em; color:#ccc; vertical-align: middle; margin:0 8px;">|</span> 
+                <span id="typed-text" class="cursor"></span>
+            </h1>
+            
             <div class="affiliation">
-                Computational Linguist & Speech Scientist<br>
-                <a href="https://sites.google.com/site/kaistsssclab/home">SSSC Lab</a>, KAIST EE
+                <a href="https://www.kaist.ac.kr/en/">KAIST School of Electrical Engineering</a><br>
+                Computational Linguist & Speech Scientist
             </div>
-            <p>
-                <strong>Welcome!</strong> I am a Master's student advised by Prof. Hoirin Kim.
-                My interests lie at the intersection of <strong>linguistics and AI</strong>. 
-                I explore phonetics, phonology, and language typology to improve <strong>low-resource language processing</strong> and <strong>multilingual ASR</strong>.
+
+            <p style="margin-bottom: 20px;">
+                N24-2105, 291 Daehak-ro, Yuseong-gu, Daejeon 34141, Republic of Korea<br>
+                <strong>Email:</strong> minus@kaist.ac.kr
             </p>
-            <p style="font-size: 0.9rem; color: #666;">
-                📍 N24-2105, KAIST, Daejeon, Republic of Korea <br>
-                ✉️ minus@kaist.ac.kr
-            </p>
+
+            <div style="background: white; padding: 24px; border-radius: 12px; border:1px solid #e5e7eb; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
+                <strong style="font-size:1.1em; color:var(--primary-color);">Welcome to my page!</strong><br>
+                <div style="margin-top:10px; color: #374151;">
+                    I am a Master's student in the <a href="https://sites.google.com/site/kaistsssclab/home">SSSC Lab at KAIST</a> (Statistical Speech and Sound Computing Laboratory), advised by Prof. Hoirin Kim.<br><br>
+                    My academic interests lie at the intersection of linguistics and artificial intelligence. In particular, I enjoy exploring phonetics, phonology, and language typology, and I am passionate about connecting linguistic theories with computational approaches.<br>
+                    My research focuses on applying this interdisciplinary perspective to <strong>low-resource language processing</strong> and <strong>multilingual automatic speech recognition (ASR)</strong>.
+                </div>
+            </div>
         </header>
 
         <section id="education">
@@ -232,7 +326,7 @@
                 <div class="card">
                     <div class="date-col">03/2024 – Present</div>
                     <div class="content-col">
-                        <strong>KAIST</strong>, Daejeon, Republic of Korea<br>
+                        <strong>Korea Advanced Institute of Science and Technology (KAIST)</strong>, Daejeon<br>
                         M.S. in Electrical Engineering
                     </div>
                 </div>
@@ -240,8 +334,12 @@
                     <div class="date-col">03/2017 – 02/2024</div>
                     <div class="content-col">
                         <strong>Seoul National University (SNU)</strong>, Seoul<br>
-                        B.A. in Linguistics / B.S. in Computational Sciences / B.S. in AI / B.S. in Industrial Eng. / B.B.A.<br>
-                        <em style="font-size: 0.85em; color: #888;">Leave of Absence for Alternative Military Service</em>
+                        B.A. in Linguistics<br>
+                        B.S. in Computational Sciences, Artificial Intelligence, Industrial Engineering<br>
+                        B.B.A. in Business Administration<br>
+                        <div style="margin-top:8px; font-size: 0.85em; color: #6b7280; background:#f3f4f6; padding:8px; border-radius:6px; display:inline-block;">
+                            Leave of Absence for Alternative Military Service (09/2021 – 08/2022)
+                        </div>
                     </div>
                 </div>
             </div>
@@ -249,125 +347,299 @@
 
         <section id="publications">
             <span class="section-title">Publications</span>
+            <p style="font-size:0.9rem; color:#666; margin-bottom:20px;">* indicates equal contribution.</p>
+
+            <span class="year-header">Preparation</span>
             <div class="card-list">
                 <div class="card">
-                    <div>
-                        <img src="./images/icassp2026.png" class="paper-thumb" alt="Paper Image">
-                    </div>
+                    <img src="./images/heatmap.png" class="paper-thumb" alt="Paper Thumbnail">
                     <div class="content-col">
-                        <strong>How Far Do SSL Speech Models Listen for Tone?</strong><br>
-                        <u>M. Kim</u>, J.S. Um, H. Kim.<br>
-                        <em>ICASSP 2026 (Under Review)</em><br>
-                        [<a href="https://arxiv.org/pdf/2511.12285">PDF</a>]
+                        <strong>What Makes Dysarthric Speech Recognition Fail? Layer-Wise Probing of Articulatory Coordination in Self-supervised Speech Models.</strong><br>
+                        <strong>M. Kim</strong>, J.W. Kim.<br>
+                        <em>In preparation.</em>
+                    </div>
+                </div>
+            </div>
+
+            <span class="year-header">2026</span>
+            <div class="card-list">
+                <div class="card">
+                    <img src="./images/icassp2026.png" class="paper-thumb" alt="ICSSP 2026">
+                    <div class="content-col">
+                        <strong>How Far Do SSL Speech Models Listen for Tone? Temporal Focus of Tone Representation under Low-resource Transfer</strong><br>
+                        <strong>M. Kim</strong>, J.S. Um, H. Kim.<br>
+                        <em>IEEE International Conference on Acoustics, Speech, and Signal Processing (ICASSP) 2026. Under review.</em><br>
+                        [<a href="https://arxiv.org/pdf/2511.12285">pdf</a>]
+                    </div>
+                </div>
+            </div>
+
+            <span class="year-header">2025</span>
+            <div class="card-list">
+                <div class="card">
+                    <img src="./images/aacl2025.png" class="paper-thumb" alt="AACL 2025">
+                    <div class="content-col">
+                        <strong>Compositional Phoneme Approximation for L1-Grounded L2 Pronunciation Training</strong><br>
+                        J. Park*, <strong>M. Kim*</strong>, D.Y. Hong, J. Lee.<br>
+                        <em>IJCNLP-AACL 2025.</em><br>
+                        [<a href="https://arxiv.org/pdf/2411.10927">pdf</a>]
                     </div>
                 </div>
 
                 <div class="card">
-                    <div>
-                        <img src="./images/interspeech2025.png" class="paper-thumb" alt="Paper Image">
-                    </div>
+                    <img src="./images/interspeech2025.png" class="paper-thumb" alt="Interspeech 2025">
                     <div class="content-col">
-                        <strong>ParaNoise-SV: Integrated Approach for Noise-Robust Speaker Verification</strong><br>
-                        <u>M. Kim</u>, K. Jang, H. Kim.<br>
-                        <em>Interspeech 2025</em> <span style="background:#e0e7ff; color:#3b82f6; padding:2px 6px; border-radius:4px; font-size:0.8em; font-weight:bold;">Oral</span><br>
-                        [<a href="https://arxiv.org/pdf/2508.07219">PDF</a>]
+                        <strong>ParaNoise-SV: Integrated Approach for Noise-Robust Speaker Verification with Parallel Joint Learning of Speech Enhancement and Noise Extraction</strong><br>
+                        <strong>M. Kim</strong>, K. Jang, H. Kim.<br>
+                        <em>Interspeech 2025.</em> <span class="tag-oral">Oral Presentation</span><br>
+                        [<a href="https://arxiv.org/pdf/2508.07219">pdf</a>]
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="./images/icassp2025.png" class="paper-thumb" alt="ICASSP 2025">
+                    <div class="content-col">
+                        <strong>Improving Cross-Lingual Phonetic Representation of Low-Resource Languages Through Language Similarity Analysis</strong><br>
+                        <strong>M. Kim</strong>, K. Jang, H. Kim.<br>
+                        <em>IEEE ICASSP 2025.</em><br>
+                        [<a href="https://arxiv.org/pdf/2501.06810">pdf</a>]
                     </div>
                 </div>
             </div>
         </section>
+
+        <section id="experience">
+            <span class="section-title">Research Experience</span>
+            <div class="card-list">
+                <div class="card">
+                    <div class="date-col">03/2024 – Present</div>
+                    <div class="content-col">
+                        <strong>Statistical Speech and Sound Computing Lab, KAIST</strong><br>
+                        Conducted cross-lingual phoneme & tone recognition for low-resource languages and analyzed linguistic patterns.
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="date-col">08/2025 – Present</div>
+                    <div class="content-col">
+                        <strong>Wonkwang University Hospital (Collaboration)</strong><br>
+                        Analyzed how dysarthric articulatory patterns distort phonetic representations in SSL speech models.
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="date-col">08/2024 – Present</div>
+                    <div class="content-col">
+                        <strong>Independent Research on Language Education Technology</strong><br>
+                        Developed computational frameworks for L1-grounded L2 pronunciation training.
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="date-col">06/2023 – 08/2023</div>
+                    <div class="content-col">
+                        <strong>Music and Audio Research Group, SNU</strong><br>
+                        Built speech-to-action robotics systems and multimodal processing models.
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="date-col">09/2019 – 12/2019</div>
+                    <div class="content-col">
+                        <strong>Fieldwork on Korean Mungyeong Dialects, SNU</strong><br>
+                        Documented and analyzed endangered Korean dialects through fieldwork.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="teaching">
+            <span class="section-title">Teaching Experience</span>
+            <ul class="simple-list">
+                <li><strong>Instructor</strong>, <em>AI & Data Analytics Academy</em>, NIPA (Ministry of Science and ICT) (Fall 2020)</li>
+                <li><strong>TA</strong>, <em>EE432 Digital Signal Processing</em>, KAIST (Spring 2025, Fall 2025)</li>
+                <li><strong>TA</strong>, <em>EE305 Introduction to Electronics Design Lab</em>, KAIST (Fall 2024)</li>
+                <li><strong>TA</strong>, <em>430.306 Signals and Systems</em>, SNU (Fall 2023)</li>
+                <li><strong>TA</strong>, <em>035.001 Digital Computer Concept and Practice</em>, SNU (Spring 2021)</li>
+                <li><strong>Tutor</strong>, <em>L0444.000400 Basic Computing</em>, SNU (2021–2023)</li>
+            </ul>
+        </section>
+
+        <section id="extra">
+            <span class="section-title">Extracurricular Activities</span>
+            <div class="card-list">
+                <div class="card">
+                    <div class="date-col">2023</div>
+                    <div class="content-col">
+                        <strong>SNU Social Responsibility</strong>, Samarkand, Uzbekistan<br>
+                        Adapted Korean children’s books into Uzbek/Russian and developed multi-sensory kindergarten education program.
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="date-col">2023</div>
+                    <div class="content-col">
+                        <strong>Korea Ballet Stars Company</strong>, Seoul<br>
+                        Performed in a professional dance company in collaboration with Mongolian and German artists.
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="date-col">2020</div>
+                    <div class="content-col">
+                        <strong>Growth Hackers</strong>, Seoul<br>
+                        Led NLP/deep learning trainings; analyzed K-pop trends in 23 countries and optimized business data solutions.
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="date-col">2017, 2018</div>
+                    <div class="content-col">
+                        <strong>SNU Global Community Service</strong>, Ho Chi Minh City, Vietnam<br>
+                        Organized visual impairment awareness campaign and charity activities.
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="date-col">2017</div>
+                    <div class="content-col">
+                        <strong>Les Passionnés</strong>, Seoul<br>
+                        Acted in French-language musicals with a student ensemble at Hankuk Univ. of Foreign Studies.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="honors">
+            <span class="section-title">Honors & Scholarships</span>
+            <ul class="simple-list">
+                <li><strong>Korean Government Scholarship</strong> – Full tuition and stipend support (2024–2025)</li>
+                <li><strong>Cum Laude</strong>, SNU (2024)</li>
+                <li><strong>Chiak Foundation Scholarship</strong> – Full tuition support (2017–2023)</li>
+                <li><strong>Silla Culture Foundation Scholarship</strong> (2021–2023)</li>
+                <li><strong>Class of '82 Alumni Scholarship</strong>, SNU Business School (2023)</li>
+                <li><strong>Hansung TNI Scholarship</strong> (2022)</li>
+                <li><strong>Teaching Assistant Excellence Scholarship</strong>, SNU Business School (2021)</li>
+                <li><strong>Work-Study Scholarship</strong>, SNU Library (2019–2020)</li>
+            </ul>
+        </section>
+
+        <section id="arts">
+            <span class="section-title">Creative Interests</span>
+            <p>
+                I also enjoy performing arts, especially collaborative work in classical and contemporary pieces. Being on stage with wonderful artists motivates me and keeps me connected to creativity beyond research!
+            </p>
+            
+            <div class="hobby-gallery">
+                <img src="./images/pic1.jpg" class="HobbyPhoto" alt="Arts 1">
+                <img src="./images/pic2.jpg" class="HobbyPhoto" alt="Arts 2">
+                <img src="./images/pic3.jpg" class="HobbyPhoto" alt="Arts 3">
+                <img src="./images/pic4.png" class="HobbyPhoto" alt="Arts 4">
+                <img src="./images/pic5.png" class="HobbyPhoto" alt="Arts 5">
+                <img src="./images/pic6.png" class="HobbyPhoto" alt="Arts 6">
+            </div>
+        </section>
         
-        <footer style="margin-top: 80px; border-top: 1px solid #eee; padding-top: 20px; font-size: 0.8rem; color: #888;">
-            &copy; 2025 Minu Kim. Adapted from Dr. June-Woo Kim's template.
+        <footer style="margin-top: 80px; border-top: 1px solid #e5e7eb; padding-top: 30px; padding-bottom:30px; font-size: 0.85rem; color: #9ca3af; text-align: center;">
+            &copy; 2025 Minu Kim.
         </footer>
 
     </main>
 
     <script>
-        const names = [
-  { text: "金民友" },
-  { text: "Мину Ким" },
-  { text: "مينوو كيم", rtl: true },  
-  { text: "මිනු කිම්" },        
-  { text: "મિનુ કિમ" },         
-  { text: "ⵎⵉⵏⵓ ⴽⵉⵎ" },       
-  { text: "ꦩꦶꦤꦸ ꦏꦶꦩ꧀" },       
-  { text: "मीनू किम" },
-  { text: "ᨆᨗᨊᨘ ᨀᨗᨆ" }, 
-  { text: "ମିନୁ କିମ୍" }, 
-  { text: "মিনু কিম্" },
-  { text: "キム・ミヌ" },
-  { text: "ᠬᠢᠮ ᠮᠢᠨᠦ", vertical: true },
-  { text: "מִינוּ קִים", rtl: true },
-  { text: "Μίνου Κιμ" },
-  { text: "⠠⠍⠊⠝⠥ ⠠⠅⠊⠍" },
-  { text: "มินู คิม" },
-  { text: "មីនុ គីម" },
-  { text: "မီနူး ကင်" },
-  { text: "김민우" },
-  { text: "ᛗᛁᚾᚢ ᚲᛁᛗ" },
-  { text: "ມິນູ ຄິມ" },
-  { text: "ᒥᓄ ᑭᒻ" },         
-  { text: "𓅓𓇋𓈖𓅱 𓎡𓇋𓅓" }, 
-  { text: "ᠮᡳᠨᡠ ᡴᡳᠮ", vertical: true }, 
-  { text: "ᎻᏄ ᎩᎻ" },    
-  { text: "མི་ནུ་ཁིམ" },
-  { text: "მინუ კიმ" },
-  { text: "𐤌𐤉𐤍𐤅 𐤊𐤉𐤌", rtl: true },
-  { text: "ᚋᛁᚅᚒ ᚉᛁᚋ" }, 
-  { text: "ⰏⰞⰐⰖ ⰍⰞⰏ" },
-  { text: "Մինու Քիմ" },
-  { text: "மினு கிம்" },     
-  { text: "-- .. -. ..-  -.- .. --" },
-  { text: "ߡߌߣߎ ߞߌߡ", rtl: true },    
-  { text: "𐎎𐎛𐎐𐎢 𐎋𐎛𐎐", rtl: true },
-  { text: "ਮਿਨੂ ਕਿਮ" }, 
-  { text: "മിനു കിം" }, 
-  { text: "މިނޫ ކިމް", rtl: true }, 
-  { text: "Ⲙⲓⲛⲟⲩ Ⲕⲓⲙ" }, 
-  { text: "ܡܝܢܘ ܟܝܡ", rtl: true }, 
-  { text: "మినూ కిమ్" },      
-  { text: "ꂠꆹ ꈾꃀ" },
-  { text: "ሚኑ ኪም" },   
-  { text: "0x4D696E75 0x4B696D" }, 
-  /* { text: "01001101 01101001 01101110 01110101 00100000 01001011 01101001 01101101" }, */
-];
+    const names = [
+      { text: "金民友" },
+      { text: "Мину Ким" },
+      { text: "مينوو كيم", rtl: true },  
+      { text: "මිනු කිම්" },        
+      { text: "મિનુ કિમ" },         
+      { text: "ⵎⵉⵏⵓ ⴽⵉⵎ" },        
+      { text: "ꦩꦶꦤꦸ ꦏꦶꦩ꧀" },        
+      { text: "मीनू किम" },
+      { text: "ᨆᨗᨊᨘ ᨀᨗᨆ" }, 
+      { text: "ମିନୁ କିମ୍" }, 
+      { text: "মিনু কিম্" },
+      { text: "キム・ミヌ" },
+      { text: "ᠬᠢᠮ ᠮᠢᠨᠦ", vertical: true },
+      { text: "מִינוּ קִים", rtl: true },
+      { text: "Μίνου Κιμ" },
+      { text: "⠠⠍⠊⠝⠥ ⠠⠅⠊⠍" },
+      { text: "มินู คิม" },
+      { text: "មីនុ គីម" },
+      { text: "မီနူး ကင်" },
+      { text: "김민우" },
+      { text: "ᛗᛁᚾᚢ ᚲᛁᛗ" },
+      { text: "ມິນູ ຄິມ" },
+      { text: "ᒥᓄ ᑭᒻ" },          
+      { text: "𓅓𓇋𓈖𓅱 𓎡𓇋𓅓" }, 
+      { text: "ᠮᡳᠨᡠ ᡴᡳᠮ", vertical: true }, 
+      { text: "ᎻᏄ ᎩᎻ" },    
+      { text: "མི་ནུ་ཁིམ" },
+      { text: "მინუ კიმ" },
+      { text: "𐤌𐤉𐤍𐤅 𐤊𐤉𐤌", rtl: true },
+      { text: "ᚋᛁᚅᚒ ᚉᛁᚋ" }, 
+      { text: "ⰏⰞⰐⰖ ⰍⰞⰏ" },
+      { text: "Մինու Քիմ" },
+      { text: "மினு கிம்" },      
+      { text: "-- .. -. ..-  -.- .. --" },
+      { text: "ߡߌߣߎ ߞߌߡ", rtl: true },    
+      { text: "𐎎𐎛𐎐𐎢 𐎋𐎛𐎐", rtl: true },
+      { text: "ਮਿਨੂ ਕਿਮ" }, 
+      { text: "മിനു കിം" }, 
+      { text: "މިނޫ ކިމް", rtl: true }, 
+      { text: "Ⲙⲓⲛⲟⲩ Ⲕⲓⲙ" }, 
+      { text: "ܡܝܢܘ ܟܝܡ", rtl: true }, 
+      { text: "మినూ కిమ్" },       
+      { text: "ꂠꆹ ꈾꃀ" },
+      { text: "ሚኑ ኪም" },    
+      { text: "0x4D696E75 0x4B696D" }, 
+    ];
 
-const typedTextElement = document.getElementById("typed-text");
-        let currentIndex = 0, charIndex = 0, isDeleting = false;
+    const typedTextElement = document.getElementById("typed-text");
+    let currentIndex = 0, charIndex = 0, isDeleting = false;
 
-        function typeEffect() {
-          const { text, vertical, rtl } = names[currentIndex];
-          typedTextElement.dir = rtl ? "rtl" : "ltr";
-          const visibleText = text.substring(0, charIndex);
+    function typeEffect() {
+      const { text, vertical, rtl } = names[currentIndex];
+      
+      // RTL handling
+      typedTextElement.dir = rtl ? "rtl" : "ltr";
+      
+      const visibleText = text.substring(0, charIndex);
 
-          if (vertical) {
-            typedTextElement.innerHTML = `<span class="mongolian-vertical">${visibleText}</span>`;
-          } else {
-            typedTextElement.textContent = visibleText;
-          }
+      // Reset styles for normal text
+      typedTextElement.style.writingMode = "";
+      typedTextElement.style.textOrientation = "";
+      
+      if (vertical) {
+         // Vertical script handling (Mongolian/Manchu)
+         typedTextElement.innerHTML = `<span class="mongolian-vertical">${visibleText}</span>`;
+      } else {
+         typedTextElement.textContent = visibleText;
+      }
 
-          if (!isDeleting && charIndex < text.length) {
-            charIndex++;
-            setTimeout(typeEffect, 100);
-          } 
-          else if (isDeleting && charIndex > 0) {
-            charIndex--;
-            setTimeout(typeEffect, 50);
-          } 
-          else {
-            let nextSpeed = 350;
-            if (!isDeleting) {
-              isDeleting = true;
-              nextSpeed = 1500; // 다 쳤을 때 멈춰있는 시간 늘림
-            } else {
-              isDeleting = false;
-              currentIndex = (currentIndex + 1) % names.length;
-              nextSpeed = 350;
-            }
-            setTimeout(typeEffect, nextSpeed);
-          }
+      // Typing speed logic
+      if (!isDeleting && charIndex < text.length) {
+        charIndex++;
+        setTimeout(typeEffect, 100);
+      } 
+      else if (isDeleting && charIndex > 0) {
+        charIndex--;
+        setTimeout(typeEffect, 50);
+      } 
+      else {
+        let nextSpeed = 350;
+        if (!isDeleting) {
+          isDeleting = true;
+          nextSpeed = 1500; // Pause at end of word
+        } else {
+          isDeleting = false;
+          currentIndex = (currentIndex + 1) % names.length;
+          nextSpeed = 350;
         }
-        typeEffect();
+        setTimeout(typeEffect, nextSpeed);
+      }
+    }
+    typeEffect();
     </script>
+
+    <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      twemoji.parse(document.body, { folder: "svg", ext: ".svg" });
+    });
+    </script>
+
 </body>
 </html>
