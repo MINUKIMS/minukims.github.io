@@ -101,10 +101,14 @@ body {
   font-weight: 600;
   letter-spacing: 0.2px;
   margin-left: 6px;
+  min-width: 150px;  /* 가로 폭 최소 공간 확보 (이름이 짧아도 이만큼은 차지) */
+  min-height: 1.5em; /* 세로 높이 최소 공간 확보 */
+  vertical-align: bottom; /* 텍스트 베이스라인 정렬 */
+  text-align: left; /* 글자가 짧아도 왼쪽 정렬 */
 }
 
 #typed-text * {
-  font: inherit; /* 안쪽 span도 같은 폰트 그대로 사용 */
+  font: inherit; 
 }
 #typed-text::after {
   content: "|";
@@ -135,8 +139,8 @@ body {
 <div class="container" id="home">
 <table border="0">
 <tr>
-  <td><img src="./mainfiles/picture.jpg" width="130"></td>
-  <td style="width: 10px">&nbsp;</td>
+  <td><img src="./mainfiles/picture.jpg" width="150"></td>
+  <td style="width: 20px">&nbsp;</td>
   <td valign="top" width="500">
     <span class="name">
       <strong>Minu Kim</strong> ・<span id="typed-text"></span>
@@ -153,9 +157,9 @@ body {
 
 
 <strong>Welcome to my page!</strong>   
-    I am a Master’s student in the <a href="https://sites.google.com/site/kaistsssclab/home"><font color="#000080">SSSC Lab at KAIST</font></a> (Statistical Speech and Sound Computing Laboratory), advised by Prof. Hoirin Kim.  
-    My academic interests lie at the intersection of linguistics and artificial intelligence. In particular, I enjoy exploring phonetics, phonology, and language typology, and I am passionate about connecting linguistic theories with computational approaches for <strong>low-resource language processing</strong>.  
-    I am also interested in <strong>multilingual automatic speech recognition (ASR)</strong> and more broadly in advancing research on the <strong>linguistics–AI intersection</strong> to bridge human language theory and machine learning methods.  
+    I am a Master's student in the <a href="https://sites.google.com/site/kaistsssclab/home"><font color="#000080">SSSC Lab at KAIST</font></a> (Statistical Speech and Sound Computing Laboratory), advised by Prof. Hoirin Kim.  
+    My academic interests lie at the intersection of linguistics and artificial intelligence. In particular, I enjoy exploring phonetics, phonology, and language typology, and I am passionate about connecting linguistic theories with computational approaches. 
+    My research focuses on applying this interdisciplinary perspective to <strong>low-resource language processing</strong> and <strong>multilingual automatic speech recognition (ASR)</strong>.
 
 
 <!-- Education section -->
