@@ -728,22 +728,29 @@ document.addEventListener("DOMContentLoaded", () => {
     // Improved SVG Paths for World Map (Roughly Robinson Projection)
     // Reverted to the previous version as requested.
     const worldMapPaths = [
-        // North America
-        "M 160 50 L 220 50 L 280 40 L 350 30 L 380 40 L 400 35 L 360 100 L 320 120 L 280 150 L 220 180 L 190 200 L 150 160 L 110 130 L 80 80 L 120 60 Z", 
-        // Greenland (Abstracted)
-        "M 320 30 L 380 20 L 410 40 L 390 80 L 340 70 Z",
-        // South America
-        "M 240 210 L 320 230 L 360 280 L 340 360 L 300 420 L 270 360 L 250 300 L 230 250 Z",
-        // Europe
-        "M 450 60 L 490 50 L 530 55 L 560 80 L 530 110 L 490 120 L 460 110 L 440 80 Z",
-        // Africa
-        "M 440 130 L 510 130 L 550 160 L 580 220 L 560 300 L 500 350 L 460 300 L 430 220 L 420 160 Z",
-        // Asia
-        "M 550 60 L 650 50 L 750 60 L 850 70 L 900 120 L 880 180 L 820 220 L 750 240 L 700 200 L 650 180 L 600 150 L 570 100 Z",
-        // SE Asia / Islands (Abstracted)
-        "M 750 260 L 800 250 L 830 280 L 780 300 Z",
-        // Australia
-        "M 780 320 L 850 310 L 880 350 L 840 390 L 790 370 Z"
+    // North America (unchanged for reference)
+    "M 160 50 L 220 50 L 280 40 L 350 30 L 380 40 L 400 35 L 360 100 L 320 120 L 280 150 L 220 180 L 190 200 L 150 160 L 110 130 L 80 80 L 120 60 Z",
+
+    // Greenland (shifted right + down slightly reduced overlap)
+    "M 360 20 L 420 10 L 450 30 L 430 70 L 380 60 Z",
+
+    // South America (shifted slightly right & down for spacing)
+    "M 260 230 L 340 250 L 380 300 L 360 380 L 320 450 L 290 390 L 270 330 L 250 280 Z",
+
+    // Europe (slightly moved up)
+    "M 455 50 L 495 40 L 535 45 L 565 70 L 535 100 L 495 110 L 465 100 L 445 70 Z",
+
+    // Africa (unchanged)
+    "M 440 130 L 510 130 L 550 160 L 580 220 L 560 300 L 500 350 L 460 300 L 430 220 L 420 160 Z",
+
+    // Asia (slightly widened to match scale)
+    "M 550 60 L 660 50 L 770 60 L 880 80 L 940 130 L 920 200 L 850 230 L 780 240 L 720 200 L 660 180 L 600 150 L 570 100 Z",
+
+    // SE Asia Islands (adjusted slightly south)
+    "M 770 270 L 820 260 L 850 290 L 800 320 Z",
+
+    // Australia (scaled ~1.3x and placed lower-right)
+    "M 810 360 L 900 350 L 940 400 L 890 450 L 820 420 Z"
     ];
 
     // Major Cities Coords (approx. on 1000x500 canvas)
@@ -798,7 +805,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const renderW = svgW * scale;
         const renderH = svgH * scale;
         const offsetX = (mapW - renderW) / 2;
-        const offsetY = (mapH - renderH) / 2;
+        const offsetY = (mapH - renderH) / 2 - 50;
 
         mapCtx.save();
         mapCtx.translate(offsetX, offsetY);
