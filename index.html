@@ -470,17 +470,25 @@ function typeEffect() {
   if (!isDeleting && charIndex < text.length) {
     charIndex++;
     setTimeout(typeEffect, 120);
-  } else if (isDeleting && charIndex > 0) {
+  } 
+  else if (isDeleting && charIndex > 0) {
     charIndex--;
     setTimeout(typeEffect, 60);
-  } else {
+  } 
+
+  else {
+    let nextSpeed = 350;
+
     if (!isDeleting) {
-      setTimeout(() => isDeleting = true, 900);
+      isDeleting = true;
+      nextSpeed = 900;
     } else {
       isDeleting = false;
       currentIndex = (currentIndex + 1) % names.length;
+      nextSpeed = 350;
     }
-    setTimeout(typeEffect, 350);
+    
+    setTimeout(typeEffect, nextSpeed);
   }
 }
 typeEffect();
