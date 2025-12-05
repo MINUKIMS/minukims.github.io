@@ -108,18 +108,25 @@
         color: #111;
         line-height: 1.2;
         
-        white-space: nowrap;    
-        overflow-x: hidden;      
-        overflow-y: visible;    
+        display: flex;           
+        align-items: center;    
+        min-height: 60px;       
+        
+        white-space: nowrap; 
+        overflow-x: hidden;     
+        overflow-y: visible;   
     }
 
     .mongolian-vertical {
-        writing-mode: vertical-rl;
+        writing-mode: vertical-lr; 
         text-orientation: sideways;
         font-family: 'Noto Sans Mongolian', sans-serif;
-        vertical-align: middle;
-        margin-left: 5px;
-        line-height: 1;
+        
+        height: auto;           
+        margin-left: 15px;      
+        line-height: 1;        
+        
+        font-size: 0.6em; 
     }
     
     .affiliation {
@@ -553,7 +560,7 @@
 
     </main>
 
-    <script>
+<script>
     const names = [
       { text: "金民友" },
       { text: "Мину Ким" },
@@ -597,24 +604,24 @@
       { text: "Ⲙⲓⲛⲟⲩ Ⲕⲓⲙ" }, 
       { text: "ܡܝܢܘ ܟܝܡ", rtl: true }, 
       { text: "మినూ కిమ్" },    
-      { text: "𒈪 𒉡 𒆠 𒅎" },  
+      { text: "𒈪 𒉡 𒆠 𒅎" },   
       { text: "ꂠꆹ ꈾꃀ" },
       { text: "ሚኑ ኪም" },    
-      { text: "ಮಿನು ಕಿಮ್" },     
-      { text: "𐒄𐒘𐒒𐒖 𐒏𐒘𐒑" },     
+      { text: "ಮಿನು ಕಿಮ್" },      
+      { text: "𐒄𐒘𐒒𐒖 𐒏𐒘𐒑" },      
       { text: "ꃘꆀꁯ ꑭꁮ" },
       { text: "𐑕𐑦𐑯𐑵 𐑒𐑦𐑥" },
       { text: "0x4D696E75 0x4B696D" }, 
       { text: "01001101 01101001 01101110 01110101 00100000 01001011 01101001 01101101" },
     ];
 
-const typedTextElement = document.getElementById("typed-text");
+    const typedTextElement = document.getElementById("typed-text");
     const headerElement = document.querySelector("h1.name"); 
     
+    // 초기 폰트 크기 저장
     let baseFontSize = parseFloat(window.getComputedStyle(typedTextElement).fontSize);
-
     window.addEventListener('resize', () => {
-        typedTextElement.style.fontSize = ""; 
+        typedTextElement.style.fontSize = "";
         baseFontSize = parseFloat(window.getComputedStyle(typedTextElement).fontSize);
     });
 
@@ -639,6 +646,7 @@ const typedTextElement = document.getElementById("typed-text");
          typedTextElement.textContent = visibleText;
       }
 
+      // [1] 가로 긴 글자 줄이기
       if (!isDeleting) {
           if (!vertical && headerElement.scrollWidth > headerElement.clientWidth) {
               let currentSize = parseFloat(window.getComputedStyle(typedTextElement).fontSize);
@@ -648,11 +656,11 @@ const typedTextElement = document.getElementById("typed-text");
           }
       }
 
-      // Typing Loop Control
       if (!isDeleting && charIndex < text.length) {
         charIndex++;
         setTimeout(typeEffect, 80); 
       } 
+      // [2] 지울 때 복구하기
       else if (isDeleting && charIndex > 0) {
         charIndex--;
         
