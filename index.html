@@ -107,6 +107,10 @@
         letter-spacing: -0.5px;
         color: #111;
         line-height: 1.2;
+        
+        white-space: nowrap; 
+        overflow: hidden; 
+        text-overflow: clip;
     }
     
     .affiliation {
@@ -595,42 +599,53 @@
       { text: "01001101 01101001 01101110 01110101 00100000 01001011 01101001 01101101" },
     ];
 
-    const typedTextElement = document.getElementById("typed-text");
+const typedTextElement = document.getElementById("typed-text");
+    const headerElement = document.querySelector("h1.name"); // 너비 체크할 부모 요소
     let currentIndex = 0, charIndex = 0, isDeleting = false;
 
     function typeEffect() {
       const { text, vertical, rtl } = names[currentIndex];
       
+      // 1. 새 단어 시작할 때 폰트 크기 원상복구 (리셋)
+      if (charIndex === 0 && !isDeleting) {
+          typedTextElement.style.fontSize = ""; 
+      }
+
       // RTL handling
       typedTextElement.dir = rtl ? "rtl" : "ltr";
-      
       const visibleText = text.substring(0, charIndex);
 
-      // Reset styles for normal text
+      // Reset styles
       typedTextElement.style.writingMode = "";
       typedTextElement.style.textOrientation = "";
       
       if (vertical) {
-         // Vertical script handling (Mongolian/Manchu)
          typedTextElement.innerHTML = `<span class="mongolian-vertical">${visibleText}</span>`;
       } else {
          typedTextElement.textContent = visibleText;
       }
 
-      // Typing speed logic
+      if (headerElement.scrollWidth > headerElement.clientWidth) {
+          let currentSize = parseFloat(window.getComputedStyle(typedTextElement).fontSize);
+          if (currentSize > 10) {
+              typedTextElement.style.fontSize = (currentSize * 0.9) + "px";
+          }
+      }
+
+      // Typing Loop
       if (!isDeleting && charIndex < text.length) {
         charIndex++;
-        setTimeout(typeEffect, 100);
+        setTimeout(typeEffect, 80); 
       } 
       else if (isDeleting && charIndex > 0) {
         charIndex--;
-        setTimeout(typeEffect, 50);
+        setTimeout(typeEffect, 40);
       } 
       else {
         let nextSpeed = 350;
         if (!isDeleting) {
           isDeleting = true;
-          nextSpeed = 1500; // Pause at end of word
+          nextSpeed = 1500; 
         } else {
           isDeleting = false;
           currentIndex = (currentIndex + 1) % names.length;
