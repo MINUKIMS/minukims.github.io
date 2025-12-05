@@ -108,13 +108,16 @@
         color: #111;
         line-height: 1.2;
         
-        display: flex;           
-        align-items: center;    
-        min-height: 60px;       
+        position: relative;     
+        z-index: 10;           
         
-        white-space: nowrap; 
-        overflow-x: hidden;     
-        overflow-y: visible;   
+        display: flex;           
+        align-items: center;     
+        height: 60px;           
+        
+        white-space: nowrap;     
+        
+        overflow: visible;       
     }
 
     .mongolian-vertical {
@@ -122,11 +125,17 @@
         text-orientation: sideways;
         font-family: 'Noto Sans Mongolian', sans-serif;
         
-        height: auto;           
-        margin-left: 15px;      
-        line-height: 1;        
+        display: inline-block;
         
-        font-size: 0.6em; 
+        height: 85px;            
+        
+        white-space: normal;     
+        
+        vertical-align: middle;
+        margin-left: 15px;       
+        line-height: 1;
+        text-align: left;
+        font-size: 0.6em;      
     }
     
     .affiliation {
