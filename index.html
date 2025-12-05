@@ -25,7 +25,7 @@
     /* --- Global Styles --- */
     :root {
         --primary-color: #003e80; 
-        --bg-color: #f9fafb;
+        --bg-color: #f9fafb; /* 이 색상이 헤더 끝부분과 이어져야 함 */
         --text-main: #1f2937;
         --text-sub: #4b5563;
         --accent: #2563eb;
@@ -115,12 +115,14 @@
         box-sizing: border-box;
     }
 
-    /* --- Header Area (with Dynamic Background) --- */
+    /* --- Header Area --- */
     header {
         position: relative;
-        padding: 60px 80px;
+        /* 파형이 박스에 가리지 않도록 하단 패딩을 넉넉히 줌 */
+        padding: 60px 80px 100px 80px; 
         overflow: hidden;
-        background: linear-gradient(to bottom, #ffffff, #f0f4f8); /* 더 은은한 하늘색 그라데이션 */
+        /* 배경 그라데이션: 위는 흰색, 아래는 body 배경색(#f9fafb)으로 자연스럽게 이어짐 */
+        background: linear-gradient(to bottom, #ffffff 0%, #f0f4f8 70%, #f9fafb 100%);
     }
 
     #world-map-canvas {
@@ -130,8 +132,8 @@
         width: 100%;
         height: 100%;
         z-index: 0;
-        opacity: 0.4; /* 배경이므로 투명도 낮게 */
-        pointer-events: none;
+        /* 캔버스 자체는 클릭 불가 (텍스트 선택 방해 방지) */
+        pointer-events: none; 
     }
 
     .header-content {
@@ -266,13 +268,15 @@
         margin-top: 4px;
     }
 
-    /* --- Creative Interests Section with Background --- */
+    /* --- Creative Interests Section (Dynamic Background) --- */
     #arts {
         position: relative;
-        padding: 40px 80px; /* 섹션 내부 패딩 조정 */
+        padding: 60px 80px; 
         margin-left: -80px; /* content-section 패딩 상쇄 */
         margin-right: -80px;
         overflow: hidden;
+        /* 여기도 배경색이 위와 자연스럽게 섞이도록 */
+        background: linear-gradient(to bottom, #f9fafb, #f0f4f8);
     }
     #arts-canvas {
         position: absolute;
@@ -281,7 +285,6 @@
         width: 100%;
         height: 100%;
         z-index: 0;
-        opacity: 0.3;
         pointer-events: none;
     }
     .arts-content {
@@ -346,7 +349,7 @@
             border-bottom: 1px solid #e5e7eb;
             padding: 30px 20px;
         }
-        header { padding: 40px 20px; }
+        header { padding: 40px 20px 80px 20px; } /* 하단 패딩 확보 */
         .content-section { padding: 0 20px; }
         #arts { padding: 40px 20px; margin-left: -20px; margin-right: -20px; }
         .main-content { margin-left: 0; }
@@ -714,17 +717,22 @@ document.addEventListener("DOMContentLoaded", () => {
     let mapW, mapH;
     let waveformOffset = 0;
 
-    // 대략적인 대륙 좌표 (단순화된 세계지도용)
+    // 더 구체적인 대륙 형태 (Visible Map)
     const continents = [
-        [[0.1, 0.2], [0.2, 0.15], [0.35, 0.2], [0.3, 0.4], [0.15, 0.35]], // 북미
-        [[0.25, 0.5], [0.4, 0.55], [0.35, 0.8], [0.2, 0.7]], // 남미
-        [[0.45, 0.1], [0.6, 0.15], [0.55, 0.35], [0.4, 0.3]], // 유럽
-        [[0.4, 0.4], [0.6, 0.45], [0.55, 0.7], [0.45, 0.6]], // 아프리카
-        [[0.65, 0.1], [0.9, 0.15], [0.85, 0.5], [0.6, 0.4]], // 아시아
-        [[0.75, 0.6], [0.9, 0.65], [0.85, 0.8], [0.7, 0.75]] // 오세아니아
+        // 북미
+        [[0.1, 0.15], [0.35, 0.15], [0.30, 0.4], [0.25, 0.45], [0.15, 0.35], [0.05, 0.2]], 
+        // 남미
+        [[0.25, 0.5], [0.4, 0.55], [0.35, 0.85], [0.25, 0.8], [0.2, 0.6]], 
+        // 유럽
+        [[0.45, 0.15], [0.55, 0.1], [0.6, 0.15], [0.55, 0.35], [0.45, 0.3]], 
+        // 아프리카
+        [[0.45, 0.4], [0.6, 0.4], [0.65, 0.55], [0.55, 0.75], [0.45, 0.65], [0.4, 0.5]], 
+        // 아시아
+        [[0.6, 0.15], [0.85, 0.1], [0.95, 0.2], [0.9, 0.5], [0.75, 0.55], [0.6, 0.4]], 
+        // 오세아니아
+        [[0.75, 0.65], [0.9, 0.65], [0.9, 0.8], [0.75, 0.85], [0.7, 0.75]] 
     ];
 
-    // 언어 연구 연결점 (가상의 주요 도시/거점)
     let mapPoints = [];
 
     function initMap() {
@@ -732,21 +740,21 @@ document.addEventListener("DOMContentLoaded", () => {
         mapH = mapCanvas.height = mapCanvas.parentElement.offsetHeight;
         
         mapPoints = [
-            {x: mapW * 0.2, y: mapH * 0.3}, // 북미
-            {x: mapW * 0.3, y: mapH * 0.6}, // 남미
-            {x: mapW * 0.5, y: mapH * 0.25}, // 유럽
-            {x: mapW * 0.5, y: mapH * 0.5}, // 아프리카
-            {x: mapW * 0.75, y: mapH * 0.3}, // 아시아 (한국 부근)
-            {x: mapW * 0.65, y: mapH * 0.4}, // 중앙아시아
-            {x: mapW * 0.8, y: mapH * 0.7}  // 오세아니아
+            {x: mapW * 0.2, y: mapH * 0.3}, 
+            {x: mapW * 0.3, y: mapH * 0.65}, 
+            {x: mapW * 0.5, y: mapH * 0.25}, 
+            {x: mapW * 0.52, y: mapH * 0.55}, 
+            {x: mapW * 0.75, y: mapH * 0.3}, 
+            {x: mapW * 0.68, y: mapH * 0.4}, 
+            {x: mapW * 0.82, y: mapH * 0.75}  
         ];
     }
 
     function drawMapAndWaveform() {
         mapCtx.clearRect(0, 0, mapW, mapH);
 
-        // 1. 세계지도 실루엣 그리기 (은은하게)
-        mapCtx.fillStyle = 'rgba(200, 210, 230, 0.2)';
+        // 1. 세계지도 (대륙) 그리기 - 더 진하게 (opacity 0.5)
+        mapCtx.fillStyle = 'rgba(180, 200, 225, 0.5)'; 
         continents.forEach(cont => {
             mapCtx.beginPath();
             mapCtx.moveTo(cont[0][0] * mapW, cont[0][1] * mapH);
@@ -757,54 +765,43 @@ document.addEventListener("DOMContentLoaded", () => {
             mapCtx.fill();
         });
 
-        // 2. 네트워크 연결선 그리기
-        mapCtx.strokeStyle = 'rgba(0, 62, 128, 0.15)';
+        // 2. 네트워크 선
+        mapCtx.strokeStyle = 'rgba(0, 62, 128, 0.2)';
         mapCtx.lineWidth = 1;
         mapCtx.beginPath();
         for (let i = 0; i < mapPoints.length; i++) {
             for (let j = i + 1; j < mapPoints.length; j++) {
-                // 너무 먼 거리는 연결하지 않음 (자연스럽게)
                 const dist = Math.hypot(mapPoints[i].x - mapPoints[j].x, mapPoints[i].y - mapPoints[j].y);
                 if (dist < mapW * 0.4) {
                      mapCtx.moveTo(mapPoints[i].x, mapPoints[i].y);
-                     // 약간의 곡선 효과를 위해 베지어 곡선 사용
                      const cpX = (mapPoints[i].x + mapPoints[j].x) / 2;
-                     const cpY = (mapPoints[i].y + mapPoints[j].y) / 2 - dist * 0.1; // 위로 살짝 휨
+                     const cpY = (mapPoints[i].y + mapPoints[j].y) / 2 - dist * 0.1;
                      mapCtx.quadraticCurveTo(cpX, cpY, mapPoints[j].x, mapPoints[j].y);
                 }
             }
         }
         mapCtx.stroke();
 
-        // 연결점 그리기
-        mapCtx.fillStyle = 'rgba(0, 62, 128, 0.3)';
-        mapPoints.forEach(p => {
-            mapCtx.beginPath();
-            mapCtx.arc(p.x, p.y, 3, 0, Math.PI * 2);
-            mapCtx.fill();
-        });
-
-        // 3. 하단 음성 파형 (Waveform) 그리기
-        mapCtx.strokeStyle = 'rgba(37, 99, 235, 0.15)'; // Accent color, 은은하게
+        // 3. 음성 파형 (Waveform) - 맨 아래로 이동
+        mapCtx.strokeStyle = 'rgba(37, 99, 235, 0.25)'; 
         mapCtx.lineWidth = 2;
         mapCtx.beginPath();
         
-        const waveBaseY = mapH * 0.85;
-        const waveHeight = 30;
-        const frequency = 0.02;
+        // 파형의 기준선(baseY)을 캔버스 높이에서 20px 위로 설정 -> 헤더의 맨 아래
+        const waveBaseY = mapH - 20; 
+        const waveHeight = 40;
+        const frequency = 0.015;
         
         mapCtx.moveTo(0, waveBaseY);
         for (let x = 0; x < mapW; x++) {
-            // 여러 개의 사인파를 합성하여 자연스러운 음성 파형 느낌 냄
             const y = waveBaseY + 
                       Math.sin((x + waveformOffset) * frequency) * waveHeight * 0.5 +
-                      Math.sin((x + waveformOffset * 1.5) * frequency * 2) * waveHeight * 0.3 +
-                      Math.sin((x + waveformOffset * 0.5) * frequency * 0.5) * waveHeight * 0.2;
+                      Math.sin((x + waveformOffset * 1.5) * frequency * 2) * waveHeight * 0.3;
             mapCtx.lineTo(x, y);
         }
         mapCtx.stroke();
         
-        waveformOffset += 1.5; // 움직임 속도
+        waveformOffset += 1.5;
         requestAnimationFrame(drawMapAndWaveform);
     }
 
@@ -819,25 +816,24 @@ document.addEventListener("DOMContentLoaded", () => {
     const artsCanvas = document.getElementById('arts-canvas');
     const artsCtx = artsCanvas.getContext('2d');
     let artsW, artsH;
-    let curves = [];
+    let ribbons = [];
 
     function initArtsBg() {
         artsW = artsCanvas.width = artsCanvas.parentElement.offsetWidth;
         artsH = artsCanvas.height = artsCanvas.parentElement.offsetHeight;
         
-        // 우아한 곡선 파티클 초기화
-        curves = [];
-        for (let i = 0; i < 5; i++) {
-            curves.push({
+        ribbons = [];
+        // 리본 개수 증가 및 투명도/크기 조절로 시인성 확보
+        for (let i = 0; i < 7; i++) {
+            ribbons.push({
                 x: Math.random() * artsW,
-                y: artsH + Math.random() * 200, // 화면 아래에서 시작
-                vx: (Math.random() - 0.5) * 0.5, // 매우 느린 수평 이동
-                vy: -Math.random() * 0.3 - 0.1, // 천천히 위로 이동
-                amplitude: Math.random() * 50 + 30, // 곡선 진폭
-                frequency: Math.random() * 0.01 + 0.005, // 곡선 주파수
-                phase: Math.random() * Math.PI * 2,
-                thickness: Math.random() * 20 + 10,
-                color: `hsla(${210 + Math.random() * 40}, 60%, 70%, 0.15)` // 은은한 파란/보라색 계열
+                y: artsH + Math.random() * 100,
+                speed: Math.random() * 0.5 + 0.2,
+                angle: Math.random() * Math.PI * 2,
+                angleSpeed: Math.random() * 0.02 + 0.01,
+                width: Math.random() * 30 + 10,
+                // 색상을 좀 더 진하게 수정
+                color: `hsla(${200 + Math.random() * 40}, 70%, 75%, 0.4)`
             });
         }
     }
@@ -845,61 +841,35 @@ document.addEventListener("DOMContentLoaded", () => {
     function animateArtsBg() {
         artsCtx.clearRect(0, 0, artsW, artsH);
 
-        curves.forEach(c => {
-            c.x += c.vx;
-            c.y += c.vy;
-            c.phase += c.frequency;
-
-            // 화면 위로 완전히 나가면 아래로 재배치
-            if (c.y < -100) {
-                c.y = artsH + 100;
-                c.x = Math.random() * artsW;
+        ribbons.forEach(r => {
+            r.y -= r.speed; // 위로 이동
+            r.angle += r.angleSpeed;
+            
+            // 화면 위로 벗어나면 리셋
+            if (r.y < -100) {
+                r.y = artsH + 100;
+                r.x = Math.random() * artsW;
             }
 
+            // 물결치는 리본 그리기
             artsCtx.beginPath();
-            for (let y = c.y - 100; y < c.y + 100; y += 5) {
-                const x = c.x + Math.sin(y * 0.01 + c.phase) * c.amplitude;
-                // 부드러운 선 그리기 (실크 느낌)
-                artsCtx.moveTo(x, y);
-                artsCtx.lineTo(x + c.thickness * Math.cos(y*0.01), y + 5);
+            const startX = r.x + Math.sin(r.angle) * 30;
+            artsCtx.moveTo(startX, r.y);
+            
+            // 리본의 꼬리 부분 생성
+            for (let i = 0; i < 150; i+=5) {
+                const yPos = r.y + i;
+                const wave = Math.sin(r.angle + i * 0.05) * 30;
+                // 점점 투명해지도록 alpha 적용은 fillStyle에서 안되므로 형태만 잡음
+                artsCtx.lineTo(r.x + wave, yPos);
             }
             
-            // 그라데이션 스트로크 적용
-            const gradient = artsCtx.createLinearGradient(0, c.y - 100, 0, c.y + 100);
-            gradient.addColorStop(0, 'transparent');
-            gradient.addColorStop(0.5, c.color);
-            gradient.addColorStop(1, 'transparent');
-            
-            artsCtx.strokeStyle = gradient;
-            artsCtx.lineWidth = 2;
-            //artsCtx.stroke(); // 선으로 그리기 (옵션)
-
-            // 부드러운 면으로 채우기 (더 무용 느낌)
-            artsCtx.fillStyle = c.color;
-            artsCtx.beginPath();
-             artsCtx.moveTo(c.x + Math.sin((c.y-100) * 0.01 + c.phase) * c.amplitude, c.y-100);
-             for(let y=c.y-100; y <= c.y+100; y+=10) {
-                 artsCtx.lineTo(c.x + Math.sin(y * 0.01 + c.phase) * c.amplitude + c.thickness, y);
-             }
-             for(let y=c.y+100; y >= c.y-100; y-=10) {
-                 artsCtx.lineTo(c.x + Math.sin(y * 0.01 + c.phase) * c.amplitude - c.thickness, y);
-             }
-             artsCtx.closePath();
-             //artsCtx.fill();
-             
-             // 단순화된 버전 (성능 고려 및 더 은은하게)
-             artsCtx.beginPath();
-             artsCtx.moveTo(c.x, c.y);
-             const tailX = c.x + Math.sin(c.phase) * c.amplitude * 2;
-             const tailY = c.y + 200;
-             const cp1x = c.x + Math.cos(c.phase) * c.amplitude;
-             const cp1y = c.y + 100;
-             artsCtx.quadraticCurveTo(cp1x, cp1y, tailX, tailY);
-             artsCtx.strokeStyle = c.color;
-             artsCtx.lineWidth = c.thickness;
-             artsCtx.lineCap = 'round';
-             artsCtx.stroke();
-
+            // 붓글씨/리본 느낌을 위해 stroke 사용
+            artsCtx.strokeStyle = r.color;
+            artsCtx.lineWidth = r.width;
+            artsCtx.lineCap = 'round';
+            artsCtx.lineJoin = 'round';
+            artsCtx.stroke();
         });
 
         requestAnimationFrame(animateArtsBg);
