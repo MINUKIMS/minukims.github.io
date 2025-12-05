@@ -38,9 +38,11 @@
 <style>
 body {
   font-family:
-    "Noto Sans KR",
-    "Noto Sans SC",
+    "Noto Sans SC",       
+    "Noto Sans TC",       
+    "Noto Sans",
     "Noto Sans JP",
+    "Noto Sans KR",
     "Noto Sans Arabic",
     "Noto Sans Hebrew",
     "Noto Sans Georgian",
@@ -50,10 +52,6 @@ body {
     "Noto Sans Myanmar",
     "Noto Sans Bengali",
     "Noto Sans Devanagari",
-    "Noto Sans Mongolian",
-    "Noto Sans",
-    "Segoe UI Emoji",
-    "Apple Color Emoji",
     sans-serif;
 }
 
@@ -420,24 +418,24 @@ beyond research!
 
 <script>
 const names = [
-  { text: "김민우", flag: "🇰🇷", rtl: false },
-  { text: "金民友", flag: "🇨🇳", rtl: false },
-  { text: "キム・ミヌ", flag: "🇯🇵", rtl: false },
-  { text: "Минү Ким", flag: "🇷🇺", rtl: false },
-  { text: "مِینو کیم", flag: "🇮🇷", rtl: true },
-  { text: "مینو كيم", flag: "🇸🇦", rtl: true },
-  { text: "Μίνου Κιμ", flag: "🇬🇷", rtl: false },
-  { text: "מִינוּ קִים", flag: "🇮🇱", rtl: true },
-  { text: "มินู คิม", flag: "🇹🇭", rtl: false },
-  { text: "មីនុ គីម", flag: "🇰🇭", rtl: false },
-  { text: "မီနူး ကင်", flag: "🇲🇲", rtl: false },
-  { text: "ມິນູ ຄິມ", flag: "🇱🇦", rtl: false },
-  { text: "मीनू किम", flag: "🇮🇳", rtl: false },
-  { text: "মিনু কিম", flag: "🇧🇩", rtl: false },
-  { text: "ᠮᠢᠨᠦ ᠬᠢᠮ", flag: "🇲🇳", vertical: true, rtl: false },
-  { text: "མི་ནུ་ཁིམ", flag: "🇳🇵", rtl: false },
-  { text: "მინუ კიმ", flag: "🇬🇪", rtl: false },
-  { text: "Մինու Քիմ", flag: "🇦🇲", rtl: false }
+  { text: "김민우", rtl: false },
+  { text: "金民友", rtl: false },
+  { text: "キム・ミヌ", rtl: false },
+  { text: "Минү Ким", rtl: false },
+  { text: "مِینو کیم", rtl: true },
+  { text: "مینو كيم", rtl: true },
+  { text: "Μίνου Κιμ", rtl: false },
+  { text: "מִינוּ קִים", rtl: true },
+  { text: "มินู คิม", rtl: false },
+  { text: "មីនុ គីម", rtl: false },
+  { text: "မီနူး ကင်", rtl: false },
+  { text: "ມິນູ ຄິມ", rtl: false },
+  { text: "मीनू किम", rtl: false },
+  { text: "মিনু কিম", rtl: false },
+  { text: "ᠮᠢᠨᠦ ᠬᠢᠮ", vertical: true, rtl: false },
+  { text: "མི་ནུ་ཁིམ", rtl: false },
+  { text: "მინუ კიმ", rtl: false },
+  { text: "Մինու Քիմ", rtl: false }
 ];
 
 const typedTextElement = document.getElementById("typed-text");
@@ -451,7 +449,7 @@ function typeEffect() {
   typedTextElement.innerHTML =
     vertical ?
     `<span class="mongolian-vertical">${visibleText}</span> ${flag}` :
-    `${visibleText} ${flag}`;
+    `${visibleText}`;
 
   if (!isDeleting && charIndex < text.length) {
     charIndex++;
