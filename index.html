@@ -119,24 +119,24 @@
     header {
         position: relative;
         padding: 60px 80px;
-        overflow: hidden; /* 캔버스가 삐져나가지 않게 */
-        background: linear-gradient(to bottom, #ffffff, #f9fafb); /* 아주 은은한 그라데이션 */
+        overflow: hidden;
+        background: linear-gradient(to bottom, #ffffff, #f0f4f8); /* 더 은은한 하늘색 그라데이션 */
     }
 
-    #network-canvas {
+    #world-map-canvas {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        z-index: 0; /* 텍스트 뒤로 */
-        opacity: 0.6; /* 너무 튀지 않게 투명도 조절 */
-        pointer-events: none; /* 마우스 이벤트가 텍스트를 방해하지 않도록 */
+        z-index: 0;
+        opacity: 0.4; /* 배경이므로 투명도 낮게 */
+        pointer-events: none;
     }
 
     .header-content {
         position: relative;
-        z-index: 1; /* 캔버스 위로 올라오게 */
+        z-index: 1;
     }
 
     /* --- Typography & Sections --- */
@@ -179,20 +179,7 @@
         gap: 5px;
     }
     
-    /* 학교 로고 스타일 */
-    .univ-logo {
-        height: 1.2em;
-        width: auto;
-        vertical-align: text-bottom;
-        margin-right: 8px;
-    }
-    .univ-link {
-        display: inline-flex;
-        align-items: center;
-        font-weight: 600;
-    }
-
-    /* --- Content Sections (Padding Adjust) --- */
+    /* --- Content Sections --- */
     .content-section {
         padding: 0 80px;
     }
@@ -270,7 +257,7 @@
         margin-bottom: 10px;
         border: 1px solid #f3f4f6;
         box-shadow: 0 1px 2px rgba(0,0,0,0.03);
-        display: flex; /* 로고 정렬용 */
+        display: flex;
         align-items: flex-start;
     }
     .list-icon {
@@ -279,6 +266,28 @@
         margin-top: 4px;
     }
 
+    /* --- Creative Interests Section with Background --- */
+    #arts {
+        position: relative;
+        padding: 40px 80px; /* 섹션 내부 패딩 조정 */
+        margin-left: -80px; /* content-section 패딩 상쇄 */
+        margin-right: -80px;
+        overflow: hidden;
+    }
+    #arts-canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        opacity: 0.3;
+        pointer-events: none;
+    }
+    .arts-content {
+        position: relative;
+        z-index: 1;
+    }
 
     /* --- Gallery --- */
     .hobby-gallery {
@@ -339,6 +348,7 @@
         }
         header { padding: 40px 20px; }
         .content-section { padding: 0 20px; }
+        #arts { padding: 40px 20px; margin-left: -20px; margin-right: -20px; }
         .main-content { margin-left: 0; }
         .card { flex-direction: column; gap: 16px; }
         .paper-thumb { width: 100%; height: auto; max-width: 200px; aspect-ratio: 16/9; }
@@ -393,7 +403,7 @@
     <main class="main-content">
         
         <header id="home">
-            <canvas id="network-canvas"></canvas>
+            <canvas id="world-map-canvas"></canvas>
             <div class="header-content">
                 <h1 class="name">
                     Minu Kim 
@@ -402,12 +412,7 @@
                 </h1>
                 
                 <div class="affiliation">
-                    <div>
-                        <a href="https://www.kaist.ac.kr/en/" class="univ-link">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/KAIST_logo.svg/320px-KAIST_logo.svg.png" alt="KAIST Logo" class="univ-logo">
-                            KAIST School of Electrical Engineering
-                        </a>
-                    </div>
+                    <div><a href="https://www.kaist.ac.kr/en/">KAIST School of Electrical Engineering</a></div>
                     <div>Computational Linguist & Speech Scientist</div>
                 </div>
 
@@ -429,7 +434,6 @@
                     <div class="card">
                         <div class="date-col">03/2024 – Present</div>
                         <div class="content-col">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/KAIST_logo.svg/320px-KAIST_logo.svg.png" alt="KAIST" style="height: 20px; margin-bottom: 8px; display:block;">
                             <strong>Korea Advanced Institute of Science and Technology (KAIST)</strong>, Daejeon<br>
                             M.S. in Electrical Engineering
                         </div>
@@ -437,7 +441,6 @@
                     <div class="card">
                         <div class="date-col">03/2017 – 02/2024</div>
                         <div class="content-col">
-                             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Seoul_National_University_UI.png/320px-Seoul_National_University_UI.png" alt="SNU" style="height: 24px; margin-bottom: 8px; display:block;">
                             <strong>Seoul National University (SNU)</strong>, <em>Cum Laude</em>, Seoul<br>
                             B.A. in Linguistics<br>
                             B.S. in Computational Sciences<br>
@@ -612,34 +615,37 @@
             <section id="honors">
                 <span class="section-title">Honors & Scholarships</span>
                 <ul class="simple-list">
-                    <li><i class="fa-solid fa-award list-icon"></i><div><strong>Korean Government Scholarship</strong> – Full tuition and stipend support (2024–2025)</div></li>
-                    <li><i class="fa-solid fa-graduation-cap list-icon"></i><div><strong>Cum Laude</strong>, SNU (2024)</div></li>
-                    <li><i class="fa-solid fa-money-check-dollar list-icon"></i><div><strong>Chiak Foundation Scholarship</strong> – Full tuition support (2017–2023)</div></li>
-                    <li><i class="fa-solid fa-money-check-dollar list-icon"></i><div><strong>Silla Culture Foundation Scholarship</strong> (2021–2023)</div></li>
-                    <li><i class="fa-solid fa-user-tie list-icon"></i><div><strong>Class of '82 Alumni Scholarship</strong>, SNU Business School (2023)</div></li>
-                    <li><i class="fa-solid fa-money-check-dollar list-icon"></i><div><strong>Hansung TNI Scholarship</strong> (2022)</div></li>
-                    <li><i class="fa-solid fa-chalkboard-user list-icon"></i><div><strong>Teaching Assistant Excellence Scholarship</strong>, SNU Business School (2021)</div></li>
-                    <li><i class="fa-solid fa-briefcase list-icon"></i><div><strong>Work-Study Scholarship</strong>, SNU Library (2019–2020)</div></li>
+                    <li><i class="fa-solid fa-medal list-icon"></i><div><strong>Korean Government Scholarship</strong> – Full tuition and stipend support (2024–2025)</div></li>
+                    <li><i class="fa-solid fa-medal list-icon"></i><div><strong>Cum Laude</strong>, SNU (2024)</div></li>
+                    <li><i class="fa-solid fa-medal list-icon"></i><div><strong>Chiak Foundation Scholarship</strong> – Full tuition support (2017–2023)</div></li>
+                    <li><i class="fa-solid fa-medal list-icon"></i><div><strong>Silla Culture Foundation Scholarship</strong> (2021–2023)</div></li>
+                    <li><i class="fa-solid fa-medal list-icon"></i><div><strong>Class of '82 Alumni Scholarship</strong>, SNU Business School (2023)</div></li>
+                    <li><i class="fa-solid fa-medal list-icon"></i><div><strong>Hansung TNI Scholarship</strong> (2022)</div></li>
+                    <li><i class="fa-solid fa-medal list-icon"></i><div><strong>Teaching Assistant Excellence Scholarship</strong>, SNU Business School (2021)</div></li>
+                    <li><i class="fa-solid fa-medal list-icon"></i><div><strong>Work-Study Scholarship</strong>, SNU Library (2019–2020)</div></li>
                 </ul>
             </section>
 
             <section id="arts">
-                <span class="section-title">Creative Interests</span>
-                <p>
-                    I also enjoy performing arts, especially collaborative work in classical and contemporary pieces. Being on stage with wonderful artists motivates me and keeps me connected to creativity beyond research!
-                </p>
-                
-                <div class="hobby-gallery">
-                    <img src="./images/pic1.jpg" class="HobbyPhoto" alt="Arts 1">
-                    <img src="./images/pic2.jpg" class="HobbyPhoto" alt="Arts 2">
-                    <img src="./images/pic3.jpg" class="HobbyPhoto" alt="Arts 3">
-                    <img src="./images/pic4.png" class="HobbyPhoto" alt="Arts 4">
-                    <img src="./images/pic5.png" class="HobbyPhoto" alt="Arts 5">
-                    <img src="./images/pic6.png" class="HobbyPhoto" alt="Arts 6">
+                <canvas id="arts-canvas"></canvas>
+                <div class="arts-content">
+                    <span class="section-title" style="margin-top:0;">Creative Interests</span>
+                    <p>
+                        I also enjoy performing arts, especially collaborative work in classical and contemporary pieces. Being on stage with wonderful artists motivates me and keeps me connected to creativity beyond research!
+                    </p>
+                    
+                    <div class="hobby-gallery">
+                        <img src="./images/pic1.jpg" class="HobbyPhoto" alt="Arts 1">
+                        <img src="./images/pic2.jpg" class="HobbyPhoto" alt="Arts 2">
+                        <img src="./images/pic3.jpg" class="HobbyPhoto" alt="Arts 3">
+                        <img src="./images/pic4.png" class="HobbyPhoto" alt="Arts 4">
+                        <img src="./images/pic5.png" class="HobbyPhoto" alt="Arts 5">
+                        <img src="./images/pic6.png" class="HobbyPhoto" alt="Arts 6">
+                    </div>
                 </div>
             </section>
             
-            <footer style="margin-top: 80px; border-top: 1px solid #e5e7eb; padding-top: 30px; padding-bottom:30px; font-size: 0.85rem; color: #9ca3af; text-align: center;">
+            <footer style="margin-top: 40px; border-top: 1px solid #e5e7eb; padding-top: 30px; padding-bottom:30px; font-size: 0.85rem; color: #9ca3af; text-align: center;">
                 &copy; 2025 Minu Kim.
             </footer>
         </div> </main>
@@ -703,77 +709,206 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 
 <script>
-    const canvas = document.getElementById('network-canvas');
-    const ctx = canvas.getContext('2d');
-    let particles = [];
-    let w, h;
+    const mapCanvas = document.getElementById('world-map-canvas');
+    const mapCtx = mapCanvas.getContext('2d');
+    let mapW, mapH;
+    let waveformOffset = 0;
 
-    function resize() {
-        w = canvas.width = canvas.parentElement.offsetWidth;
-        h = canvas.height = canvas.parentElement.offsetHeight;
-        initParticles();
+    // 대략적인 대륙 좌표 (단순화된 세계지도용)
+    const continents = [
+        [[0.1, 0.2], [0.2, 0.15], [0.35, 0.2], [0.3, 0.4], [0.15, 0.35]], // 북미
+        [[0.25, 0.5], [0.4, 0.55], [0.35, 0.8], [0.2, 0.7]], // 남미
+        [[0.45, 0.1], [0.6, 0.15], [0.55, 0.35], [0.4, 0.3]], // 유럽
+        [[0.4, 0.4], [0.6, 0.45], [0.55, 0.7], [0.45, 0.6]], // 아프리카
+        [[0.65, 0.1], [0.9, 0.15], [0.85, 0.5], [0.6, 0.4]], // 아시아
+        [[0.75, 0.6], [0.9, 0.65], [0.85, 0.8], [0.7, 0.75]] // 오세아니아
+    ];
+
+    // 언어 연구 연결점 (가상의 주요 도시/거점)
+    let mapPoints = [];
+
+    function initMap() {
+        mapW = mapCanvas.width = mapCanvas.parentElement.offsetWidth;
+        mapH = mapCanvas.height = mapCanvas.parentElement.offsetHeight;
+        
+        mapPoints = [
+            {x: mapW * 0.2, y: mapH * 0.3}, // 북미
+            {x: mapW * 0.3, y: mapH * 0.6}, // 남미
+            {x: mapW * 0.5, y: mapH * 0.25}, // 유럽
+            {x: mapW * 0.5, y: mapH * 0.5}, // 아프리카
+            {x: mapW * 0.75, y: mapH * 0.3}, // 아시아 (한국 부근)
+            {x: mapW * 0.65, y: mapH * 0.4}, // 중앙아시아
+            {x: mapW * 0.8, y: mapH * 0.7}  // 오세아니아
+        ];
     }
 
-    function initParticles() {
-        particles = [];
-        // 화면 크기에 따라 파티클 개수 조절
-        const particleCount = Math.floor((w * h) / 15000); 
-        for (let i = 0; i < particleCount; i++) {
-            particles.push({
-                x: Math.random() * w,
-                y: Math.random() * h,
-                vx: (Math.random() - 0.5) * 0.3, // 속도 줄임 (더 천천히)
-                vy: (Math.random() - 0.5) * 0.3,
-                radius: Math.random() * 2 + 1 // 반경 약간 키움
+    function drawMapAndWaveform() {
+        mapCtx.clearRect(0, 0, mapW, mapH);
+
+        // 1. 세계지도 실루엣 그리기 (은은하게)
+        mapCtx.fillStyle = 'rgba(200, 210, 230, 0.2)';
+        continents.forEach(cont => {
+            mapCtx.beginPath();
+            mapCtx.moveTo(cont[0][0] * mapW, cont[0][1] * mapH);
+            for (let i = 1; i < cont.length; i++) {
+                mapCtx.lineTo(cont[i][0] * mapW, cont[i][1] * mapH);
+            }
+            mapCtx.closePath();
+            mapCtx.fill();
+        });
+
+        // 2. 네트워크 연결선 그리기
+        mapCtx.strokeStyle = 'rgba(0, 62, 128, 0.15)';
+        mapCtx.lineWidth = 1;
+        mapCtx.beginPath();
+        for (let i = 0; i < mapPoints.length; i++) {
+            for (let j = i + 1; j < mapPoints.length; j++) {
+                // 너무 먼 거리는 연결하지 않음 (자연스럽게)
+                const dist = Math.hypot(mapPoints[i].x - mapPoints[j].x, mapPoints[i].y - mapPoints[j].y);
+                if (dist < mapW * 0.4) {
+                     mapCtx.moveTo(mapPoints[i].x, mapPoints[i].y);
+                     // 약간의 곡선 효과를 위해 베지어 곡선 사용
+                     const cpX = (mapPoints[i].x + mapPoints[j].x) / 2;
+                     const cpY = (mapPoints[i].y + mapPoints[j].y) / 2 - dist * 0.1; // 위로 살짝 휨
+                     mapCtx.quadraticCurveTo(cpX, cpY, mapPoints[j].x, mapPoints[j].y);
+                }
+            }
+        }
+        mapCtx.stroke();
+
+        // 연결점 그리기
+        mapCtx.fillStyle = 'rgba(0, 62, 128, 0.3)';
+        mapPoints.forEach(p => {
+            mapCtx.beginPath();
+            mapCtx.arc(p.x, p.y, 3, 0, Math.PI * 2);
+            mapCtx.fill();
+        });
+
+        // 3. 하단 음성 파형 (Waveform) 그리기
+        mapCtx.strokeStyle = 'rgba(37, 99, 235, 0.15)'; // Accent color, 은은하게
+        mapCtx.lineWidth = 2;
+        mapCtx.beginPath();
+        
+        const waveBaseY = mapH * 0.85;
+        const waveHeight = 30;
+        const frequency = 0.02;
+        
+        mapCtx.moveTo(0, waveBaseY);
+        for (let x = 0; x < mapW; x++) {
+            // 여러 개의 사인파를 합성하여 자연스러운 음성 파형 느낌 냄
+            const y = waveBaseY + 
+                      Math.sin((x + waveformOffset) * frequency) * waveHeight * 0.5 +
+                      Math.sin((x + waveformOffset * 1.5) * frequency * 2) * waveHeight * 0.3 +
+                      Math.sin((x + waveformOffset * 0.5) * frequency * 0.5) * waveHeight * 0.2;
+            mapCtx.lineTo(x, y);
+        }
+        mapCtx.stroke();
+        
+        waveformOffset += 1.5; // 움직임 속도
+        requestAnimationFrame(drawMapAndWaveform);
+    }
+
+    window.addEventListener('resize', initMap);
+    setTimeout(() => {
+        initMap();
+        drawMapAndWaveform();
+    }, 100);
+</script>
+
+<script>
+    const artsCanvas = document.getElementById('arts-canvas');
+    const artsCtx = artsCanvas.getContext('2d');
+    let artsW, artsH;
+    let curves = [];
+
+    function initArtsBg() {
+        artsW = artsCanvas.width = artsCanvas.parentElement.offsetWidth;
+        artsH = artsCanvas.height = artsCanvas.parentElement.offsetHeight;
+        
+        // 우아한 곡선 파티클 초기화
+        curves = [];
+        for (let i = 0; i < 5; i++) {
+            curves.push({
+                x: Math.random() * artsW,
+                y: artsH + Math.random() * 200, // 화면 아래에서 시작
+                vx: (Math.random() - 0.5) * 0.5, // 매우 느린 수평 이동
+                vy: -Math.random() * 0.3 - 0.1, // 천천히 위로 이동
+                amplitude: Math.random() * 50 + 30, // 곡선 진폭
+                frequency: Math.random() * 0.01 + 0.005, // 곡선 주파수
+                phase: Math.random() * Math.PI * 2,
+                thickness: Math.random() * 20 + 10,
+                color: `hsla(${210 + Math.random() * 40}, 60%, 70%, 0.15)` // 은은한 파란/보라색 계열
             });
         }
     }
 
-    function animate() {
-        ctx.clearRect(0, 0, w, h);
-        
-        // 선 그리기
-        ctx.lineWidth = 0.5;
-        ctx.strokeStyle = 'rgba(0, 62, 128, 0.1)'; // primary-color 기반, 아주 연하게
+    function animateArtsBg() {
+        artsCtx.clearRect(0, 0, artsW, artsH);
 
-        for (let i = 0; i < particles.length; i++) {
-            let p1 = particles[i];
-            p1.x += p1.vx;
-            p1.y += p1.vy;
+        curves.forEach(c => {
+            c.x += c.vx;
+            c.y += c.vy;
+            c.phase += c.frequency;
 
-            // 화면 밖으로 나가면 반대편에서 등장
-            if (p1.x < 0) p1.x = w; else if (p1.x > w) p1.x = 0;
-            if (p1.y < 0) p1.y = h; else if (p1.y > h) p1.y = 0;
-
-            // 점 그리기
-            ctx.beginPath();
-            ctx.arc(p1.x, p1.y, p1.radius, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(0, 62, 128, 0.3)'; // 약간 더 진한 파란색
-            ctx.fill();
-
-            // 연결선 그리기
-            for (let j = i + 1; j < particles.length; j++) {
-                let p2 = particles[j];
-                let distance = Math.sqrt((p1.x - p2.x) ** 2 + (p1.y - p2.y) ** 2);
-                if (distance < 120) { // 연결 거리
-                    ctx.beginPath();
-                    ctx.moveTo(p1.x, p1.y);
-                    ctx.lineTo(p2.x, p2.y);
-                    // 거리에 따라 투명도 조절
-                    ctx.globalAlpha = 1 - (distance / 120); 
-                    ctx.stroke();
-                    ctx.globalAlpha = 1;
-                }
+            // 화면 위로 완전히 나가면 아래로 재배치
+            if (c.y < -100) {
+                c.y = artsH + 100;
+                c.x = Math.random() * artsW;
             }
-        }
-        requestAnimationFrame(animate);
-    }
 
-    window.addEventListener('resize', resize);
-    // 초기화 및 애니메이션 시작 (이미지 로딩 후 실행을 위해 약간 지연)
+            artsCtx.beginPath();
+            for (let y = c.y - 100; y < c.y + 100; y += 5) {
+                const x = c.x + Math.sin(y * 0.01 + c.phase) * c.amplitude;
+                // 부드러운 선 그리기 (실크 느낌)
+                artsCtx.moveTo(x, y);
+                artsCtx.lineTo(x + c.thickness * Math.cos(y*0.01), y + 5);
+            }
+            
+            // 그라데이션 스트로크 적용
+            const gradient = artsCtx.createLinearGradient(0, c.y - 100, 0, c.y + 100);
+            gradient.addColorStop(0, 'transparent');
+            gradient.addColorStop(0.5, c.color);
+            gradient.addColorStop(1, 'transparent');
+            
+            artsCtx.strokeStyle = gradient;
+            artsCtx.lineWidth = 2;
+            //artsCtx.stroke(); // 선으로 그리기 (옵션)
+
+            // 부드러운 면으로 채우기 (더 무용 느낌)
+            artsCtx.fillStyle = c.color;
+            artsCtx.beginPath();
+             artsCtx.moveTo(c.x + Math.sin((c.y-100) * 0.01 + c.phase) * c.amplitude, c.y-100);
+             for(let y=c.y-100; y <= c.y+100; y+=10) {
+                 artsCtx.lineTo(c.x + Math.sin(y * 0.01 + c.phase) * c.amplitude + c.thickness, y);
+             }
+             for(let y=c.y+100; y >= c.y-100; y-=10) {
+                 artsCtx.lineTo(c.x + Math.sin(y * 0.01 + c.phase) * c.amplitude - c.thickness, y);
+             }
+             artsCtx.closePath();
+             //artsCtx.fill();
+             
+             // 단순화된 버전 (성능 고려 및 더 은은하게)
+             artsCtx.beginPath();
+             artsCtx.moveTo(c.x, c.y);
+             const tailX = c.x + Math.sin(c.phase) * c.amplitude * 2;
+             const tailY = c.y + 200;
+             const cp1x = c.x + Math.cos(c.phase) * c.amplitude;
+             const cp1y = c.y + 100;
+             artsCtx.quadraticCurveTo(cp1x, cp1y, tailX, tailY);
+             artsCtx.strokeStyle = c.color;
+             artsCtx.lineWidth = c.thickness;
+             artsCtx.lineCap = 'round';
+             artsCtx.stroke();
+
+        });
+
+        requestAnimationFrame(animateArtsBg);
+    }
+    
+    window.addEventListener('resize', initArtsBg);
     setTimeout(() => {
-        resize();
-        animate();
+        initArtsBg();
+        animateArtsBg();
     }, 100);
 </script>
 
