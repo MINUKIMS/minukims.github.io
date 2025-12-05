@@ -11,6 +11,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mongolian&family=Noto+Sans+SC&family=Noto+Sans+TC&family=Noto+Sans+JP&family=Noto+Sans+KR&family=Noto+Sans+Arabic&family=Noto+Sans+Thai&display=swap" rel="stylesheet">
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z5JJ3B2GLH"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -57,7 +59,7 @@
         z-index: 100;
     }
 
-    .profile-section { margin-bottom: 30px; }
+    .profile-section { margin-bottom: 24px; }
     
     .profile-img {
         width: 150px;
@@ -69,6 +71,43 @@
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     }
 
+    /* --- Contact Info (Moved Here) --- */
+    .sidebar-contact {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 24px;
+        padding-bottom: 24px;
+        border-bottom: 1px solid #e5e7eb; /* 구분선 */
+    }
+
+    .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--text-sub);
+        font-size: 0.85rem;
+        text-decoration: none;
+        transition: color 0.2s;
+        line-height: 1.4;
+    }
+    
+    .contact-item:hover {
+        color: var(--accent);
+        text-decoration: none;
+    }
+
+    .contact-item i {
+        width: 18px;
+        text-align: center;
+        color: #9ca3af;
+        font-size: 0.95rem;
+    }
+    .contact-item:hover i {
+        color: var(--accent);
+    }
+
+    /* --- Nav Links --- */
     .nav-links {
         display: flex;
         flex-direction: column;
@@ -90,6 +129,14 @@
         transform: translateX(4px);
     }
 
+    /* --- Sidebar Bottom Footer --- */
+    .sidebar-bottom {
+        margin-top: auto;
+        font-size: 0.8rem; 
+        color: #9ca3af; 
+        padding-top:40px;
+    }
+
     /* --- Main Content --- */
     .main-content {
         margin-left: var(--sidebar-width);
@@ -107,41 +154,33 @@
         letter-spacing: -0.5px;
         color: #111;
         line-height: 1.2;
-        
         position: relative;     
-        z-index: 10;           
-        
-        display: flex;           
-        align-items: center;     
-        height: 60px;           
-        
-        white-space: nowrap;     
-        
-        overflow: visible;       
+        z-index: 10;            
+        display: flex;            
+        align-items: center;      
+        height: 60px;            
+        white-space: nowrap;      
+        overflow: visible;        
     }
 
     .mongolian-vertical {
         writing-mode: vertical-lr; 
         text-orientation: sideways;
         font-family: 'Noto Sans Mongolian', sans-serif;
-        
         display: inline-block;
-        
-        height: 85px;            
-        
-        white-space: normal;     
-        
+        height: 85px;             
+        white-space: normal;      
         vertical-align: middle;
-        margin-left: 15px;       
+        margin-left: 15px;        
         line-height: 1;
         text-align: left;
-        font-size: 0.6em;      
+        font-size: 0.6em;       
     }
     
     .affiliation {
         font-size: 1.1rem;
         color: var(--text-sub);
-        margin-bottom: 20px;
+        margin-bottom: 30px;
     }
 
     .section-title {
@@ -244,14 +283,6 @@
         align-items: center;
         min-width: 10px;
     }
-    .mongolian-vertical {
-        writing-mode: vertical-rl;
-        text-orientation: sideways;
-        font-family: 'Noto Sans Mongolian', sans-serif;
-        max-height: 1.5em;
-        vertical-align: middle;
-        margin-left: 5px;
-    }
     .cursor::after {
         content: "|";
         font-weight: 100;
@@ -288,6 +319,7 @@
         .card { flex-direction: column; gap: 16px; }
         .paper-thumb { width: 100%; height: auto; max-width: 200px; aspect-ratio: 16/9; }
         .nav-links { display: grid; grid-template-columns: 1fr 1fr; }
+        .sidebar-contact { border-bottom: none; margin-bottom: 20px; }
     }
 </style>
 </head>
@@ -302,6 +334,23 @@
                 <span style="font-size: 0.9rem; color: #666; display:block; margin-top:4px;">M.S. Student @ KAIST</span>
             </div>
         </div>
+
+        <div class="sidebar-contact">
+            <div class="contact-item">
+                <i class="fa-solid fa-location-dot"></i>
+                Daejeon, Rep. of Korea
+            </div>
+            
+            <a href="mailto:minus@kaist.ac.kr" class="contact-item">
+                <i class="fa-solid fa-envelope"></i>
+                minus@kaist.ac.kr
+            </a>
+
+            <a href="https://www.linkedin.com/in/minukims" target="_blank" class="contact-item">
+                <i class="fa-brands fa-linkedin"></i>
+                LinkedIn
+            </a>
+        </div>
         
         <div class="nav-links">
             <a href="#home">Home</a>
@@ -314,8 +363,7 @@
             <a href="#arts">Creative Interests</a>
         </div>
         
-        <div style="margin-top: auto; font-size: 0.8rem; color: #9ca3af; padding-top:40px;">
-            Daejeon, Republic of Korea<br>
+        <div class="sidebar-bottom">
             Updated: 2025
         </div>
     </nav>
@@ -333,11 +381,6 @@
                 <a href="https://www.kaist.ac.kr/en/">KAIST School of Electrical Engineering</a><br>
                 Computational Linguist & Speech Scientist
             </div>
-
-            <p style="margin-bottom: 20px;">
-                📍 N24-2105, 291 Daehak-ro, Yuseong-gu, Daejeon 34141, Republic of Korea<br>
-                ✉️ minus@kaist.ac.kr
-            </p>
 
             <div style="background: white; padding: 24px; border-radius: 12px; border:1px solid #e5e7eb; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
                 <strong style="font-size:1.1em; color:var(--primary-color);">Welcome to my page!</strong><br>
@@ -593,7 +636,7 @@
       { text: "김민우" },
       { text: "ᛗᛁᚾᚢ ᚲᛁᛗ" },
       { text: "ມິນູ ຄິມ" },
-      { text: "ᒥᓄ ᑭᒻ" },          
+      { text: "ᒥᓄ ᑭᒻ" },           
       { text: "𓅓𓇋𓈖𓅱 𓎡𓇋𓅓" }, 
       { text: "ᠮᡳᠨᡠ ᡴᡳᠮ", vertical: true }, 
       { text: "ᎻᏄ ᎩᎻ" },    
@@ -603,7 +646,7 @@
       { text: "ᚋᛁᚅᚒ ᚉᛁᚋ" }, 
       { text: "ⰏⰞⰐⰖ ⰍⰞⰏ" },
       { text: "Մինու Քիմ" },
-      { text: "மினு கிம்" },      
+      { text: "மினு கிம்" },       
       { text: "-- .. -. ..-  -.- .. --" },
       { text: "ߡߌߣߎ ߞߌߡ", rtl: true },    
       { text: "𐎎𐎛𐎐𐎢 𐎋𐎛𐎐", rtl: true },
@@ -613,11 +656,11 @@
       { text: "Ⲙⲓⲛⲟⲩ Ⲕⲓⲙ" }, 
       { text: "ܡܝܢܘ ܟܝܡ", rtl: true }, 
       { text: "మినూ కిమ్" },    
-      { text: "𒈪 𒉡 𒆠 𒅎" },   
+      { text: "𒈪 𒉡 𒆠 𒅎" },    
       { text: "ꂠꆹ ꈾꃀ" },
       { text: "ሚኑ ኪም" },    
-      { text: "ಮಿನು ಕಿಮ್" },      
-      { text: "𐒄𐒘𐒒𐒖 𐒏𐒘𐒑" },      
+      { text: "ಮಿನು ಕಿಮ್" },       
+      { text: "𐒄𐒘𐒒𐒖 𐒏𐒘𐒑" },       
       { text: "ꃘꆀꁯ ꑭꁮ" },
       { text: "𐑕𐑦𐑯𐑵 𐑒𐑦𐑥" },
       { text: "0x4D696E75 0x4B696D" }, 
