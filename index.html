@@ -1,62 +1,79 @@
 <!DOCTYPE html>
-<!-- saved from url=(0034)https://minukims.github.io/ -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="en">
+<head>
+<meta charset="UTF-8">
 
 <title>Minu Kim</title>
 
+<!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z5JJ3B2GLH"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-Z5JJ3B2GLH');
 </script>
-<meta content="Minu Kim" name="Minu Kim">
+
+<!-- 🌏 Global multilingual font support -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Sans+KR&family=Noto+Sans+JP&family=Noto+Sans+SC&family=Noto+Sans+Tibetan&family=Noto+Sans+Georgian&family=Noto+Sans+Armenian&display=swap" rel="stylesheet">
+
 <link href="./mainfiles/style.css" rel="stylesheet" type="text/css">
-<script src="./mainfiles/jquery-1.11.1.min.js" type="text/javascript"></script>  
-  <style>
-    .PaperThumbnail {
-  		width: 160px;  
-  		height: 70px;
-  		object-fit: cover;
-  		border-radius: 6px;
-  		box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-  		transition: transform 0.2s ease-in-out;
-	}
-	.PaperThumbnail:hover {
-  		transform: scale(1.03);
-	}
-	.HobbyPhoto {
-  		height: 240px;            
-  		width: auto;              
-  		object-fit: cover;         
-  		border-radius: 8px;
-  		box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-  		margin: 4px 10px 10px 0;
-  		transition: transform 0.2s ease-in-out;
-	}
-	.HobbyPhoto:hover {
-  		transform: scale(1.03);
-	}
-	.hobby-gallery {
-  		display: flex;
-  		flex-wrap: wrap;
-  		gap: 8px;
-  		margin-top: 4px;
-  		align-items: center;       
-	}
-	.mongolian-vertical {
+<script src="./mainfiles/jquery-1.11.1.min.js" type="text/javascript"></script>
+
+<style>
+/* Default Global Font */
+body {
+  font-family: 'Noto Sans', 'Noto Sans KR', 'Noto Sans JP', 'Noto Sans SC',
+               'Apple Color Emoji', 'Segoe UI Emoji', sans-serif;
+}
+
+/* Paper thumbnails */
+.PaperThumbnail {
+  width: 160px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: transform 0.2s ease-in-out;
+}
+.PaperThumbnail:hover {
+  transform: scale(1.03);
+}
+
+/* Hobby gallery */
+.HobbyPhoto {
+  height: 240px;
+  width: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  margin: 4px 10px 10px 0;
+  transition: transform 0.2s ease-in-out;
+}
+.HobbyPhoto:hover { transform: scale(1.03); }
+
+.hobby-gallery { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+
+/* Mongolian Vertical */
+.mongolian-vertical {
   writing-mode: vertical-rl;
   text-orientation: upright;
+  display: inline-block;
+  font-family: 'Noto Sans', sans-serif;
   font-size: 1.1em;
-  display: inline-block;
   line-height: 1.1em;
-  margin-left: 6px;
 }
+
+/* Typewriter Effect */
+#typed-text {
+  font-weight: 600;
+  font-size: 0.92em;
+  letter-spacing: 0.5px;
+  color: #111;
+}
+
 #typed-text::after {
-  content: "|";
-  display: inline-block;
+  content: "▋";
   margin-left: 4px;
   animation: blink 0.7s infinite;
 }
@@ -65,45 +82,45 @@
   0%, 50% { opacity: 1; }
   50.01%, 100% { opacity: 0; }
 }
-#typed-text {
-  font-weight: 300; 
-  font-size: 0.95em; 
-}	  
-
-  </style>
+</style>
 </head>
 
 
 <body>
-  <div class="menu">
-  <a href="https://minukims.github.io/index.html">Home</a>
-  <a href="https://minukims.github.io/index.html#education">Education</a>
-  <a href="https://minukims.github.io/index.html#publications">Publications</a>
-  <a href="https://minukims.github.io/index.html#experience">Research Experience</a>
-  <a href="https://minukims.github.io/index.html#teaching">Teaching Experience</a>
-  <a href="https://minukims.github.io/index.html#extra">Extracurricular Activities</a>
-  <a href="https://minukims.github.io/index.html#honors">Honors & Scholarships</a>
-  <a href="https://minukims.github.io/index.html#arts">Creative Interests</a>
+
+<!-- Menu -->
+<div class="menu">
+  <a href="#home">Home</a>
+  <a href="#education">Education</a>
+  <a href="#publications">Publications</a>
+  <a href="#experience">Research Experience</a>
+  <a href="#teaching">Teaching Experience</a>
+  <a href="#extra">Extracurricular Activities</a>
+  <a href="#honors">Honors & Scholarships</a>
+  <a href="#arts">Creative Interests</a>
 </div>
-  <div class="container">
-    <table border="0">
-      <tbody><tr>
-        <td><img src="./mainfiles/picture.jpg" width="130"></td>
-        <td style="width: 10px">&nbsp;</td>
-        <td valign="top" width="500">
-          <span class="name">
-  			Minu Kim ・<span id="typed-text"></span> 
-		</span>
-          <p class="information"><a href="https://www.kaist.ac.kr/en/">KAIST School of Electrical Engineering</a><br>
-           Computational Linguist & Speech Scientist</p>
-          <p class="information">
-            N24-2105, 291 Daehak-ro, Yuseong-gu<br>
-            Daejeon 34141, Republic of Korea</p>    
-          <p class="information"><strong>Email</strong>: <span class="unselectable">minus<span class="mock"></span><span class="hide"></span>@kaist.ac.kr</span> </p>
-        </td>
-      </tr>
-    </tbody></table>
-   <strong>Welcome to my page!</strong>  
+
+<!-- Profile Section -->
+<div class="container" id="home">
+<table border="0">
+<tr>
+  <td><img src="./mainfiles/picture.jpg" width="130"></td>
+  <td style="width: 10px">&nbsp;</td>
+  <td valign="top" width="500">
+    <span class="name">
+      <strong>Minu Kim</strong> ・<span id="typed-text"></span>
+    </span>
+    <p class="information"><a href="https://www.kaist.ac.kr/en/">KAIST School of Electrical Engineering</a><br>
+       Computational Linguist & Speech Scientist</p>
+    <p class="information">
+      N24-2105, 291 Daehak-ro, Yuseong-gu<br>
+      Daejeon 34141, Republic of Korea</p>
+    <p class="information"><strong>Email:</strong> minus@kaist.ac.kr</p>
+  </td>
+</tr>
+</table>
+
+<strong>Welcome to my page!</strong>   
     I am a Master’s student in the <a href="https://sites.google.com/site/kaistsssclab/home"><font color="#000080">SSSC Lab at KAIST</font></a> (Statistical Speech and Sound Computing Laboratory), advised by Prof. Hoirin Kim.  
     My academic interests lie at the intersection of linguistics and artificial intelligence. In particular, I enjoy exploring phonetics, phonology, and language typology, and I am passionate about connecting linguistic theories with computational approaches for <strong>low-resource language processing</strong>.  
     I am also interested in <strong>multilingual automatic speech recognition (ASR)</strong> and more broadly in advancing research on the <strong>linguistics–AI intersection</strong> to bridge human language theory and machine learning methods.  
