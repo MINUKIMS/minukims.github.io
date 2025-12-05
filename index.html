@@ -16,8 +16,10 @@
 <!-- 🌏 Global multilingual font support (full subset) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+
 
 
 <link href="./mainfiles/style.css" rel="stylesheet" type="text/css">
@@ -84,11 +86,21 @@ body {
   0%, 50% { opacity: 1; }
   50.01%, 100% { opacity: 0; }
 }
-#typed-text {
+#typed-text,
+#typed-text * {
   font-family:
-    "Noto Sans KR", 
-    "Noto Sans",   
-    sans-serif;
+    "Noto Sans JP",
+    "Noto Sans SC",
+    "Noto Sans TC",
+    "Noto Sans KR",
+    "Noto Sans",
+    "Noto Sans Arabic",
+    "Noto Sans Hebrew",
+    "Noto Sans Georgian",
+    "Noto Sans Armenian",
+    "Noto Sans Mongolian",
+    sans-serif !important;
+
   font-size: 0.92em;
   font-weight: 600;
   letter-spacing: 0.2px;
