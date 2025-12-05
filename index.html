@@ -46,6 +46,14 @@
   		margin-top: 4px;
   		align-items: center;       
 	}
+	.mongolian-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-size: 1.1em;
+  display: inline-block;
+  line-height: 1.1em;
+  margin-left: 6px;
+}
 #typed-text::after {
   content: "|";
   display: inline-block;
@@ -57,6 +65,10 @@
   0%, 50% { opacity: 1; }
   50.01%, 100% { opacity: 0; }
 }
+#typed-text {
+  font-weight: 300; 
+  font-size: 0.95em; 
+}	  
 
   </style>
 </head>
@@ -80,9 +92,8 @@
         <td style="width: 10px">&nbsp;</td>
         <td valign="top" width="500">
           <span class="name">
-  			Minu Kim<span id="typed-text"></span>
-  			<span style="font-size:0.6em; color:#555;">("friend of the people")</span>
-		  </span>
+  			Minu Kim ・<span id="typed-text"></span> 
+		</span>
           <p class="information"><a href="https://www.kaist.ac.kr/en/">KAIST School of Electrical Engineering</a><br>
            Computational Linguist & Speech Scientist</p>
           <p class="information">
@@ -360,18 +371,27 @@ beyond research!
     }
   </script>  
 
-	<script>
-  const names = [
-    "김민우",        // Hangul
-    " 金民友",        // Chinese characters
-    " キム・ミヌ",    // Katakana
-    " Миню Ким",     // Cyrillic
-    " Μίνου Κιμ",    // Greek
-    " مينو كيم",     // Arabic
-	"มินู คิม",        // Thai
-    "មីនុ គីម",       // Khmer (Cambodian)
-    "မီနူး ကင်",      // Burmese (Myanmar)
-  ];
+<script>
+const names = [
+  { text: "김민우", flag: "🇰🇷" },
+  { text: "金民友", flag: "🇨🇳" },
+  { text: "キム・ミヌ", flag: "🇯🇵" },
+  { text: "Минү Ким", flag: "🇷🇺" },
+  { text: "مِینو کیم", flag: "🇮🇷" }, // Persian refined
+  { text: "مینو كيم", flag: "🇸🇦" }, // Arabic
+  { text: "Μίνου Κιμ", flag: "🇬🇷" },
+  { text: " מִינוּ קִים", flag: "🇮🇱" },
+  { text: "มินู คิม", flag: "🇹🇭" },
+  { text: "មីនុ គីម", flag: "🇰🇭" },
+  { text: "မီနူး ကင်", flag: "🇲🇲" },
+  { text: "ມິນູ ຄິມ", flag: "🇱🇦" },
+  { text: "मीनू किम", flag: "🇮🇳" },
+  { text: "মিনু কিম", flag: "🇧🇩" },
+  { text: "ᠮᠢᠨᠦ ᠬᠢᠮ", flag: "🇲🇳", vertical: true },  
+  { text: "མི་ནུ་ཁིམ", flag: "🇳🇵" },  
+  { text: "მინუ კიმ", flag: "🇬🇪" },  
+  { text: "Մինու Քիմ", flag: "🇦🇲" }  
+];
 
   const typedTextElement = document.getElementById("typed-text");
 
@@ -380,11 +400,15 @@ beyond research!
   let isDeleting = false;
 
   function typeEffect() {
-    const current = names[currentIndex];
-    const visibleText = current.substring(0, charIndex);
-    typedTextElement.textContent = visibleText;
+    const { text, flag, vertical } = names[currentIndex];
+    const visibleText = text.substring(0, charIndex);
 
-    if (!isDeleting && charIndex < current.length) {
+    typedTextElement.innerHTML =
+      vertical
+      ? `<span class="mongolian-vertical">${visibleText}</span> ${flag}`
+      : `${visibleText} ${flag}`;
+
+    if (!isDeleting && charIndex < text.length) {
       charIndex++;
       setTimeout(typeEffect, 100);
     } else if (isDeleting && charIndex > 0) {
