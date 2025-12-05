@@ -109,8 +109,21 @@
         line-height: 1.2;
         
         white-space: nowrap; 
-        overflow: hidden; 
+        overflow-x: hidden;  
+        overflow-y: visible; 
         text-overflow: clip;
+    }
+
+    .mongolian-vertical {
+        writing-mode: vertical-rl;
+        text-orientation: sideways;
+        font-family: 'Noto Sans Mongolian', sans-serif;
+        
+    
+        
+        vertical-align: middle;
+        margin-left: 5px;
+        line-height: 1;
     }
     
     .affiliation {
@@ -600,22 +613,27 @@
     ];
 
 const typedTextElement = document.getElementById("typed-text");
-    const headerElement = document.querySelector("h1.name"); // 너비 체크할 부모 요소
+    const headerElement = document.querySelector("h1.name"); 
+    
+    let baseFontSize = parseFloat(window.getComputedStyle(typedTextElement).fontSize);
+
+    window.addEventListener('resize', () => {
+        typedTextElement.style.fontSize = ""; 
+        baseFontSize = parseFloat(window.getComputedStyle(typedTextElement).fontSize);
+    });
+
     let currentIndex = 0, charIndex = 0, isDeleting = false;
 
     function typeEffect() {
       const { text, vertical, rtl } = names[currentIndex];
       
-      // 1. 새 단어 시작할 때 폰트 크기 원상복구 (리셋)
       if (charIndex === 0 && !isDeleting) {
           typedTextElement.style.fontSize = ""; 
       }
 
-      // RTL handling
       typedTextElement.dir = rtl ? "rtl" : "ltr";
       const visibleText = text.substring(0, charIndex);
 
-      // Reset styles
       typedTextElement.style.writingMode = "";
       typedTextElement.style.textOrientation = "";
       
@@ -625,20 +643,34 @@ const typedTextElement = document.getElementById("typed-text");
          typedTextElement.textContent = visibleText;
       }
 
-      if (headerElement.scrollWidth > headerElement.clientWidth) {
-          let currentSize = parseFloat(window.getComputedStyle(typedTextElement).fontSize);
-          if (currentSize > 10) {
-              typedTextElement.style.fontSize = (currentSize * 0.9) + "px";
+      if (!isDeleting) {
+          if (!vertical && headerElement.scrollWidth > headerElement.clientWidth) {
+              let currentSize = parseFloat(window.getComputedStyle(typedTextElement).fontSize);
+              if (currentSize > 10) { 
+                  typedTextElement.style.fontSize = (currentSize * 0.9) + "px";
+              }
           }
       }
 
-      // Typing Loop
+      // Typing Loop Control
       if (!isDeleting && charIndex < text.length) {
         charIndex++;
         setTimeout(typeEffect, 80); 
       } 
       else if (isDeleting && charIndex > 0) {
         charIndex--;
+        
+        if (!vertical) {
+            if (headerElement.scrollWidth <= headerElement.clientWidth) {
+                let currentSize = parseFloat(window.getComputedStyle(typedTextElement).fontSize);
+                if (currentSize < baseFontSize) {
+                    let newSize = currentSize * 1.15;
+                    if (newSize > baseFontSize) newSize = baseFontSize;
+                    typedTextElement.style.fontSize = newSize + "px";
+                }
+            }
+        }
+        
         setTimeout(typeEffect, 40);
       } 
       else {
@@ -656,7 +688,7 @@ const typedTextElement = document.getElementById("typed-text");
     }
     typeEffect();
     </script>
-
+  
     <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
     <script>
     document.addEventListener("DOMContentLoaded", () => {
