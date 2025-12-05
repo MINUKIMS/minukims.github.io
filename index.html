@@ -35,30 +35,6 @@ body {
     sans-serif;
 }
 
-#typed-text {
-  font-family:
-    "Segoe UI Emoji",
-    "Apple Color Emoji",
-    "Noto Sans SC",
-    "Noto Sans KR",
-    "Noto Sans JP",
-    "Noto Sans",
-    sans-serif;
-  font-size: 0.92em;
-  font-weight: 600;
-  letter-spacing: 0.2px;
-  margin-left: 6px;
-}
-
-#typed-text::after {
-  content: "|";
-  font-weight: 100;  
-  font-size: 1em;
-  margin-left: 2px;
-  opacity: 1;
-  animation: blink 0.7s infinite;
-}
-
 
 /* Paper thumbnails */
 .PaperThumbnail {
@@ -97,23 +73,32 @@ body {
   line-height: 1.1em;
 }
 
-/* Typewriter Effect */
-#typed-text {
-  font-weight: 600;
-  font-size: 0.92em;
-  letter-spacing: 0.5px;
-  color: #111;
-}
-
-#typed-text::after {
-  content: "▋";
-  margin-left: 4px;
-  animation: blink 0.7s infinite;
-}
-
 @keyframes blink {
   0%, 50% { opacity: 1; }
   50.01%, 100% { opacity: 0; }
+}
+#typed-text {
+  font-family:
+    "Segoe UI Emoji",
+    "Apple Color Emoji",
+    "Noto Sans SC",
+    "Noto Sans KR",
+    "Noto Sans JP",
+    "Noto Sans",
+    sans-serif;
+  font-size: 0.92em;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  margin-left: 6px;
+}
+
+#typed-text::after {
+  content: "|";
+  font-weight: 100;  
+  font-size: 1em;
+  margin-left: 2px;
+  opacity: 1;
+  animation: blink 0.7s infinite;
 }
 </style>
 </head>
