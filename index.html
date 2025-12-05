@@ -726,7 +726,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let mapW, mapH;
     
     // Improved SVG Paths for World Map (Roughly Robinson Projection)
-    // Reverted to the previous version as requested.
     const worldMapPaths = [
     // North America (bottom lowered)
     "M 160 50 L 220 50 L 280 40 L 340 35 L 370 45 L 385 50 L 345 105 L 315 125 L 295 155 L 235 200 L 215 220 L 175 180 L 135 145 L 105 95 L 135 65 Z",
@@ -753,16 +752,16 @@ document.addEventListener("DOMContentLoaded", () => {
     "M 810 335 L 900 325 L 940 375 L 890 425 L 820 395 Z"
     ];
 
-    // Major Cities Coords (approx. on 1000x500 canvas)
+    // UPDATED: Adjusted City Coordinates to align with the SVG paths above
     const cities = [
     {x: 225, y: 120}, // San Francisco / Seattle
     {x: 320, y: 125}, // NYC region
-    {x: 310, y: 315}, // Brazil
+    {x: 340, y: 330}, // Brazil (Rio/Sao Paulo area) - adjusted
     {x: 480, y: 80},  // London / Paris
-    {x: 525, y: 205}, // Central Africa (Congo area)
-    {x: 700, y: 170}, // India/Central Asia
-    {x: 820, y: 165}, // Korea/Japan
-    {x: 845, y: 295}  // Sydney (closer to east Australia)
+    {x: 520, y: 230}, // Central Africa - adjusted slightly lower
+    {x: 720, y: 190}, // India/Central Asia - adjusted
+    {x: 880, y: 150}, // Korea/Japan - adjusted to East Asia tip
+    {x: 880, y: 390}  // Sydney - adjusted to South-East Australia
     ];
 
     let ripples = []; 
@@ -783,7 +782,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const renderW = svgW * scale;
         const renderH = svgH * scale;
         const offsetX = (mapW - renderW) / 2;
-        const offsetY = (mapH - renderH) / 2;
+        // UPDATED: Applied the same -70 offset here
+        const offsetY = (mapH - renderH) / 2 - 70;
 
         ripples.push({
             x: offsetX + city.x * scale,
@@ -799,20 +799,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const svgW = 1000;
         const svgH = 500;
-        // Scale to fit screen while maintaining aspect ratio
         const scale = Math.min(mapW / svgW, mapH / svgH) * 0.85;
         
         const renderW = svgW * scale;
         const renderH = svgH * scale;
         const offsetX = (mapW - renderW) / 2;
+        // Kept -70 offset
         const offsetY = (mapH - renderH) / 2 - 70;
 
         mapCtx.save();
         mapCtx.translate(offsetX, offsetY);
         mapCtx.scale(scale, scale);
 
-        // 1. World Map (Continents) Drawing
-        // Color maintained: Light Blue (0.25 transparency)
+        // 1. World Map (Continents)
         mapCtx.fillStyle = 'rgba(170, 200, 230, 0.25)'; 
         worldMapPaths.forEach(pathStr => {
             const path = new Path2D(pathStr);
@@ -826,7 +825,7 @@ document.addEventListener("DOMContentLoaded", () => {
             y: offsetY + c.y * scale
         }));
 
-        mapCtx.strokeStyle = 'rgba(0, 62, 128, 0.08)'; // Very faint lines
+        mapCtx.strokeStyle = 'rgba(0, 62, 128, 0.08)'; 
         mapCtx.lineWidth = 1;
         mapCtx.beginPath();
         
