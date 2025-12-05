@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-
 <title>Minu Kim</title>
 
 <!-- Google Analytics -->
@@ -14,8 +13,24 @@
   gtag('config', 'G-Z5JJ3B2GLH');
 </script>
 
-<!-- 🌏 Global multilingual font support -->
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Sans+KR&family=Noto+Sans+JP&family=Noto+Sans+SC&family=Noto+Sans+Tibetan&family=Noto+Sans+Georgian&family=Noto+Sans+Armenian&display=swap" rel="stylesheet">
+<!-- 🌏 Global multilingual font support (full subset) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Myanmar&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Armenian&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mongolian&display=swap" rel="stylesheet">
 
 <link href="./mainfiles/style.css" rel="stylesheet" type="text/css">
 <script src="./mainfiles/jquery-1.11.1.min.js" type="text/javascript"></script>
@@ -23,18 +38,24 @@
 <style>
 body {
   font-family:
-    "Segoe UI Emoji", 
-    "Apple Color Emoji",
-    "Noto Sans SC",  
-    "Noto Sans JP",  
-    "Noto Sans KR",  
+    "Noto Sans KR",
+    "Noto Sans SC",
+    "Noto Sans JP",
+    "Noto Sans Arabic",
+    "Noto Sans Hebrew",
     "Noto Sans Georgian",
     "Noto Sans Armenian",
-    "Noto Sans Tibetan",
+    "Noto Sans Thai",
+    "Noto Sans Khmer",
+    "Noto Sans Myanmar",
+    "Noto Sans Bengali",
+    "Noto Sans Devanagari",
+    "Noto Sans Mongolian",
     "Noto Sans",
+    "Segoe UI Emoji",
+    "Apple Color Emoji",
     sans-serif;
 }
-
 
 /* Paper thumbnails */
 .PaperThumbnail {
@@ -66,9 +87,9 @@ body {
 /* Mongolian Vertical */
 .mongolian-vertical {
   writing-mode: vertical-rl;
-  text-orientation: upright;
+  text-orientation: sideways;
   display: inline-block;
-  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Noto Sans Mongolian', sans-serif;
   font-size: 1.1em;
   line-height: 1.1em;
 }
@@ -78,23 +99,14 @@ body {
   50.01%, 100% { opacity: 0; }
 }
 #typed-text {
-  font-family:
-    "Segoe UI Emoji",
-    "Apple Color Emoji",
-    "Noto Sans SC",
-    "Noto Sans KR",
-    "Noto Sans JP",
-    "Noto Sans",
-    sans-serif;
   font-size: 0.92em;
   font-weight: 600;
   letter-spacing: 0.2px;
   margin-left: 6px;
 }
-
 #typed-text::after {
   content: "|";
-  font-weight: 100;  
+  font-weight: 100;
   font-size: 1em;
   margin-left: 2px;
   opacity: 1;
@@ -102,7 +114,6 @@ body {
 }
 </style>
 </head>
-
 
 <body>
 
@@ -137,6 +148,7 @@ body {
   </td>
 </tr>
 </table>
+
 
 <strong>Welcome to my page!</strong>   
     I am a Master’s student in the <a href="https://sites.google.com/site/kaistsssclab/home"><font color="#000080">SSSC Lab at KAIST</font></a> (Statistical Speech and Sound Computing Laboratory), advised by Prof. Hoirin Kim.  
@@ -408,60 +420,65 @@ beyond research!
 
 <script>
 const names = [
-  { text: "김민우", flag: "🇰🇷" },
-  { text: "金民友", flag: "🇨🇳" },
-  { text: "キム・ミヌ", flag: "🇯🇵" },
-  { text: "Минү Ким", flag: "🇷🇺" },
-  { text: "مِینو کیم", flag: "🇮🇷" }, // Persian refined
-  { text: "مینو كيم", flag: "🇸🇦" }, // Arabic
-  { text: "Μίνου Κιμ", flag: "🇬🇷" },
-  { text: " מִינוּ קִים", flag: "🇮🇱" },
-  { text: "มินู คิม", flag: "🇹🇭" },
-  { text: "មីនុ គីម", flag: "🇰🇭" },
-  { text: "မီနူး ကင်", flag: "🇲🇲" },
-  { text: "ມິນູ ຄິມ", flag: "🇱🇦" },
-  { text: "मीनू किम", flag: "🇮🇳" },
-  { text: "মিনু কিম", flag: "🇧🇩" },
-  { text: "ᠮᠢᠨᠦ ᠬᠢᠮ", flag: "🇲🇳", vertical: true },  
-  { text: "མི་ནུ་ཁིམ", flag: "🇳🇵" },  
-  { text: "მინუ კიმ", flag: "🇬🇪" },  
-  { text: "Մինու Քիմ", flag: "🇦🇲" }  
+  { text: "김민우", flag: "🇰🇷", rtl: false },
+  { text: "金民友", flag: "🇨🇳", rtl: false },
+  { text: "キム・ミヌ", flag: "🇯🇵", rtl: false },
+  { text: "Минү Ким", flag: "🇷🇺", rtl: false },
+  { text: "مِینو کیم", flag: "🇮🇷", rtl: true },
+  { text: "مینو كيم", flag: "🇸🇦", rtl: true },
+  { text: "Μίνου Κιμ", flag: "🇬🇷", rtl: false },
+  { text: "מִינוּ קִים", flag: "🇮🇱", rtl: true },
+  { text: "มินู คิม", flag: "🇹🇭", rtl: false },
+  { text: "មីនុ គីម", flag: "🇰🇭", rtl: false },
+  { text: "မီနူး ကင်", flag: "🇲🇲", rtl: false },
+  { text: "ມິນູ ຄິມ", flag: "🇱🇦", rtl: false },
+  { text: "मीनू किम", flag: "🇮🇳", rtl: false },
+  { text: "মিনু কিম", flag: "🇧🇩", rtl: false },
+  { text: "ᠮᠢᠨᠦ ᠬᠢᠮ", flag: "🇲🇳", vertical: true, rtl: false },
+  { text: "མི་ནུ་ཁིམ", flag: "🇳🇵", rtl: false },
+  { text: "მინუ კიმ", flag: "🇬🇪", rtl: false },
+  { text: "Մինու Քիմ", flag: "🇦🇲", rtl: false }
 ];
 
-  const typedTextElement = document.getElementById("typed-text");
+const typedTextElement = document.getElementById("typed-text");
+let currentIndex = 0, charIndex = 0, isDeleting = false;
 
-  let currentIndex = 0;
-  let charIndex = 0;
-  let isDeleting = false;
+function typeEffect() {
+  const { text, flag, vertical, rtl } = names[currentIndex];
+  typedTextElement.dir = rtl ? "rtl" : "ltr";
 
-  function typeEffect() {
-    const { text, flag, vertical } = names[currentIndex];
-    const visibleText = text.substring(0, charIndex);
+  const visibleText = text.substring(0, charIndex);
+  typedTextElement.innerHTML =
+    vertical ?
+    `<span class="mongolian-vertical">${visibleText}</span> ${flag}` :
+    `${visibleText} ${flag}`;
 
-    typedTextElement.innerHTML =
-      vertical
-      ? `<span class="mongolian-vertical">${visibleText}</span> ${flag}`
-      : `${visibleText} ${flag}`;
-
-    if (!isDeleting && charIndex < text.length) {
-      charIndex++;
-      setTimeout(typeEffect, 100);
-    } else if (isDeleting && charIndex > 0) {
-      charIndex--;
-      setTimeout(typeEffect, 60);
+  if (!isDeleting && charIndex < text.length) {
+    charIndex++;
+    setTimeout(typeEffect, 120);
+  } else if (isDeleting && charIndex > 0) {
+    charIndex--;
+    setTimeout(typeEffect, 60);
+  } else {
+    if (!isDeleting) {
+      setTimeout(() => isDeleting = true, 900);
     } else {
-      if (!isDeleting) {
-        setTimeout(() => isDeleting = true, 1000);
-      } else {
-        isDeleting = false;
-        currentIndex = (currentIndex + 1) % names.length;
-      }
-      setTimeout(typeEffect, 400);
+      isDeleting = false;
+      currentIndex = (currentIndex + 1) % names.length;
     }
+    setTimeout(typeEffect, 350);
   }
-
-  typeEffect();
+}
+typeEffect();
 </script>
 
+<!-- Twemoji flag conversion -->
+<script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  twemoji.parse(document.body, { folder: "svg", ext: ".svg" });
+});
+</script>
 
-</body></html>
+</body>
+</html>
