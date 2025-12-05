@@ -46,6 +46,18 @@
   		margin-top: 4px;
   		align-items: center;       
 	}
+#typed-text::after {
+  content: "|";
+  display: inline-block;
+  margin-left: 4px;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
+}
+
   </style>
 </head>
 
@@ -68,9 +80,9 @@
         <td style="width: 10px">&nbsp;</td>
         <td valign="top" width="500">
           <span class="name">
-  				Minu Kim 
- 				 <span style="font-size:0.6em; color:#555;">(김민우, 金民友: "friend of the people")</span>
-		</span>
+  			Minu Kim<span id="typed-text"></span>
+  			<span style="font-size:0.6em; color:#555;">("friend of the people")</span>
+		  </span>
           <p class="information"><a href="https://www.kaist.ac.kr/en/">KAIST School of Electrical Engineering</a><br>
            Computational Linguist & Speech Scientist</p>
           <p class="information">
@@ -347,6 +359,50 @@ beyond research!
       thumbnails[i].width = "120"
     }
   </script>  
+
+	<script>
+  const names = [
+    "김민우",        // Hangul
+    " 金民友",        // Chinese characters
+    " キム・ミヌ",    // Katakana
+    " Миню Ким",     // Cyrillic
+    " Μίνου Κιμ",    // Greek
+    " مينو كيم",     // Arabic
+	"มินู คิม",        // Thai
+    "មីនុ គីម",       // Khmer (Cambodian)
+    "မီနူး ကင်",      // Burmese (Myanmar)
+  ];
+
+  const typedTextElement = document.getElementById("typed-text");
+
+  let currentIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+
+  function typeEffect() {
+    const current = names[currentIndex];
+    const visibleText = current.substring(0, charIndex);
+    typedTextElement.textContent = visibleText;
+
+    if (!isDeleting && charIndex < current.length) {
+      charIndex++;
+      setTimeout(typeEffect, 100);
+    } else if (isDeleting && charIndex > 0) {
+      charIndex--;
+      setTimeout(typeEffect, 60);
+    } else {
+      if (!isDeleting) {
+        setTimeout(() => isDeleting = true, 1000);
+      } else {
+        isDeleting = false;
+        currentIndex = (currentIndex + 1) % names.length;
+      }
+      setTimeout(typeEffect, 400);
+    }
+  }
+
+  typeEffect();
+</script>
 
 
 </body></html>
