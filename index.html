@@ -457,6 +457,12 @@ function typeEffect() {
 
   const visibleText = text.substring(0, charIndex);
 
+  typedTextElement.style.fontFamily = "";
+  typedTextElement.style.display = "inline-block";
+  typedTextElement.style.whiteSpace = "nowrap";
+  typedTextElement.style.overflow = "visible";
+  typedTextElement.offsetWidth; 
+
   if (vertical) {
     typedTextElement.innerHTML =
       `<span class="mongolian-vertical">${visibleText}</span>`;
