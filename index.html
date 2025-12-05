@@ -25,7 +25,7 @@
     /* --- Global Styles --- */
     :root {
         --primary-color: #003e80; 
-        --bg-color: #f9fafb; /* 이 색상이 헤더 끝부분과 이어져야 함 */
+        --bg-color: #f9fafb;
         --text-main: #1f2937;
         --text-sub: #4b5563;
         --accent: #2563eb;
@@ -118,11 +118,11 @@
     /* --- Header Area --- */
     header {
         position: relative;
-        /* 파형이 박스에 가리지 않도록 하단 패딩을 넉넉히 줌 */
-        padding: 60px 80px 100px 80px; 
+        /* 파형 제거로 하단 패딩을 줄여서 다른 섹션과 간격을 맞춤 */
+        padding: 60px 80px 30px 80px; 
         overflow: hidden;
-        /* 배경 그라데이션: 위는 흰색, 아래는 body 배경색(#f9fafb)으로 자연스럽게 이어짐 */
-        background: linear-gradient(to bottom, #ffffff 0%, #f0f4f8 70%, #f9fafb 100%);
+        /* 자연스러운 그라데이션 */
+        background: linear-gradient(to bottom, #ffffff 0%, #f0f4f8 80%, #f9fafb 100%);
     }
 
     #world-map-canvas {
@@ -132,13 +132,22 @@
         width: 100%;
         height: 100%;
         z-index: 0;
-        /* 캔버스 자체는 클릭 불가 (텍스트 선택 방해 방지) */
         pointer-events: none; 
     }
 
     .header-content {
         position: relative;
         z-index: 1;
+    }
+
+    /* Welcome Box 스타일 강화 (지도 위에 더 잘 보이게) */
+    .welcome-box {
+        background: rgba(255, 255, 255, 0.95); /* 불투명도 높임 */
+        padding: 24px; 
+        border-radius: 12px; 
+        border: 1px solid #e5e7eb; 
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08); /* 그림자 강화 */
+        backdrop-filter: blur(8px);
     }
 
     /* --- Typography & Sections --- */
@@ -272,10 +281,9 @@
     #arts {
         position: relative;
         padding: 60px 80px; 
-        margin-left: -80px; /* content-section 패딩 상쇄 */
+        margin-left: -80px;
         margin-right: -80px;
         overflow: hidden;
-        /* 여기도 배경색이 위와 자연스럽게 섞이도록 */
         background: linear-gradient(to bottom, #f9fafb, #f0f4f8);
     }
     #arts-canvas {
@@ -349,7 +357,7 @@
             border-bottom: 1px solid #e5e7eb;
             padding: 30px 20px;
         }
-        header { padding: 40px 20px 80px 20px; } /* 하단 패딩 확보 */
+        header { padding: 40px 20px 40px 20px; } /* 모바일 패딩 조정 */
         .content-section { padding: 0 20px; }
         #arts { padding: 40px 20px; margin-left: -20px; margin-right: -20px; }
         .main-content { margin-left: 0; }
@@ -419,7 +427,7 @@
                     <div>Computational Linguist & Speech Scientist</div>
                 </div>
 
-                <div style="background: rgba(255, 255, 255, 0.9); padding: 24px; border-radius: 12px; border:1px solid #e5e7eb; box-shadow: 0 4px 15px rgba(0,0,0,0.05); backdrop-filter: blur(5px);">
+                <div class="welcome-box">
                     <strong style="font-size:1.1em; color:var(--primary-color);">Welcome to my page!</strong><br>
                     <div style="margin-top:10px; color: #374151;">
                         I am a Master's student in the <a href="https://sites.google.com/site/kaistsssclab/home">SSSC Lab at KAIST</a> (Statistical Speech and Sound Computing Laboratory), advised by Prof. Hoirin Kim.<br><br>
@@ -715,46 +723,59 @@ document.addEventListener("DOMContentLoaded", () => {
     const mapCanvas = document.getElementById('world-map-canvas');
     const mapCtx = mapCanvas.getContext('2d');
     let mapW, mapH;
-    let waveformOffset = 0;
-
-    // 더 구체적인 대륙 형태 (Visible Map)
+    
+    // 더 구체적인 대륙 형태 (좌표 수정됨)
     const continents = [
-        // 북미
-        [[0.1, 0.15], [0.35, 0.15], [0.30, 0.4], [0.25, 0.45], [0.15, 0.35], [0.05, 0.2]], 
+        // 북미 (알래스카, 캐나다, 미국, 멕시코 윤곽)
+        [[0.05, 0.1], [0.3, 0.08], [0.4, 0.15], [0.35, 0.35], [0.2, 0.45], [0.1, 0.4], [0.02, 0.2]],
         // 남미
-        [[0.25, 0.5], [0.4, 0.55], [0.35, 0.85], [0.25, 0.8], [0.2, 0.6]], 
-        // 유럽
-        [[0.45, 0.15], [0.55, 0.1], [0.6, 0.15], [0.55, 0.35], [0.45, 0.3]], 
+        [[0.25, 0.5], [0.42, 0.55], [0.35, 0.9], [0.2, 0.8], [0.18, 0.6]],
+        // 유럽 (스칸디나비아, 서유럽)
+        [[0.45, 0.1], [0.55, 0.05], [0.6, 0.15], [0.55, 0.3], [0.45, 0.28], [0.42, 0.2]],
         // 아프리카
-        [[0.45, 0.4], [0.6, 0.4], [0.65, 0.55], [0.55, 0.75], [0.45, 0.65], [0.4, 0.5]], 
-        // 아시아
-        [[0.6, 0.15], [0.85, 0.1], [0.95, 0.2], [0.9, 0.5], [0.75, 0.55], [0.6, 0.4]], 
+        [[0.42, 0.35], [0.6, 0.35], [0.65, 0.5], [0.55, 0.75], [0.45, 0.65], [0.4, 0.5]],
+        // 아시아 (러시아, 중국, 인도, 동남아)
+        [[0.6, 0.15], [0.9, 0.1], [0.98, 0.2], [0.9, 0.5], [0.75, 0.6], [0.65, 0.45], [0.55, 0.3]],
         // 오세아니아
-        [[0.75, 0.65], [0.9, 0.65], [0.9, 0.8], [0.75, 0.85], [0.7, 0.75]] 
+        [[0.75, 0.7], [0.92, 0.7], [0.9, 0.88], [0.75, 0.85]]
     ];
 
     let mapPoints = [];
+    let ripples = []; // 음파(Ripple)를 저장할 배열
 
     function initMap() {
         mapW = mapCanvas.width = mapCanvas.parentElement.offsetWidth;
         mapH = mapCanvas.height = mapCanvas.parentElement.offsetHeight;
         
+        // 주요 거점
         mapPoints = [
-            {x: mapW * 0.2, y: mapH * 0.3}, 
-            {x: mapW * 0.3, y: mapH * 0.65}, 
-            {x: mapW * 0.5, y: mapH * 0.25}, 
-            {x: mapW * 0.52, y: mapH * 0.55}, 
-            {x: mapW * 0.75, y: mapH * 0.3}, 
-            {x: mapW * 0.68, y: mapH * 0.4}, 
-            {x: mapW * 0.82, y: mapH * 0.75}  
+            {x: mapW * 0.2, y: mapH * 0.3}, // 북미
+            {x: mapW * 0.3, y: mapH * 0.65}, // 남미
+            {x: mapW * 0.5, y: mapH * 0.25}, // 유럽
+            {x: mapW * 0.52, y: mapH * 0.55}, // 아프리카
+            {x: mapW * 0.75, y: mapH * 0.35}, // 동아시아
+            {x: mapW * 0.68, y: mapH * 0.5}, // 남아시아
+            {x: mapW * 0.82, y: mapH * 0.75}  // 오세아니아
         ];
     }
 
-    function drawMapAndWaveform() {
+    function spawnRipple() {
+        // 랜덤한 거점에서 Ripple 생성
+        const point = mapPoints[Math.floor(Math.random() * mapPoints.length)];
+        ripples.push({
+            x: point.x,
+            y: point.y,
+            radius: 0,
+            alpha: 1.0,
+            speed: Math.random() * 0.5 + 0.5 // 퍼지는 속도 랜덤
+        });
+    }
+
+    function drawMapAndRipples() {
         mapCtx.clearRect(0, 0, mapW, mapH);
 
-        // 1. 세계지도 (대륙) 그리기 - 더 진하게 (opacity 0.5)
-        mapCtx.fillStyle = 'rgba(180, 200, 225, 0.5)'; 
+        // 1. 세계지도 (대륙) 그리기 - 더 연하게 (opacity 0.25)
+        mapCtx.fillStyle = 'rgba(180, 200, 225, 0.25)'; 
         continents.forEach(cont => {
             mapCtx.beginPath();
             mapCtx.moveTo(cont[0][0] * mapW, cont[0][1] * mapH);
@@ -765,14 +786,14 @@ document.addEventListener("DOMContentLoaded", () => {
             mapCtx.fill();
         });
 
-        // 2. 네트워크 선
-        mapCtx.strokeStyle = 'rgba(0, 62, 128, 0.2)';
+        // 2. 네트워크 선 (그대로 유지)
+        mapCtx.strokeStyle = 'rgba(0, 62, 128, 0.15)';
         mapCtx.lineWidth = 1;
         mapCtx.beginPath();
         for (let i = 0; i < mapPoints.length; i++) {
             for (let j = i + 1; j < mapPoints.length; j++) {
                 const dist = Math.hypot(mapPoints[i].x - mapPoints[j].x, mapPoints[i].y - mapPoints[j].y);
-                if (dist < mapW * 0.4) {
+                if (dist < mapW * 0.45) {
                      mapCtx.moveTo(mapPoints[i].x, mapPoints[i].y);
                      const cpX = (mapPoints[i].x + mapPoints[j].x) / 2;
                      const cpY = (mapPoints[i].y + mapPoints[j].y) / 2 - dist * 0.1;
@@ -782,33 +803,33 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         mapCtx.stroke();
 
-        // 3. 음성 파형 (Waveform) - 맨 아래로 이동
-        mapCtx.strokeStyle = 'rgba(37, 99, 235, 0.25)'; 
-        mapCtx.lineWidth = 2;
-        mapCtx.beginPath();
-        
-        // 파형의 기준선(baseY)을 캔버스 높이에서 20px 위로 설정 -> 헤더의 맨 아래
-        const waveBaseY = mapH - 20; 
-        const waveHeight = 40;
-        const frequency = 0.015;
-        
-        mapCtx.moveTo(0, waveBaseY);
-        for (let x = 0; x < mapW; x++) {
-            const y = waveBaseY + 
-                      Math.sin((x + waveformOffset) * frequency) * waveHeight * 0.5 +
-                      Math.sin((x + waveformOffset * 1.5) * frequency * 2) * waveHeight * 0.3;
-            mapCtx.lineTo(x, y);
+        // 3. 사운드 리플 (Ripple) 그리기 및 업데이트
+        for (let i = ripples.length - 1; i >= 0; i--) {
+            const r = ripples[i];
+            r.radius += r.speed; // 반경 증가
+            r.alpha -= 0.015; // 투명도 감소
+
+            if (r.alpha <= 0) {
+                ripples.splice(i, 1); // 완전히 투명해지면 제거
+            } else {
+                mapCtx.beginPath();
+                mapCtx.arc(r.x, r.y, r.radius, 0, Math.PI * 2);
+                // Accent color 기반의 퍼지는 원
+                mapCtx.strokeStyle = `rgba(37, 99, 235, ${r.alpha * 0.5})`; 
+                mapCtx.lineWidth = 2;
+                mapCtx.stroke();
+            }
         }
-        mapCtx.stroke();
         
-        waveformOffset += 1.5;
-        requestAnimationFrame(drawMapAndWaveform);
+        requestAnimationFrame(drawMapAndRipples);
     }
 
     window.addEventListener('resize', initMap);
     setTimeout(() => {
         initMap();
-        drawMapAndWaveform();
+        // 주기적으로 새로운 Ripple 생성
+        setInterval(spawnRipple, 800); 
+        drawMapAndRipples();
     }, 100);
 </script>
 
@@ -823,7 +844,6 @@ document.addEventListener("DOMContentLoaded", () => {
         artsH = artsCanvas.height = artsCanvas.parentElement.offsetHeight;
         
         ribbons = [];
-        // 리본 개수 증가 및 투명도/크기 조절로 시인성 확보
         for (let i = 0; i < 7; i++) {
             ribbons.push({
                 x: Math.random() * artsW,
@@ -832,7 +852,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 angle: Math.random() * Math.PI * 2,
                 angleSpeed: Math.random() * 0.02 + 0.01,
                 width: Math.random() * 30 + 10,
-                // 색상을 좀 더 진하게 수정
                 color: `hsla(${200 + Math.random() * 40}, 70%, 75%, 0.4)`
             });
         }
@@ -842,29 +861,24 @@ document.addEventListener("DOMContentLoaded", () => {
         artsCtx.clearRect(0, 0, artsW, artsH);
 
         ribbons.forEach(r => {
-            r.y -= r.speed; // 위로 이동
+            r.y -= r.speed;
             r.angle += r.angleSpeed;
             
-            // 화면 위로 벗어나면 리셋
             if (r.y < -100) {
                 r.y = artsH + 100;
                 r.x = Math.random() * artsW;
             }
 
-            // 물결치는 리본 그리기
             artsCtx.beginPath();
             const startX = r.x + Math.sin(r.angle) * 30;
             artsCtx.moveTo(startX, r.y);
             
-            // 리본의 꼬리 부분 생성
             for (let i = 0; i < 150; i+=5) {
                 const yPos = r.y + i;
                 const wave = Math.sin(r.angle + i * 0.05) * 30;
-                // 점점 투명해지도록 alpha 적용은 fillStyle에서 안되므로 형태만 잡음
                 artsCtx.lineTo(r.x + wave, yPos);
             }
             
-            // 붓글씨/리본 느낌을 위해 stroke 사용
             artsCtx.strokeStyle = r.color;
             artsCtx.lineWidth = r.width;
             artsCtx.lineCap = 'round';
