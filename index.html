@@ -87,9 +87,10 @@ body {
 }
 #typed-text,
 #typed-text {
-  display: inline-block;
-  white-space: nowrap;
-  overflow: visible;
+  display: inline-flex;
+  align-items: center;    
+  vertical-align: middle; 
+
   font-family:
     "Noto Sans SC",
     "Noto Sans TC",
@@ -97,14 +98,17 @@ body {
     "Noto Sans KR",
     "Noto Sans",
     sans-serif;
+  
   font-size: 0.92em;
   font-weight: 600;
   letter-spacing: 0.2px;
   margin-left: 6px;
+
   min-width: 150px;  
   min-height: 2em; 
-  vertical-align: bottom; 
-  text-align: left; 
+
+  white-space: nowrap;
+  overflow: visible;
 }
 
 #typed-text * {
