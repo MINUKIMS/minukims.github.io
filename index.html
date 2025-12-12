@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,14 +20,50 @@
 </script>
 
 <style>
-    /* --- Global Styles --- */
+    /* --- CSS Variables & Theme --- */
     :root {
+        /* Light Mode (Default) */
         --primary-color: #003e80; 
         --bg-color: #f9fafb;
+        --sidebar-bg: #ffffff;
         --text-main: #1f2937;
         --text-sub: #4b5563;
         --accent: #2563eb;
+        --border-color: #e5e7eb;
+        --card-bg: #ffffff;
+        --card-hover-shadow: rgba(0, 0, 0, 0.05);
+        --header-grad-1: #ffffff;
+        --header-grad-2: #f1f5f9;
+        --header-grad-3: #f9fafb;
+        --welcome-box-bg: rgba(255, 255, 255, 0.3);
+        --welcome-box-border: rgba(255, 255, 255, 0.5);
+        --welcome-text: #111;
+        --section-title-color: #111;
+        --arts-bg-1: #f9fafb;
+        --arts-bg-2: #f0f4f8;
         --sidebar-width: 280px;
+    }
+
+    [data-theme="dark"] {
+        /* Dark Mode */
+        --primary-color: #60a5fa; /* Lighter blue for dark bg */
+        --bg-color: #0f172a;      /* Slate 900 */
+        --sidebar-bg: #1e293b;    /* Slate 800 */
+        --text-main: #f1f5f9;     /* Slate 100 */
+        --text-sub: #94a3b8;      /* Slate 400 */
+        --accent: #3b82f6;
+        --border-color: #334155;
+        --card-bg: #1e293b;
+        --card-hover-shadow: rgba(0, 0, 0, 0.3);
+        --header-grad-1: #0f172a;
+        --header-grad-2: #1e293b;
+        --header-grad-3: #0f172a;
+        --welcome-box-bg: rgba(30, 41, 59, 0.6);
+        --welcome-box-border: rgba(255, 255, 255, 0.1);
+        --welcome-text: #f1f5f9;
+        --section-title-color: #f8fafc;
+        --arts-bg-1: #0f172a;
+        --arts-bg-2: #172554;
     }
 
     body {
@@ -37,6 +73,7 @@
         margin: 0;
         line-height: 1.7;
         display: flex;
+        transition: background-color 0.3s, color 0.3s;
     }
 
     a { text-decoration: none; color: var(--primary-color); transition: color 0.2s; }
@@ -45,16 +82,17 @@
     /* --- Sidebar (Navigation) --- */
     .sidebar {
         width: var(--sidebar-width);
-        background: white;
+        background: var(--sidebar-bg);
         height: 100vh;
         position: fixed;
         padding: 40px 30px;
         box-sizing: border-box;
-        border-right: 1px solid #e5e7eb;
+        border-right: 1px solid var(--border-color);
         overflow-y: auto;
         display: flex;
         flex-direction: column;
         z-index: 100;
+        transition: background-color 0.3s, border-color 0.3s;
     }
 
     .profile-section { margin-bottom: 24px; }
@@ -65,7 +103,7 @@
         border-radius: 50%;
         object-fit: cover;
         margin-bottom: 20px;
-        border: 4px solid #f3f4f6;
+        border: 4px solid var(--bg-color);
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     }
 
@@ -75,7 +113,7 @@
         gap: 8px;
         margin-bottom: 24px;
         padding-bottom: 24px;
-        border-bottom: 1px solid #e5e7eb;
+        border-bottom: 1px solid var(--border-color);
     }
 
     .contact-item {
@@ -102,7 +140,12 @@
         transition: all 0.2s;
         text-decoration: none;
     }
-    .nav-links a:hover { background-color: #eff6ff; color: var(--accent); transform: translateX(4px); }
+    /* Dark mode nav hover adjust */
+    .nav-links a:hover { 
+        background-color: var(--bg-color); 
+        color: var(--accent); 
+        transform: translateX(4px); 
+    }
     .sidebar-bottom { margin-top: auto; font-size: 0.8rem; color: #9ca3af; padding-top:40px; }
 
     /* --- Main Content --- */
@@ -116,10 +159,10 @@
     /* --- Header Area --- */
     header {
         position: relative;
-        /* 하단 여백 0px 유지 */
         padding: 60px 80px 0px 80px; 
         overflow: hidden;
-        background: linear-gradient(to bottom, #ffffff 0%, #f1f5f9 70%, #f9fafb 100%);
+        background: linear-gradient(to bottom, var(--header-grad-1) 0%, var(--header-grad-2) 70%, var(--header-grad-3) 100%);
+        transition: background 0.3s;
     }
 
     #world-map-canvas {
@@ -137,27 +180,25 @@
         z-index: 1;
     }
 
-    /* Welcome Box: Transparency Settings (Updated) */
+    /* Welcome Box */
     .welcome-box {
-        background: rgba(255, 255, 255, 0.3); 
+        background: var(--welcome-box-bg); 
         backdrop-filter: blur(5px);
         -webkit-backdrop-filter: blur(5px);
-        
         padding: 24px; 
         border-radius: 12px; 
-        border: 1px solid rgba(255, 255, 255, 0.5); 
-        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
-        
+        border: 1px solid var(--welcome-box-border); 
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
         margin-top: 140px; 
+        transition: background 0.3s, border 0.3s;
     }
 
-    /* --- Typography & Sections --- */
     h1.name {
         font-size: 2.5rem;
         margin: 0 0 10px 0;
         font-weight: 800;
         letter-spacing: -0.5px;
-        color: #111;
+        color: var(--section-title-color);
         line-height: 1.2;
         position: relative;     
         z-index: 10;            
@@ -165,7 +206,8 @@
         align-items: center;      
         height: 60px;            
         white-space: nowrap;      
-        overflow: visible;        
+        overflow: visible; 
+        transition: color 0.3s;       
     }
 
     .mongolian-vertical {
@@ -202,10 +244,11 @@
         margin-top: 70px;
         margin-bottom: 24px;
         padding-bottom: 12px;
-        border-bottom: 2px solid #e5e7eb;
-        color: #111;
+        border-bottom: 2px solid var(--border-color);
+        color: var(--section-title-color);
         display: flex;
         align-items: center;
+        transition: color 0.3s, border-color 0.3s;
     }
     
     .year-header {
@@ -220,20 +263,20 @@
     .card-list { display: flex; flex-direction: column; gap: 16px; }
 
     .card {
-        background: white;
+        background: var(--card-bg);
         border-radius: 12px;
         padding: 24px;
         box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
-        border: 1px solid #f3f4f6;
+        border: 1px solid var(--border-color);
         display: flex;
         gap: 24px;
-        transition: transform 0.2s, box-shadow 0.2s;
+        transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s, border-color 0.3s;
     }
 
     .card:hover {
         transform: translateY(-2px);
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
-        border-color: #e5e7eb;
+        box-shadow: 0 10px 15px -3px var(--card-hover-shadow);
+        border-color: var(--border-color);
     }
 
     .date-col {
@@ -245,7 +288,7 @@
     }
 
     .content-col { flex: 1; }
-    .content-col strong { color: #111; }
+    .content-col strong { color: var(--section-title-color); }
 
     .paper-thumb {
         width: 140px;
@@ -263,14 +306,15 @@
         margin: 0;
     }
     .simple-list li {
-        background: white;
+        background: var(--card-bg);
         padding: 16px 20px;
         border-radius: 8px;
         margin-bottom: 10px;
-        border: 1px solid #f3f4f6;
+        border: 1px solid var(--border-color);
         box-shadow: 0 1px 2px rgba(0,0,0,0.03);
         display: flex;
         align-items: flex-start;
+        transition: background-color 0.3s, border-color 0.3s;
     }
     .list-icon {
         margin-right: 12px;
@@ -285,7 +329,8 @@
         margin-left: -80px;
         margin-right: -80px;
         overflow: hidden;
-        background: linear-gradient(to bottom, #f9fafb, #f0f4f8);
+        background: linear-gradient(to bottom, var(--arts-bg-1), var(--arts-bg-2));
+        transition: background 0.3s;
     }
     #arts-canvas {
         position: absolute;
@@ -331,7 +376,7 @@
         font-weight: 100;
         animation: blink 0.7s infinite;
         margin-left: 2px;
-        color: #333;
+        color: var(--text-sub);
     }
     @keyframes blink { 0%, 50% { opacity: 1; } 50.01%, 100% { opacity: 0; } }
 
@@ -346,6 +391,120 @@
         vertical-align: middle;
         margin-left: 6px;
     }
+    /* Dark mode override for tags */
+    [data-theme="dark"] .tag-oral {
+        background-color: #1e3a8a;
+        color: #bfdbfe;
+    }
+
+    /* --- THEME TOGGLE SWITCH --- */
+    .theme-switch-container {
+        position: fixed;
+        top: 30px;
+        right: 40px;
+        z-index: 999;
+        display: flex;
+        align-items: center;
+    }
+
+    /* Checkbox Input (Hidden) */
+    .theme-checkbox {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    /* The Switch Track */
+    .theme-label {
+        width: 60px;
+        height: 30px;
+        background-color: #87ceeb; /* Sky blue (Day) */
+        border-radius: 50px;
+        position: relative;
+        cursor: pointer;
+        box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+        transition: background-color 0.4s ease;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 5px;
+        box-sizing: border-box;
+    }
+
+    /* The Slider (Sun/Moon) */
+    .theme-label .ball {
+        width: 24px;
+        height: 24px;
+        background-color: #fcd34d; /* Sun Yellow */
+        border-radius: 50%;
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55), background-color 0.4s;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        overflow: hidden;
+    }
+
+    /* Moon Craters (Hidden by default) */
+    .theme-label .ball::before, .theme-label .ball::after {
+        content: '';
+        position: absolute;
+        background-color: #94a3b8;
+        border-radius: 50%;
+        opacity: 0;
+        transition: opacity 0.4s;
+    }
+    .theme-label .ball::before { width: 6px; height: 6px; top: 5px; left: 10px; }
+    .theme-label .ball::after { width: 4px; height: 4px; top: 12px; left: 6px; }
+
+    /* Switch: Dark Mode Active State */
+    .theme-checkbox:checked + .theme-label {
+        background-color: #334155; /* Night Sky */
+    }
+    .theme-checkbox:checked + .theme-label .ball {
+        transform: translateX(30px);
+        background-color: #e2e8f0; /* Moon Grey */
+    }
+    .theme-checkbox:checked + .theme-label .ball::before,
+    .theme-checkbox:checked + .theme-label .ball::after {
+        opacity: 1; /* Show craters */
+    }
+
+    /* Drag Hint Tooltip */
+    .drag-hint {
+        position: absolute;
+        right: 70px;
+        top: 5px;
+        background: var(--accent);
+        color: white;
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: bold;
+        white-space: nowrap;
+        animation: hintBlink 2s infinite;
+        pointer-events: none;
+    }
+    .drag-hint::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: -6px;
+        margin-top: -6px;
+        border-width: 6px 0 6px 6px;
+        border-style: solid;
+        border-color: transparent transparent transparent var(--accent);
+    }
+
+    @keyframes hintBlink {
+        0%, 100% { opacity: 1; transform: translateX(0); }
+        50% { opacity: 0.6; transform: translateX(-3px); }
+    }
+
+    .drag-hint.hidden {
+        display: none;
+    }
+
 
     /* --- Mobile Responsive --- */
     @media (max-width: 900px) {
@@ -355,7 +514,7 @@
             width: 100%; 
             height: auto; 
             border-right: none; 
-            border-bottom: 1px solid #e5e7eb;
+            border-bottom: 1px solid var(--border-color);
             padding: 30px 20px;
         }
         header { padding: 40px 20px 20px 20px; } 
@@ -366,18 +525,33 @@
         .paper-thumb { width: 100%; height: auto; max-width: 200px; aspect-ratio: 16/9; }
         .nav-links { display: grid; grid-template-columns: 1fr 1fr; }
         .sidebar-contact { border-bottom: none; margin-bottom: 20px; }
+        
+        /* Adjust Toggle Position for Mobile */
+        .theme-switch-container {
+            top: 20px;
+            right: 20px;
+        }
+        .drag-hint { right: 70px; }
     }
 </style>
 </head>
 
 <body>
+    
+    <div class="theme-switch-container">
+        <div class="drag-hint" id="drag-hint">Drag this!</div>
+        <input type="checkbox" class="theme-checkbox" id="theme-toggle">
+        <label for="theme-toggle" class="theme-label" title="Switch Theme">
+            <div class="ball"></div>
+        </label>
+    </div>
 
     <nav class="sidebar">
         <div class="profile-section">
             <img src="./mainfiles/picture.jpg" alt="Minu Kim" class="profile-img">
             <div style="margin-top: 10px;">
-                <h2 style="margin:0; font-size:1.4rem;">Minu Kim</h2>
-                <span style="font-size: 0.9rem; color: #666; display:block; margin-top:4px;">M.S. Student @ KAIST</span>
+                <h2 style="margin:0; font-size:1.4rem; color: var(--section-title-color);">Minu Kim</h2>
+                <span style="font-size: 0.9rem; color: var(--text-sub); display:block; margin-top:4px;">M.S. Student @ KAIST</span>
             </div>
         </div>
 
@@ -419,7 +593,7 @@
             <div class="header-content">
                 <h1 class="name">
                     Minu Kim 
-                    <span style="font-weight:300; font-size: 0.6em; color:#ccc; vertical-align: middle; margin:0 8px;">|</span> 
+                    <span style="font-weight:300; font-size: 0.6em; color:var(--text-sub); vertical-align: middle; margin:0 8px;">|</span> 
                     <span id="typed-text" class="cursor"></span>
                 </h1>
                 
@@ -430,7 +604,7 @@
 
                 <div class="welcome-box">
                     <strong style="font-size:1.1em; color:var(--primary-color);">Welcome to my page!</strong><br>
-                    <div style="margin-top:10px; color: #111;">
+                    <div style="margin-top:10px; color: var(--welcome-text);">
                         I am a Master's student in the <a href="https://sites.google.com/site/kaistsssclab/home">SSSC Lab at KAIST</a> (Statistical Speech and Sound Computing Laboratory), advised by Prof. Hoirin Kim.<br><br>
                         My academic interests lie at the intersection of linguistics and artificial intelligence. In particular, I enjoy exploring phonetics, phonology, and language typology, and I am passionate about connecting linguistic theories with computational approaches.<br><br>
                         My research focuses on applying this interdisciplinary perspective to <strong>low-resource language processing</strong> and <strong>multilingual automatic speech recognition (ASR)</strong>.
@@ -459,7 +633,7 @@
                             B.S. in Artificial Intelligence<br>
                             B.S. in Industrial Engineering<br>
                             B.B.A. in Business Administration<br>
-                            <div style="margin-top:8px; font-size: 0.85em; color: #6b7280; background:#f3f4f6; padding:8px; border-radius:6px; display:inline-block;">
+                            <div style="margin-top:8px; font-size: 0.85em; color: var(--text-sub); background:rgba(0,0,0,0.05); padding:8px; border-radius:6px; display:inline-block;">
                                 Leave of Absence for Mandatory Military Service (09/2021 – 08/2022)
                             </div>
                         </div>
@@ -469,7 +643,7 @@
 
             <section id="publications">
                 <span class="section-title">Publications</span>
-                <p style="font-size:0.9rem; color:#666; margin-bottom:20px;">* indicates equal contribution.</p>
+                <p style="font-size:0.9rem; color:var(--text-sub); margin-bottom:20px;">* indicates equal contribution.</p>
 
                 <span class="year-header">Preparation</span>
                 <div class="card-list">
@@ -657,14 +831,51 @@
                 </div>
             </section>
             
-            <footer style="margin-top: 40px; border-top: 1px solid #e5e7eb; padding-top: 30px; padding-bottom:30px; font-size: 0.85rem; color: #9ca3af; text-align: center;">
+            <footer style="margin-top: 40px; border-top: 1px solid var(--border-color); padding-top: 30px; padding-bottom:30px; font-size: 0.85rem; color: var(--text-sub); text-align: center;">
                 &copy; 2025 Minu Kim.
             </footer>
         </div> </main>
 
 <script>
+    // --- THEME SWITCHER LOGIC ---
+    const toggle = document.getElementById('theme-toggle');
+    const dragHint = document.getElementById('drag-hint');
+    const htmlEl = document.documentElement;
+
+    // Check Local Storage
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme) {
+        htmlEl.setAttribute('data-theme', currentTheme);
+        if (currentTheme === 'dark') {
+            toggle.checked = true;
+        }
+    }
+
+    toggle.addEventListener('change', function(e) {
+        if (e.target.checked) {
+            htmlEl.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            htmlEl.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+        }
+        
+        // Hide hint after first use
+        if (!dragHint.classList.contains('hidden')) {
+            dragHint.classList.add('hidden');
+        }
+
+        // Trigger Canvas Redraws
+        requestAnimationFrame(() => {
+            initArtsBg(); 
+            // World map is handled in its own animation loop, 
+            // but we can force color updates if needed.
+        });
+    });
+
+    // --- TYPING EFFECT ---
     const names = [
-      { text: "金民友" }, { text: "Мину Ким" }, { text: "مينوو كيم", rtl: true }, { text: "මිනු කිම්" }, { text: "મિનુ કિમ" }, { text: "ⵎⵉⵏⵓ ⴽⵉⵎ" }, { text: "ꦩꦶꦤꦸ ꦏꦶꦩ꧀" }, { text: "मीनू किम" }, { text: "ᨆᨗᨊᨘ ᨀᨗᨆ" }, { text: "ମିନୁ କିମ୍" }, { text: "মিনু কিম্" }, { text: "キム・ミヌ" }, { text: "ᠬᠢᠮ ᠮᠢᠨᠦ", vertical: true }, { text: "מִינוּ קִים", rtl: true }, { text: "Μίνου Κιμ" }, { text: "⠠⠍⠊⠝⠥ ⠠⠅⠊⠍" }, { text: "มินู คิม" }, { text: "មីនុ គីម" }, { text: "မီနူး ကင်" }, { text: "김민우" }, { text: "ᛗᛁᚾᚢ ᚲᛁᛗ" }, { text: "ມິນູ ຄິມ" }, { text: "ᒥᓄ ᑭᒻ" }, { text: "𓅓𓇋𓈖𓅱 𓎡𓇋𓅓" }, { text: "ᠮᡳᠨᡠ ᡴᡳᠮ", vertical: true }, { text: "ᎻᏄ ᎩᎻ" }, { text: "མི་ནུ་ཁིམ" }, { text: "მინუ კიმ" }, { text: "𐤌𐤉𐤍𐤅 𐤊𐤉𐤌", rtl: true }, { text: "ᚋᛁᚅᚒ ᚉᛁᚋ" }, { text: "ⰏⰞⰐⰖ ⰍⰞⰏ" }, { text: "Մինու Քիմ" }, { text: "மினு கிம்" }, { text: "-- .. -. ..-  -.- .. --" }, { text: "ߡߌߣߎ ߞߌߡ", rtl: true }, { text: "𐎎𐎛𐎐𐎢 𐎋𐎛𐎐", rtl: true }, { text: "ਮਿਨੂ ਕਿਮ" }, { text: "മിനു കിം" }, { text: "މިނޫ ކިމް", rtl: true }, { text: "Ⲙⲓⲛⲟⲩ Ⲕⲓⲙ" }, { text: "ܡܝܢܘ ܟܝܡ", rtl: true }, { text: "మినూ కిమ్" }, { text: "𒈪 𒉡 𒆠 𒅎" }, { text: "ꂠꆹ ꈾꃀ" }, { text: "ሚኑ ኪም" }, { text: "ಮಿನು ಕಿಮ್" }, { text: "𐒄𐒘𐒒𐒖 𐒏𐒘𐒑" }, { text: "ꃘꆀꁯ ꑭꁮ" }, { text: "𐑕𐑦𐑯𐑵 𐑒𐑦𐑥" }, { text: "0x4D696E75 0x4B696D" }, { text: "01001101 01101001 01101110 01110101 00100000 01001011 01101001 01101101" },
+      { text: "김민우" }, { text: "金民友" }, { text: "Мину Ким" }, { text: "مينوو كيم", rtl: true }, { text: "මිනු කිම්" }, { text: "મિનુ કિમ" }, { text: "ⵎⵉⵏⵓ ⴽⵉⵎ" }, { text: "ꦩꦶꦤꦸ ꦏꦶꦩ꧀" }, { text: "मीनू किम" }, { text: "ᨆᨗᨊᨘ ᨀᨗᨆ" }, { text: "ମିନୁ କିମ୍" }, { text: "মিনু কিম্" }, { text: "キム・ミヌ" }, { text: "ᠬᠢᠮ ᠮᠢᠨᠦ", vertical: true }, { text: "מִינוּ קִים", rtl: true }, { text: "Μίνου Κιμ" }, { text: "⠠⠍⠊⠝⠥ ⠠⠅⠊⠍" }, { text: "มินู คิม" }, { text: "មីនុ គីម" }, { text: "မီနူး ကင်" }, { text: "ᛗᛁᚾᚢ ᚲᛁᛗ" }, { text: "ມິນູ ຄິມ" }, { text: "ᒥᓄ ᑭᒻ" }, { text: "𓅓𓇋𓈖𓅱 𓎡𓇋𓅓" }, { text: "ᠮᡳᠨᡠ ᡴᡳᠮ", vertical: true }, { text: "ᎻᏄ ᎩᎻ" }, { text: "མི་ནུ་ཁིམ" }, { text: "მინუ კიმ" }, { text: "𐤌𐤉𐤍𐤅 𐤊𐤉𐤌", rtl: true }, { text: "ᚋᛁᚅᚒ ᚉᛁᚋ" }, { text: "ⰏⰞⰐⰖ ⰍⰞⰏ" }, { text: "Մինու Քիմ" }, { text: "மினு கிம்" }, { text: "-- .. -. ..-  -.- .. --" }, { text: "ߡߌߣߎ ߞߌߡ", rtl: true }, { text: "𐎎𐎛𐎐𐎢 𐎋𐎛𐎐", rtl: true }, { text: "ਮਿਨੂ ਕਿਮ" }, { text: "മിനു കിം" }, { text: "މިނޫ ކިމް", rtl: true }, { text: "Ⲙⲓⲛⲟⲩ Ⲕⲓⲙ" }, { text: "ܡܝܢܘ ܟܝܡ", rtl: true }, { text: "మినూ కిమ్" }, { text: "𒈪 𒉡 𒆠 𒅎" }, { text: "ꂠꆹ ꈾꃀ" }, { text: "ሚኑ ኪም" }, { text: "ಮಿನು ಕಿಮ್" }, { text: "𐒄𐒘𐒒𐒖 𐒏𐒘𐒑" }, { text: "ꃘꆀꁯ ꑭꁮ" }, { text: "𐑕𐑦𐑯𐑵 𐑒𐑦𐑥" }, { text: "0x4D696E75 0x4B696D" }, { text: "01001101 01101001 01101110 01110101 00100000 01001011 01101001 01101101" },
     ];
 
     const typedTextElement = document.getElementById("typed-text");
@@ -721,48 +932,38 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 
 <script>
+    // --- WORLD MAP CANVAS (with Dark Mode Lights) ---
     const mapCanvas = document.getElementById('world-map-canvas');
     const mapCtx = mapCanvas.getContext('2d');
     let mapW, mapH;
     
-    // Improved SVG Paths for World Map (Roughly Robinson Projection)
+    // Roughly Robinson Projection
     const worldMapPaths = [
-    // North America (bottom lowered)
     "M 160 50 L 220 50 L 280 40 L 340 35 L 370 45 L 385 50 L 345 105 L 315 125 L 295 155 L 235 200 L 215 220 L 175 180 L 135 145 L 105 95 L 135 65 Z",
-
-    // Greenland
     "M 360 20 L 420 10 L 450 30 L 430 70 L 380 60 Z",
-
-    // South America (unchanged)
     "M 260 230 L 340 250 L 380 300 L 360 380 L 320 450 L 290 390 L 270 330 L 250 280 Z",
-
-    // Europe
     "M 455 50 L 495 40 L 535 45 L 565 70 L 535 100 L 495 110 L 465 100 L 445 70 Z",
-
-    // Africa (unchanged)
     "M 440 130 L 510 130 L 550 160 L 580 220 L 560 300 L 500 350 L 460 300 L 430 220 L 420 160 Z",
-
-    // Asia (expanded bottom)
     "M 550 60 L 660 50 L 770 60 L 880 80 L 940 130 L 920 210 L 860 250 L 800 260 L 740 220 L 680 190 L 610 165 L 580 115 Z",
-
-    // SE Asia Islands (shifted up)
     "M 770 255 L 820 245 L 850 275 L 800 305 Z",
-
-    // Australia
     "M 810 335 L 900 325 L 940 375 L 890 425 L 820 395 Z"
     ];
 
-    // UPDATED: Adjusted City Coordinates to align with the SVG paths above
     const cities = [
-    {x: 225, y: 120}, // San Francisco / Seattle
-    {x: 320, y: 125}, // NYC region
-    {x: 340, y: 330}, // Brazil (Rio/Sao Paulo area) - adjusted
-    {x: 480, y: 80},  // London / Paris
-    {x: 520, y: 230}, // Central Africa - adjusted slightly lower
-    {x: 720, y: 190}, // India/Central Asia - adjusted
-    {x: 880, y: 150}, // Korea/Japan - adjusted to East Asia tip
-    {x: 880, y: 390}  // Sydney - adjusted to South-East Australia
+    {x: 225, y: 120}, {x: 320, y: 125}, {x: 340, y: 330}, {x: 480, y: 80},
+    {x: 520, y: 230}, {x: 720, y: 190}, {x: 880, y: 150}, {x: 880, y: 390}
     ];
+    
+    // Add extra random lights for "Night Mode" effect
+    const extraLights = [];
+    for(let i=0; i<30; i++) {
+        // Approximate random locations near typical landmasses (very rough)
+        extraLights.push({
+            x: Math.random() * 800 + 100,
+            y: Math.random() * 400 + 50,
+            intensity: Math.random()
+        });
+    }
 
     let ripples = []; 
 
@@ -773,16 +974,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function spawnRipple() {
         const city = cities[Math.floor(Math.random() * cities.length)];
-        
-        // Map render scale calculation
         const svgW = 1000;
         const svgH = 500;
-        const scale = Math.min(mapW / svgW, mapH / svgH) * 0.85; // Fill 85% of screen
-        
+        const scale = Math.min(mapW / svgW, mapH / svgH) * 0.85; 
         const renderW = svgW * scale;
         const renderH = svgH * scale;
         const offsetX = (mapW - renderW) / 2;
-        // UPDATED: Applied the same -70 offset here
         const offsetY = (mapH - renderH) / 2 - 70;
 
         ripples.push({
@@ -797,6 +994,8 @@ document.addEventListener("DOMContentLoaded", () => {
     function drawMapAndRipples() {
         mapCtx.clearRect(0, 0, mapW, mapH);
 
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+
         const svgW = 1000;
         const svgH = 500;
         const scale = Math.min(mapW / svgW, mapH / svgH) * 0.85;
@@ -804,7 +1003,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const renderW = svgW * scale;
         const renderH = svgH * scale;
         const offsetX = (mapW - renderW) / 2;
-        // Kept -70 offset
         const offsetY = (mapH - renderH) / 2 - 70;
 
         mapCtx.save();
@@ -812,20 +1010,58 @@ document.addEventListener("DOMContentLoaded", () => {
         mapCtx.scale(scale, scale);
 
         // 1. World Map (Continents)
-        mapCtx.fillStyle = 'rgba(170, 200, 230, 0.25)'; 
+        if (isDark) {
+            // Dark Mode: Dark landmasses
+            mapCtx.fillStyle = 'rgba(51, 65, 85, 0.5)'; // Slate 700ish
+        } else {
+            // Light Mode: Light Blue/Grey
+            mapCtx.fillStyle = 'rgba(170, 200, 230, 0.25)'; 
+        }
+
         worldMapPaths.forEach(pathStr => {
             const path = new Path2D(pathStr);
             mapCtx.fill(path);
         });
+
+        // DARK MODE EXCLUSIVE: CITY LIGHTS
+        if (isDark) {
+            mapCtx.globalCompositeOperation = 'lighter';
+            
+            // Draw Main Cities (Bright)
+            cities.forEach(city => {
+                const grad = mapCtx.createRadialGradient(city.x, city.y, 0, city.x, city.y, 8);
+                grad.addColorStop(0, 'rgba(255, 255, 200, 0.9)'); // Warm light center
+                grad.addColorStop(0.4, 'rgba(255, 215, 0, 0.5)'); // Gold halo
+                grad.addColorStop(1, 'rgba(255, 215, 0, 0)');
+                mapCtx.fillStyle = grad;
+                mapCtx.beginPath();
+                mapCtx.arc(city.x, city.y, 8, 0, Math.PI*2);
+                mapCtx.fill();
+            });
+
+            // Draw Random Rural Lights (Fainter) - Filtered crudely by map bounds for simplicity
+            // In a real app, we'd check isPointInPath, but for visual flair this is fine
+            extraLights.forEach(light => {
+                // Simple culling to prevent lights in middle of obvious ocean (very rough)
+                if (light.y > 100 && light.y < 450) {
+                     mapCtx.fillStyle = `rgba(255, 255, 255, ${light.intensity * 0.3})`;
+                     mapCtx.fillRect(light.x, light.y, 1.5, 1.5);
+                }
+            });
+            
+            mapCtx.globalCompositeOperation = 'source-over';
+        }
+
         mapCtx.restore();
 
-        // 2. Network Lines (Connection Lines)
+        // 2. Network Lines & Ripples
         const transformedCities = cities.map(c => ({
             x: offsetX + c.x * scale,
             y: offsetY + c.y * scale
         }));
 
-        mapCtx.strokeStyle = 'rgba(0, 62, 128, 0.08)'; 
+        // Line Color
+        mapCtx.strokeStyle = isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 62, 128, 0.08)'; 
         mapCtx.lineWidth = 1;
         mapCtx.beginPath();
         
@@ -853,9 +1089,17 @@ document.addEventListener("DOMContentLoaded", () => {
             } else {
                 mapCtx.beginPath();
                 mapCtx.arc(r.x, r.y, r.radius, 0, Math.PI * 2);
-                mapCtx.fillStyle = `rgba(37, 99, 235, ${r.alpha * 0.25})`;
+                
+                // Ripple Color: Blue in light, Cyan/White in dark
+                if (isDark) {
+                    mapCtx.fillStyle = `rgba(100, 200, 255, ${r.alpha * 0.15})`;
+                    mapCtx.strokeStyle = `rgba(100, 200, 255, ${r.alpha * 0.4})`;
+                } else {
+                    mapCtx.fillStyle = `rgba(37, 99, 235, ${r.alpha * 0.25})`;
+                    mapCtx.strokeStyle = `rgba(37, 99, 235, ${r.alpha * 0.5})`;
+                }
+                
                 mapCtx.fill();
-                mapCtx.strokeStyle = `rgba(37, 99, 235, ${r.alpha * 0.5})`;
                 mapCtx.lineWidth = 1;
                 mapCtx.stroke();
             }
@@ -873,6 +1117,7 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 
 <script>
+    // --- ARTS CANVAS (Ribbons) ---
     const artsCanvas = document.getElementById('arts-canvas');
     const artsCtx = artsCanvas.getContext('2d');
     let artsW, artsH;
@@ -881,9 +1126,16 @@ document.addEventListener("DOMContentLoaded", () => {
     function initArtsBg() {
         artsW = artsCanvas.width = artsCanvas.parentElement.offsetWidth;
         artsH = artsCanvas.height = artsCanvas.parentElement.offsetHeight;
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
         
         ribbons = [];
         for (let i = 0; i < 7; i++) {
+            // Colors: Pastel Blue in Light, Neon/Cyber Blue in Dark
+            const hue = 200 + Math.random() * 40;
+            const sat = isDark ? '90%' : '70%';
+            const light = isDark ? '60%' : '75%';
+            const alpha = isDark ? 0.2 : 0.4;
+
             ribbons.push({
                 x: Math.random() * artsW,
                 y: artsH + Math.random() * 100,
@@ -891,7 +1143,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 angle: Math.random() * Math.PI * 2,
                 angleSpeed: Math.random() * 0.02 + 0.01,
                 width: Math.random() * 30 + 10,
-                color: `hsla(${200 + Math.random() * 40}, 70%, 75%, 0.4)`
+                color: `hsla(${hue}, ${sat}, ${light}, ${alpha})`
             });
         }
     }
