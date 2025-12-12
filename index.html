@@ -46,11 +46,11 @@
 
     [data-theme="dark"] {
         /* Dark Mode */
-        --primary-color: #60a5fa; /* Lighter blue for dark bg */
-        --bg-color: #0f172a;      /* Slate 900 */
-        --sidebar-bg: #1e293b;    /* Slate 800 */
-        --text-main: #f1f5f9;     /* Slate 100 */
-        --text-sub: #94a3b8;      /* Slate 400 */
+        --primary-color: #60a5fa; 
+        --bg-color: #0f172a;      
+        --sidebar-bg: #1e293b;    
+        --text-main: #f1f5f9;     
+        --text-sub: #94a3b8;      
         --accent: #3b82f6;
         --border-color: #334155;
         --card-bg: #1e293b;
@@ -140,7 +140,6 @@
         transition: all 0.2s;
         text-decoration: none;
     }
-    /* Dark mode nav hover adjust */
     .nav-links a:hover { 
         background-color: var(--bg-color); 
         color: var(--accent); 
@@ -154,6 +153,7 @@
         max-width: 950px;
         width: 100%;
         box-sizing: border-box;
+        position: relative; /* Context for absolute positioning if needed */
     }
 
     /* --- Header Area --- */
@@ -299,7 +299,7 @@
         background: #f3f4f6;
     }
 
-    /* --- Lists (Teaching, Honors) --- */
+    /* --- Lists --- */
     .simple-list {
         list-style: none;
         padding: 0;
@@ -322,7 +322,7 @@
         margin-top: 4px;
     }
 
-    /* --- Creative Interests Section --- */
+    /* --- Creative Interests --- */
     #arts {
         position: relative;
         padding: 60px 80px; 
@@ -346,7 +346,6 @@
         z-index: 1;
     }
 
-    /* --- Gallery --- */
     .hobby-gallery {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -363,7 +362,7 @@
     }
     .HobbyPhoto:hover { transform: scale(1.03); }
 
-    /* --- Typing Effect Specifics --- */
+    /* --- Typing Effect --- */
     #typed-text {
         color: var(--accent);
         font-family: "Noto Sans", "Noto Sans SC", "Noto Sans TC", "Noto Sans JP", sans-serif;
@@ -391,38 +390,36 @@
         vertical-align: middle;
         margin-left: 6px;
     }
-    /* Dark mode override for tags */
     [data-theme="dark"] .tag-oral {
         background-color: #1e3a8a;
         color: #bfdbfe;
     }
 
-    /* --- THEME TOGGLE SWITCH --- */
+    /* --- THEME TOGGLE SWITCH (UPDATED) --- */
     .theme-switch-container {
-        position: fixed;
+        position: absolute; /* Changed from fixed to absolute */
         top: 30px;
-        right: 40px;
-        z-index: 999;
+        right: 30px;
+        z-index: 50;
         display: flex;
         align-items: center;
     }
 
-    /* Checkbox Input (Hidden) */
     .theme-checkbox {
         opacity: 0;
         width: 0;
         height: 0;
     }
 
-    /* The Switch Track */
+    /* Track Styles */
     .theme-label {
-        width: 60px;
-        height: 30px;
+        width: 66px;
+        height: 32px;
         background-color: #87ceeb; /* Sky blue (Day) */
         border-radius: 50px;
         position: relative;
         cursor: pointer;
-        box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+        box-shadow: inset 0 2px 5px rgba(0,0,0,0.2), 0 0 0 2px rgba(255,255,255,0.2);
         transition: background-color 0.4s ease;
         display: flex;
         align-items: center;
@@ -431,18 +428,20 @@
         box-sizing: border-box;
     }
 
-    /* The Slider (Sun/Moon) */
+    /* Slider (Sun/Moon) */
     .theme-label .ball {
         width: 24px;
         height: 24px;
         background-color: #fcd34d; /* Sun Yellow */
         border-radius: 50%;
         position: absolute;
-        top: 3px;
-        left: 3px;
+        top: 4px;
+        left: 5px;
         transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55), background-color 0.4s;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.3);
         overflow: hidden;
+        /* Sun rays via box-shadow (subtle) */
+        box-shadow: 0 0 10px 2px rgba(252, 211, 77, 0.6);
     }
 
     /* Moon Craters (Hidden by default) */
@@ -457,24 +456,26 @@
     .theme-label .ball::before { width: 6px; height: 6px; top: 5px; left: 10px; }
     .theme-label .ball::after { width: 4px; height: 4px; top: 12px; left: 6px; }
 
-    /* Switch: Dark Mode Active State */
+    /* Checked (Dark Mode) State */
     .theme-checkbox:checked + .theme-label {
-        background-color: #334155; /* Night Sky */
+        background-color: #1e293b; /* Night Sky */
+        box-shadow: inset 0 2px 5px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.1);
     }
     .theme-checkbox:checked + .theme-label .ball {
-        transform: translateX(30px);
+        transform: translateX(32px);
         background-color: #e2e8f0; /* Moon Grey */
+        box-shadow: 0 0 8px 1px rgba(226, 232, 240, 0.4);
     }
     .theme-checkbox:checked + .theme-label .ball::before,
     .theme-checkbox:checked + .theme-label .ball::after {
         opacity: 1; /* Show craters */
     }
 
-    /* Drag Hint Tooltip */
+    /* Tooltip */
     .drag-hint {
         position: absolute;
-        right: 70px;
-        top: 5px;
+        right: 80px;
+        top: 4px;
         background: var(--accent);
         color: white;
         padding: 4px 10px;
@@ -501,11 +502,6 @@
         50% { opacity: 0.6; transform: translateX(-3px); }
     }
 
-    .drag-hint.hidden {
-        display: none;
-    }
-
-
     /* --- Mobile Responsive --- */
     @media (max-width: 900px) {
         body { flex-direction: column; }
@@ -526,26 +522,17 @@
         .nav-links { display: grid; grid-template-columns: 1fr 1fr; }
         .sidebar-contact { border-bottom: none; margin-bottom: 20px; }
         
-        /* Adjust Toggle Position for Mobile */
         .theme-switch-container {
             top: 20px;
             right: 20px;
         }
-        .drag-hint { right: 70px; }
+        .drag-hint { right: 75px; }
     }
 </style>
 </head>
 
 <body>
     
-    <div class="theme-switch-container">
-        <div class="drag-hint" id="drag-hint">Drag this!</div>
-        <input type="checkbox" class="theme-checkbox" id="theme-toggle">
-        <label for="theme-toggle" class="theme-label" title="Switch Theme">
-            <div class="ball"></div>
-        </label>
-    </div>
-
     <nav class="sidebar">
         <div class="profile-section">
             <img src="./mainfiles/picture.jpg" alt="Minu Kim" class="profile-img">
@@ -590,6 +577,15 @@
         
         <header id="home">
             <canvas id="world-map-canvas"></canvas>
+            
+            <div class="theme-switch-container">
+                <div class="drag-hint" id="drag-hint">Click!</div>
+                <input type="checkbox" class="theme-checkbox" id="theme-toggle">
+                <label for="theme-toggle" class="theme-label" title="Switch Theme">
+                    <div class="ball"></div>
+                </label>
+            </div>
+
             <div class="header-content">
                 <h1 class="name">
                     Minu Kim 
@@ -860,22 +856,18 @@
             localStorage.setItem('theme', 'light');
         }
         
-        // Hide hint after first use
-        if (!dragHint.classList.contains('hidden')) {
-            dragHint.classList.add('hidden');
-        }
-
+        // HINT DOES NOT DISAPPEAR ANYMORE (As requested)
+        // dragHint.classList.add('hidden'); <-- Removed this line
+        
         // Trigger Canvas Redraws
         requestAnimationFrame(() => {
             initArtsBg(); 
-            // World map is handled in its own animation loop, 
-            // but we can force color updates if needed.
         });
     });
 
     // --- TYPING EFFECT ---
     const names = [
-      { text: "김민우" }, { text: "金民友" }, { text: "Мину Ким" }, { text: "مينوو كيم", rtl: true }, { text: "මිනු කිම්" }, { text: "મિનુ કિમ" }, { text: "ⵎⵉⵏⵓ ⴽⵉⵎ" }, { text: "ꦩꦶꦤꦸ ꦏꦶꦩ꧀" }, { text: "मीनू किम" }, { text: "ᨆᨗᨊᨘ ᨀᨗᨆ" }, { text: "ମିନୁ କିମ୍" }, { text: "মিনু কিম্" }, { text: "キム・ミヌ" }, { text: "ᠬᠢᠮ ᠮᠢᠨᠦ", vertical: true }, { text: "מִינוּ קִים", rtl: true }, { text: "Μίνου Κιμ" }, { text: "⠠⠍⠊⠝⠥ ⠠⠅⠊⠍" }, { text: "มินู คิม" }, { text: "មីនុ គីម" }, { text: "မီနူး ကင်" }, { text: "ᛗᛁᚾᚢ ᚲᛁᛗ" }, { text: "ມິນູ ຄິມ" }, { text: "ᒥᓄ ᑭᒻ" }, { text: "𓅓𓇋𓈖𓅱 𓎡𓇋𓅓" }, { text: "ᠮᡳᠨᡠ ᡴᡳᠮ", vertical: true }, { text: "ᎻᏄ ᎩᎻ" }, { text: "མི་ནུ་ཁིམ" }, { text: "მინუ კიმ" }, { text: "𐤌𐤉𐤍𐤅 𐤊𐤉𐤌", rtl: true }, { text: "ᚋᛁᚅᚒ ᚉᛁᚋ" }, { text: "ⰏⰞⰐⰖ ⰍⰞⰏ" }, { text: "Մինու Քիմ" }, { text: "மினு கிம்" }, { text: "-- .. -. ..-  -.- .. --" }, { text: "ߡߌߣߎ ߞߌߡ", rtl: true }, { text: "𐎎𐎛𐎐𐎢 𐎋𐎛𐎐", rtl: true }, { text: "ਮਿਨੂ ਕਿਮ" }, { text: "മിനു കിം" }, { text: "މިނޫ ކިމް", rtl: true }, { text: "Ⲙⲓⲛⲟⲩ Ⲕⲓⲙ" }, { text: "ܡܝܢܘ ܟܝܡ", rtl: true }, { text: "మినూ కిమ్" }, { text: "𒈪 𒉡 𒆠 𒅎" }, { text: "ꂠꆹ ꈾꃀ" }, { text: "ሚኑ ኪም" }, { text: "ಮಿನು ಕಿಮ್" }, { text: "𐒄𐒘𐒒𐒖 𐒏𐒘𐒑" }, { text: "ꃘꆀꁯ ꑭꁮ" }, { text: "𐑕𐑦𐑯𐑵 𐑒𐑦𐑥" }, { text: "0x4D696E75 0x4B696D" }, { text: "01001101 01101001 01101110 01110101 00100000 01001011 01101001 01101101" },
+      { text: "金民友" }, { text: "Мину Ким" }, { text: "مينوو كيم", rtl: true }, { text: "මිනු කිම්" }, { text: "મિનુ કિમ" }, { text: "ⵎⵉⵏⵓ ⴽⵉⵎ" }, { text: "ꦩꦶꦤꦸ ꦏꦶꦩ꧀" }, { text: "मीनू किम" }, { text: "ᨆᨗᨊᨘ ᨀᨗᨆ" }, { text: "ମିନୁ କିମ୍" }, { text: "মিনু কিম্" }, { text: "キム・ミヌ" }, { text: "ᠬᠢᠮ ᠮᠢᠨᠦ", vertical: true }, { text: "מִינוּ קִים", rtl: true }, { text: "Μίνου Κιμ" }, { text: "⠠⠍⠊⠝⠥ ⠠⠅⠊⠍" }, { text: "มินู คิม" }, { text: "មីនុ គីម" }, { text: "မီနူး ကင်" }, { text: "김민우" }, { text: "ᛗᛁᚾᚢ ᚲᛁᛗ" }, { text: "ມິນູ ຄິມ" }, { text: "ᒥᓄ ᑭᒻ" }, { text: "𓅓𓇋𓈖𓅱 𓎡𓇋𓅓" }, { text: "ᠮᡳᠨᡠ ᡴᡳᠮ", vertical: true }, { text: "ᎻᏄ ᎩᎻ" }, { text: "མི་ནུ་ཁིམ" }, { text: "მინუ კიმ" }, { text: "𐤌𐤉𐤍𐤅 𐤊𐤉𐤌", rtl: true }, { text: "ᚋᛁᚅᚒ ᚉᛁᚋ" }, { text: "ⰏⰞⰐⰖ ⰍⰞⰏ" }, { text: "Մինու Քիմ" }, { text: "மினு கிம்" }, { text: "-- .. -. ..-  -.- .. --" }, { text: "ߡߌߣߎ ߞߌߡ", rtl: true }, { text: "𐎎𐎛𐎐𐎢 𐎋𐎛𐎐", rtl: true }, { text: "ਮਿਨੂ ਕਿਮ" }, { text: "മിനു കിം" }, { text: "މިނޫ ކިމް", rtl: true }, { text: "Ⲙⲓⲛⲟⲩ Ⲕⲓⲙ" }, { text: "ܡܝܢܘ ܟܝܡ", rtl: true }, { text: "మినూ కిమ్" }, { text: "𒈪 𒉡 𒆠 𒅎" }, { text: "ꂠꆹ ꈾꃀ" }, { text: "ሚኑ ኪም" }, { text: "ಮಿನು ಕಿಮ್" }, { text: "𐒄𐒘𐒒𐒖 𐒏𐒘𐒑" }, { text: "ꃘꆀꁯ ꑭꁮ" }, { text: "𐑕𐑦𐑯𐑵 𐑒𐑦𐑥" }, { text: "0x4D696E75 0x4B696D" }, { text: "01001101 01101001 01101110 01110101 00100000 01001011 01101001 01101101" },
     ];
 
     const typedTextElement = document.getElementById("typed-text");
@@ -932,12 +924,11 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 
 <script>
-    // --- WORLD MAP CANVAS (with Dark Mode Lights) ---
+    // --- WORLD MAP CANVAS (with Realistic Night Lights) ---
     const mapCanvas = document.getElementById('world-map-canvas');
     const mapCtx = mapCanvas.getContext('2d');
     let mapW, mapH;
     
-    // Roughly Robinson Projection
     const worldMapPaths = [
     "M 160 50 L 220 50 L 280 40 L 340 35 L 370 45 L 385 50 L 345 105 L 315 125 L 295 155 L 235 200 L 215 220 L 175 180 L 135 145 L 105 95 L 135 65 Z",
     "M 360 20 L 420 10 L 450 30 L 430 70 L 380 60 Z",
@@ -954,16 +945,33 @@ document.addEventListener("DOMContentLoaded", () => {
     {x: 520, y: 230}, {x: 720, y: 190}, {x: 880, y: 150}, {x: 880, y: 390}
     ];
     
-    // Add extra random lights for "Night Mode" effect
+    // --- GENERATE REALISTIC NIGHT LIGHTS ---
     const extraLights = [];
-    for(let i=0; i<30; i++) {
-        // Approximate random locations near typical landmasses (very rough)
-        extraLights.push({
-            x: Math.random() * 800 + 100,
-            y: Math.random() * 400 + 50,
-            intensity: Math.random()
-        });
-    }
+    
+    // Define "zones" to spawn lights (xMin, xMax, yMin, yMax, intensityBias)
+    // Roughly mapped to the SVG path coordinates
+    const zones = [
+        { name: 'US East', bounds: [280, 360, 100, 180], density: 50 },
+        { name: 'US West', bounds: [160, 240, 80, 180], density: 30 },
+        { name: 'Europe', bounds: [450, 550, 50, 120], density: 80 },
+        { name: 'India/China', bounds: [600, 850, 100, 220], density: 70 },
+        { name: 'Japan/Korea', bounds: [850, 920, 130, 180], density: 40 },
+        { name: 'S. America', bounds: [280, 350, 250, 380], density: 30 },
+        { name: 'Africa', bounds: [460, 560, 180, 320], density: 25 },
+        { name: 'Australia', bounds: [820, 920, 320, 400], density: 20 },
+    ];
+
+    zones.forEach(zone => {
+        for(let i=0; i<zone.density; i++) {
+            extraLights.push({
+                x: zone.bounds[0] + Math.random() * (zone.bounds[1] - zone.bounds[0]),
+                y: zone.bounds[2] + Math.random() * (zone.bounds[3] - zone.bounds[2]),
+                intensity: Math.random(),
+                size: Math.random() * 1.5 + 0.5,
+                blinkOffset: Math.random() * 100
+            });
+        }
+    });
 
     let ripples = []; 
 
@@ -1011,10 +1019,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // 1. World Map (Continents)
         if (isDark) {
-            // Dark Mode: Dark landmasses
-            mapCtx.fillStyle = 'rgba(51, 65, 85, 0.5)'; // Slate 700ish
+            mapCtx.fillStyle = 'rgba(30, 41, 59, 0.7)'; // Much darker land
         } else {
-            // Light Mode: Light Blue/Grey
             mapCtx.fillStyle = 'rgba(170, 200, 230, 0.25)'; 
         }
 
@@ -1023,30 +1029,33 @@ document.addEventListener("DOMContentLoaded", () => {
             mapCtx.fill(path);
         });
 
-        // DARK MODE EXCLUSIVE: CITY LIGHTS
+        // DARK MODE EXCLUSIVE: EXTENSIVE CITY LIGHTS
         if (isDark) {
             mapCtx.globalCompositeOperation = 'lighter';
             
-            // Draw Main Cities (Bright)
+            // Major Cities (Big Glow)
             cities.forEach(city => {
                 const grad = mapCtx.createRadialGradient(city.x, city.y, 0, city.x, city.y, 8);
-                grad.addColorStop(0, 'rgba(255, 255, 200, 0.9)'); // Warm light center
-                grad.addColorStop(0.4, 'rgba(255, 215, 0, 0.5)'); // Gold halo
-                grad.addColorStop(1, 'rgba(255, 215, 0, 0)');
+                grad.addColorStop(0, 'rgba(255, 255, 200, 1)'); 
+                grad.addColorStop(0.5, 'rgba(255, 200, 100, 0.5)'); 
+                grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
                 mapCtx.fillStyle = grad;
                 mapCtx.beginPath();
-                mapCtx.arc(city.x, city.y, 8, 0, Math.PI*2);
+                mapCtx.arc(city.x, city.y, 10, 0, Math.PI*2);
                 mapCtx.fill();
             });
 
-            // Draw Random Rural Lights (Fainter) - Filtered crudely by map bounds for simplicity
-            // In a real app, we'd check isPointInPath, but for visual flair this is fine
+            // Rural/Minor Lights (Twinkling)
+            const time = Date.now() / 200;
             extraLights.forEach(light => {
-                // Simple culling to prevent lights in middle of obvious ocean (very rough)
-                if (light.y > 100 && light.y < 450) {
-                     mapCtx.fillStyle = `rgba(255, 255, 255, ${light.intensity * 0.3})`;
-                     mapCtx.fillRect(light.x, light.y, 1.5, 1.5);
-                }
+                 // Simple twinkling
+                 const blink = Math.sin(time + light.blinkOffset) * 0.2 + 0.8; 
+                 const finalAlpha = light.intensity * 0.6 * blink;
+                 
+                 mapCtx.fillStyle = `rgba(255, 230, 150, ${finalAlpha})`;
+                 mapCtx.beginPath();
+                 mapCtx.arc(light.x, light.y, light.size, 0, Math.PI * 2);
+                 mapCtx.fill();
             });
             
             mapCtx.globalCompositeOperation = 'source-over';
@@ -1090,7 +1099,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 mapCtx.beginPath();
                 mapCtx.arc(r.x, r.y, r.radius, 0, Math.PI * 2);
                 
-                // Ripple Color: Blue in light, Cyan/White in dark
                 if (isDark) {
                     mapCtx.fillStyle = `rgba(100, 200, 255, ${r.alpha * 0.15})`;
                     mapCtx.strokeStyle = `rgba(100, 200, 255, ${r.alpha * 0.4})`;
@@ -1130,7 +1138,6 @@ document.addEventListener("DOMContentLoaded", () => {
         
         ribbons = [];
         for (let i = 0; i < 7; i++) {
-            // Colors: Pastel Blue in Light, Neon/Cyber Blue in Dark
             const hue = 200 + Math.random() * 40;
             const sat = isDark ? '90%' : '70%';
             const light = isDark ? '60%' : '75%';
