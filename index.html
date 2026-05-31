@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Minu Kim | Computational Linguist</title>
-
+ 
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mongolian&family=Noto+Sans+SC&family=Noto+Sans+TC&family=Noto+Sans+JP&family=Noto+Sans+KR&family=Noto+Sans+Arabic&family=Noto+Sans+Thai&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+ 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z5JJ3B2GLH"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -18,7 +18,7 @@
   gtag('js', new Date());
   gtag('config', 'G-Z5JJ3B2GLH');
 </script>
-
+ 
 <style>
     /* --- CSS Variables & Theme --- */
     :root {
@@ -43,7 +43,7 @@
         --arts-bg-2: #f0f4f8;
         --sidebar-width: 280px;
     }
-
+ 
     [data-theme="dark"] {
         /* Dark Mode */
         --primary-color: #60a5fa; 
@@ -65,7 +65,7 @@
         --arts-bg-1: #0f172a;
         --arts-bg-2: #172554;
     }
-
+ 
     body {
         font-family: "Pretendard", "Noto Sans KR", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
         background-color: var(--bg-color);
@@ -75,10 +75,10 @@
         display: flex;
         transition: background-color 0.3s, color 0.3s;
     }
-
+ 
     a { text-decoration: none; color: var(--primary-color); transition: color 0.2s; }
     a:hover { color: var(--accent); text-decoration: underline; }
-
+ 
     /* --- Sidebar (Navigation) --- */
     .sidebar {
         width: var(--sidebar-width);
@@ -94,7 +94,7 @@
         z-index: 100;
         transition: background-color 0.3s, border-color 0.3s;
     }
-
+ 
     .profile-section { margin-bottom: 24px; }
     
     .profile-img {
@@ -106,7 +106,7 @@
         border: 4px solid var(--bg-color);
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     }
-
+ 
     .sidebar-contact {
         display: flex;
         flex-direction: column;
@@ -115,7 +115,7 @@
         padding-bottom: 24px;
         border-bottom: 1px solid var(--border-color);
     }
-
+ 
     .contact-item {
         display: flex;
         align-items: center;
@@ -129,7 +129,7 @@
     .contact-item:hover { color: var(--accent); }
     .contact-item i { width: 18px; text-align: center; color: #9ca3af; font-size: 0.95rem; }
     .contact-item:hover i { color: var(--accent); }
-
+ 
     .nav-links { display: flex; flex-direction: column; gap: 8px; }
     .nav-links a {
         color: var(--text-sub);
@@ -146,7 +146,7 @@
         transform: translateX(4px); 
     }
     .sidebar-bottom { margin-top: auto; font-size: 0.8rem; color: #9ca3af; padding-top:40px; }
-
+ 
     /* --- Main Content --- */
     .main-content {
         margin-left: var(--sidebar-width);
@@ -155,7 +155,7 @@
         box-sizing: border-box;
         position: relative;
     }
-
+ 
     /* --- Header Area --- */
     header {
         position: relative;
@@ -164,7 +164,7 @@
         background: linear-gradient(to bottom, var(--header-grad-1) 0%, var(--header-grad-2) 70%, var(--header-grad-3) 100%);
         transition: background 0.3s;
     }
-
+ 
     #world-map-canvas {
         position: absolute;
         top: 0;
@@ -174,12 +174,12 @@
         z-index: 0;
         pointer-events: none; 
     }
-
+ 
     .header-content {
         position: relative;
         z-index: 1;
     }
-
+ 
     .welcome-box {
         background: var(--welcome-box-bg); 
         backdrop-filter: blur(5px);
@@ -191,7 +191,7 @@
         margin-top: 140px; 
         transition: background 0.3s, border 0.3s;
     }
-
+ 
     h1.name {
         font-size: 2.5rem;
         margin: 0 0 10px 0;
@@ -208,7 +208,7 @@
         overflow: visible; 
         transition: color 0.3s;       
     }
-
+ 
     .mongolian-vertical {
         writing-mode: vertical-lr; 
         text-orientation: sideways;
@@ -236,7 +236,7 @@
     .content-section {
         padding: 0 80px;
     }
-
+ 
     .section-title {
         font-size: 1.5rem;
         font-weight: 700;
@@ -257,10 +257,10 @@
         color: var(--primary-color);
         display: block;
     }
-
+ 
     /* --- Card Design --- */
     .card-list { display: flex; flex-direction: column; gap: 16px; }
-
+ 
     .card {
         background: var(--card-bg);
         border-radius: 12px;
@@ -271,13 +271,13 @@
         gap: 24px;
         transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s, border-color 0.3s;
     }
-
+ 
     .card:hover {
         transform: translateY(-2px);
         box-shadow: 0 10px 15px -3px var(--card-hover-shadow);
         border-color: var(--border-color);
     }
-
+ 
     .date-col {
         min-width: 130px;
         font-weight: 600;
@@ -285,10 +285,10 @@
         font-size: 0.9rem;
         flex-shrink: 0;
     }
-
+ 
     .content-col { flex: 1; }
     .content-col strong { color: var(--section-title-color); }
-
+ 
     .paper-thumb {
         width: 140px;
         height: 80px;
@@ -297,7 +297,7 @@
         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         background: #f3f4f6;
     }
-
+ 
     /* --- Lists --- */
     .simple-list {
         list-style: none;
@@ -320,7 +320,7 @@
         color: var(--primary-color);
         margin-top: 4px;
     }
-
+ 
     /* --- Galleries --- */
     #arts {
         position: relative;
@@ -344,7 +344,7 @@
         position: relative;
         z-index: 1;
     }
-
+ 
     .hobby-gallery {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -360,7 +360,7 @@
         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     .HobbyPhoto:hover { transform: scale(1.03); }
-
+ 
     /* --- Typing Effect --- */
     #typed-text {
         color: var(--accent);
@@ -377,7 +377,7 @@
         color: var(--text-sub);
     }
     @keyframes blink { 0%, 50% { opacity: 1; } 50.01%, 100% { opacity: 0; } }
-
+ 
     /* --- Tags --- */
     .tag-oral {
         background-color: #dbeafe;
@@ -393,7 +393,7 @@
         background-color: #1e3a8a;
         color: #bfdbfe;
     }
-
+ 
     /* --- THEME TOGGLE SWITCH --- */
     .theme-switch-container {
         position: absolute; 
@@ -403,7 +403,7 @@
         display: flex;
         align-items: center;
     }
-
+ 
     .theme-checkbox { opacity: 0; width: 0; height: 0; }
     .theme-label {
         width: 66px; height: 32px;
@@ -429,11 +429,11 @@
     }
     .theme-label .ball::before { width: 6px; height: 6px; top: 5px; left: 10px; }
     .theme-label .ball::after { width: 4px; height: 4px; top: 12px; left: 6px; }
-
+ 
     .theme-checkbox:checked + .theme-label { background-color: #1e293b; box-shadow: inset 0 2px 5px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.1); }
     .theme-checkbox:checked + .theme-label .ball { transform: translateX(32px); background-color: #e2e8f0; box-shadow: 0 0 8px 1px rgba(226, 232, 240, 0.4); }
     .theme-checkbox:checked + .theme-label .ball::before, .theme-checkbox:checked + .theme-label .ball::after { opacity: 1; }
-
+ 
     .drag-hint {
         position: absolute;
         right: 80px;
@@ -453,13 +453,13 @@
         border-width: 6px 0 6px 6px; border-style: solid; border-color: transparent transparent transparent var(--accent);
     }
     @keyframes hintBlink { 0%, 100% { opacity: 1; transform: translateX(0); } 50% { opacity: 0.6; transform: translateX(-3px); } }
-
+ 
     /* --- MOBILE RESPONSIVE OPTIMIZATION --- */
     @media (max-width: 900px) {
         body { 
             flex-direction: column; 
         }
-
+ 
         /* 1. Transform Sidebar to Top Nav */
         .sidebar { 
             position: relative; 
@@ -470,20 +470,20 @@
             padding: 30px 20px;
             text-align: center;
         }
-
+ 
         .profile-img {
             margin: 0 auto 15px auto;
             width: 120px;
             height: 120px;
         }
-
+ 
         .sidebar-contact { 
             align-items: center; 
             border-bottom: 1px solid var(--border-color); 
             margin-bottom: 20px; 
             padding-bottom: 20px;
         }
-
+ 
         /* Grid Layout for Links on Mobile */
         .nav-links { 
             display: grid; 
@@ -495,7 +495,7 @@
             text-align: center;
             border: 1px solid var(--border-color);
         }
-
+ 
         /* 2. Main Content Adjustments */
         .main-content { margin-left: 0; }
         
@@ -506,7 +506,7 @@
             flex-direction: column;
             justify-content: center;
         }
-
+ 
         /* 3. Typography & Spacing */
         h1.name { 
             font-size: 1.8rem; 
@@ -518,25 +518,46 @@
         .mongolian-vertical { height: 60px; margin-left: 10px; }
         
         .welcome-box { margin-top: 40px; }
-
+ 
         .content-section { padding: 0 20px; }
         #arts { padding: 40px 20px; margin-left: -20px; margin-right: -20px; }
-
+ 
         /* 4. Switch & Layout */
         .theme-switch-container {
             top: 15px;
             right: 15px;
         }
         .drag-hint { right: 75px; font-size: 0.7rem; }
-
+ 
         /* 5. Cards Mobile View */
         .card { flex-direction: column; gap: 15px; }
         .date-col { min-width: auto; margin-bottom: 5px; }
         .paper-thumb { width: 100%; height: auto; max-width: 100%; aspect-ratio: 16/9; }
     }
+ 
+    /* Prevent any accidental horizontal scrolling on small screens */
+    html, body { max-width: 100%; overflow-x: hidden; }
+    img { max-width: 100%; }
+ 
+    /* --- VERY SMALL PHONES --- */
+    @media (max-width: 480px) {
+        .sidebar { padding: 24px 16px; }
+        .nav-links { grid-template-columns: 1fr; }
+        .profile-img { width: 100px; height: 100px; }
+ 
+        header { padding: 45px 16px 24px 16px; }
+        h1.name { font-size: 1.5rem; }
+        .welcome-box { margin-top: 24px; padding: 18px; }
+        .affiliation { font-size: 1rem; }
+ 
+        .content-section { padding: 0 16px; }
+        .section-title { margin-top: 50px; font-size: 1.3rem; }
+        .card { padding: 18px; }
+        .simple-list li { padding: 14px 16px; }
+    }
 </style>
 </head>
-
+ 
 <body>
     
     <nav class="sidebar">
@@ -547,7 +568,7 @@
                 <span style="font-size: 0.9rem; color: var(--text-sub); display:block; margin-top:4px;">M.S. Student @ KAIST</span>
             </div>
         </div>
-
+ 
         <div class="sidebar-contact">
             <div class="contact-item">
                 <i class="fa-solid fa-location-dot"></i>
@@ -567,18 +588,15 @@
             <a href="#home">Home</a>
             <a href="#education">Education</a>
             <a href="#publications">Publications</a>
-            <a href="#experience">Research Experience</a>
             <a href="#teaching">Teaching Experience</a>
-            <a href="#extra">Extracurricular</a>
             <a href="#honors">Honors & Awards</a>
-            <a href="#arts">Galleries</a>
         </div>
         
         <div class="sidebar-bottom">
             Updated: Jan. 2026
         </div>
     </nav>
-
+ 
     <main class="main-content">
         
         <header id="home">
@@ -591,7 +609,7 @@
                     <div class="ball"></div>
                 </label>
             </div>
-
+ 
             <div class="header-content">
                 <h1 class="name">
                     Minu Kim 
@@ -603,7 +621,7 @@
                     <div><a href="https://www.kaist.ac.kr/en/">KAIST School of Electrical Engineering</a></div>
                     <div>Computational Linguist & Speech Scientist</div>
                 </div>
-
+ 
                 <div class="welcome-box">
                     <strong style="font-size:1.1em; color:var(--primary-color);">Welcome to my page!</strong><br>
                     <div style="margin-top:10px; color: var(--welcome-text);">
@@ -614,7 +632,7 @@
                 </div>
             </div>
         </header>
-
+ 
         <div class="content-section">
             <section id="education">
                 <span class="section-title">Education</span>
@@ -642,11 +660,11 @@
                     </div>
                 </div>
             </section>
-
+ 
             <section id="publications">
                 <span class="section-title">Publications</span>
                 <p style="font-size:0.9rem; color:var(--text-sub); margin-bottom:20px;">* indicates equal contribution.</p>
-
+ 
                 <span class="year-header">Preparation</span>
                 <div class="card-list">
                     <div class="card">
@@ -674,7 +692,7 @@
                         </div>
                     </div>
                 </div>
-
+ 
                 <span class="year-header">2026</span>
                 <div class="card-list">
                     <div class="card">
@@ -687,7 +705,7 @@
                         </div>
                     </div>
                 </div>
-
+ 
                 <span class="year-header">2025</span>
                 <div class="card-list">
                     <div class="card">
@@ -699,7 +717,7 @@
                             [<a href="https://arxiv.org/pdf/2411.10927">pdf</a>]
                         </div>
                     </div>
-
+ 
                     <div class="card">
                         <img src="./images/interspeech2025.png" class="paper-thumb" alt="Interspeech 2025">
                         <div class="content-col">
@@ -709,7 +727,7 @@
                             [<a href="https://arxiv.org/pdf/2508.07219">pdf</a>]
                         </div>
                     </div>
-
+ 
                     <div class="card">
                         <img src="./images/icassp2025.png" class="paper-thumb" alt="ICASSP 2025">
                         <div class="content-col">
@@ -721,55 +739,7 @@
                     </div>
                 </div>
             </section>
-
-            <section id="experience">
-                <span class="section-title">Research Experience</span>
-                <div class="card-list">
-                    <div class="card">
-                        <div class="date-col">03/2024 – Present</div>
-                        <div class="content-col">
-                            <strong>Statistical Speech and Sound Computing Lab, KAIST</strong><br>
-                            Conducted cross-lingual phoneme & tone recognition for low-resource languages and analyzed linguistic patterns.
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="date-col">01/2026 – Present</div>
-                        <div class="content-col">
-                            <strong>Carnegie Mellon University (Collaboration)</strong><br>
-                            Investigated phylogenetic recovery capability of massive-scale speech SSL models.
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="date-col">08/2025 – Present</div>
-                        <div class="content-col">
-                            <strong>Wonkwang University Hospital (Collaboration)</strong><br>
-                            Analyzed how dysarthric articulatory patterns distort phonetic representations in SSL speech models.
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="date-col">08/2024 – 12/2025</div>
-                        <div class="content-col">
-                            <strong>Independent Research on Language Education Technology</strong><br>
-                            Developed computational frameworks for L1-grounded L2 pronunciation training.
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="date-col">06/2023 – 08/2023</div>
-                        <div class="content-col">
-                            <strong>Music and Audio Research Group, SNU</strong><br>
-                            Built speech-to-action robotics systems and multimodal processing models.
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="date-col">09/2019 – 12/2019</div>
-                        <div class="content-col">
-                            <strong>Fieldwork on Korean Mungyeong Dialects, SNU</strong><br>
-                            Documented and analyzed endangered Korean dialects through fieldwork.
-                        </div>
-                    </div>
-                </div>
-            </section>
-
+ 
             <section id="teaching">
                 <span class="section-title">Teaching Experience</span>
                 <ul class="simple-list">
@@ -781,41 +751,7 @@
                     <li><i class="fa-solid fa-book-open-reader list-icon"></i><div><strong>Tutor</strong>, <em>L0444.000400 Basic Computing</em>, SNU (2021–2023)</div></li>
                 </ul>
             </section>
-
-            <section id="extra">
-                <span class="section-title">Extracurricular Activities</span>
-                <div class="card-list">
-                    <div class="card">
-                        <div class="date-col">2023</div>
-                        <div class="content-col">
-                            <strong>SNU Social Responsibility</strong>, Samarkand, Uzbekistan<br>
-                            Adapted Korean children’s books into Uzbek/Russian and developed multi-sensory kindergarten education program.
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="date-col">2020</div>
-                        <div class="content-col">
-                            <strong>Growth Hackers</strong>, Seoul<br>
-                            Led NLP/deep learning trainings; analyzed K-pop trends in 23 countries and optimized business data solutions.
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="date-col">2017, 2018</div>
-                        <div class="content-col">
-                            <strong>SNU Global Community Service</strong>, Ho Chi Minh City, Vietnam<br>
-                            Organized visual impairment awareness campaign and charity activities.
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="date-col">2017</div>
-                        <div class="content-col">
-                            <strong>Les Passionnés</strong>, Seoul<br>
-                            Acted in French-language musicals with a student ensemble at Hankuk Univ. of Foreign Studies.
-                        </div>
-                    </div>
-                </div>
-            </section>
-
+ 
             <section id="honors">
                 <span class="section-title">Honors & Scholarships</span>
                 <ul class="simple-list">
@@ -829,43 +765,18 @@
                     <li><i class="fa-solid fa-medal list-icon"></i><div><strong>Work-Study Scholarship</strong>, SNU Library (2019–2020)</div></li>
                 </ul>
             </section>
-
-            <section id="arts">
-                <canvas id="arts-canvas"></canvas>
-                <div class="arts-content">
-                    <span class="section-title" style="margin-top:0;">Galleries</span>
-                    <p style="margin-bottom: 20px; font-size: 0.95rem;">
-                        I enjoy performing arts, especially collaborative work in both classical and contemporary pieces. Being on stage with wonderful artists motivates me and keeps me connected to creativity beyond research!
-                    </p>
-                    
-                    <div class="hobby-gallery" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 50px;">
-                        <img src="./images/pic2.jpg" class="HobbyPhoto" alt="Arts 1">
-                        <img src="./images/pic3.jpg" class="HobbyPhoto" alt="Arts 2">
-                        <img src="./images/pic5.png" class="HobbyPhoto" alt="Arts 3">
-                    </div>
-
-                    <p style="margin-bottom: 20px; font-size: 0.95rem; border-top: 1px solid var(--border-color); padding-top: 40px;">
-                        I also love traveling to experience different cultures and listening to people's diverse stories. These encounters always broaden my perspective and bring new inspiration.
-                    </p>
-                    <div class="hobby-gallery" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
-                        <img src="./images/service1.jpg" class="HobbyPhoto" alt="Global Activity 1">
-                        <img src="./images/service2.jpg" class="HobbyPhoto" alt="Global Activity 2">
-                        <img src="./images/service3.jpg" class="HobbyPhoto" alt="Global Activity 3">
-                    </div>
-                </div>
-            </section>
-            
+ 
             <footer style="margin-top: 40px; border-top: 1px solid var(--border-color); padding-top: 30px; padding-bottom:30px; font-size: 0.85rem; color: var(--text-sub); text-align: center;">
                 &copy; 2025 Minu Kim.
             </footer>
         </div> </main>
-
+ 
 <script>
     // --- THEME SWITCHER LOGIC ---
     const toggle = document.getElementById('theme-toggle');
     const dragHint = document.getElementById('drag-hint');
     const htmlEl = document.documentElement;
-
+ 
     const currentTheme = localStorage.getItem('theme');
     if (currentTheme) {
         htmlEl.setAttribute('data-theme', currentTheme);
@@ -873,7 +784,7 @@
             toggle.checked = true;
         }
     }
-
+ 
     toggle.addEventListener('change', function(e) {
         if (e.target.checked) {
             htmlEl.setAttribute('data-theme', 'dark');
@@ -882,17 +793,13 @@
             htmlEl.setAttribute('data-theme', 'light');
             localStorage.setItem('theme', 'light');
         }
-        
-        requestAnimationFrame(() => {
-            initArtsBg(); 
-        });
     });
-
+ 
     // --- TYPING EFFECT ---
     const names = [
       { text: "김민우" }, { text: "金民友" }, { text: "Мину Ким" }, { text: "مينوو كيم", rtl: true }, { text: "මිනු කිම්" }, { text: "મિનુ કિમ" }, { text: "ⵎⵉⵏⵓ ⴽⵉⵎ" }, { text: "ꦩꦶꦤꦸ ꦏꦶꦩ꧀" }, { text: "मीनू किम" }, { text: "ᨆᨗᨊᨘ ᨀᨗᨆ" }, { text: "ମିନୁ କିମ୍" }, { text: "মিনু কিম্" }, { text: "キム・ミヌ" }, { text: "ᠬᠢᠮ ᠮᠢᠨᠦ", vertical: true }, { text: "מִינוּ קִים", rtl: true }, { text: "Μίνου Κιμ" }, { text: "⠠⠍⠊⠝⠥ ⠠⠅⠊⠍" }, { text: "มินู คิม" }, { text: "មីនុ គីម" }, { text: "မီနူး ကင်" }, { text: "ᛗᛁᚾᚢ ᚲᛁᛗ" }, { text: "ມິນູ ຄິມ" }, { text: "ᒥᓄ ᑭᒻ" }, { text: "𓅓𓇋𓈖𓅱 𓎡𓇋𓅓" }, { text: "ᠮᡳᠨᡠ ᡴᡳᠮ", vertical: true }, { text: "ᎻᏄ ᎩᎻ" }, { text: "མི་ནུ་ཁིམ" }, { text: "მინუ კიმ" }, { text: "𐤌𐤉𐤍𐤅 𐤊𐤉𐤌", rtl: true }, { text: "ᚋᛁᚅᚒ ᚉᛁᚋ" }, { text: "ⰏⰞⰐⰖ ⰍⰞⰏ" }, { text: "Մինու Քիմ" }, { text: "மினு கிம்" }, { text: "-- .. -. ..-  -.- .. --" }, { text: "ߡߌߣߎ ߞߌߡ", rtl: true }, { text: "𐎎𐎛𐎐𐎢 𐎋𐎛𐎐", rtl: true }, { text: "ਮਿਨੂ ਕਿਮ" }, { text: "മിനു കിം" }, { text: "މިނޫ ކިމް", rtl: true }, { text: "Ⲙⲓⲛⲟⲩ Ⲕⲓⲙ" }, { text: "ܡܝܢܘ ܟܝܡ", rtl: true }, { text: "మినూ కిమ్" }, { text: "𒈪 𒉡 𒆠 𒅎" }, { text: "ꂠꆹ ꈾꃀ" }, { text: "ሚኑ ኪም" }, { text: "ಮಿನು ಕಿಮ್" }, { text: "𐒄𐒘𐒒𐒖 𐒏𐒘𐒑" }, { text: "ꃘꆀꁯ ꑭꁮ" }, { text: "𐑕𐑦𐑯𐑵 𐑒𐑦𐑥" }, { text: "0x4D696E75 0x4B696D" }, { text: "01001101 01101001 01101110 01110101 00100000 01001011 01101001 01101101" },
     ];
-
+ 
     const typedTextElement = document.getElementById("typed-text");
     const headerElement = document.querySelector("h1.name"); 
     let baseFontSize = parseFloat(window.getComputedStyle(typedTextElement).fontSize);
@@ -945,7 +852,7 @@ document.addEventListener("DOMContentLoaded", () => {
     twemoji.parse(document.body, { folder: "svg", ext: ".svg" });
 });
 </script>
-
+ 
 <script>
     // --- WORLD MAP CANVAS ---
     const mapCanvas = document.getElementById('world-map-canvas');
@@ -962,45 +869,62 @@ document.addEventListener("DOMContentLoaded", () => {
     "M 770 255 L 820 245 L 850 275 L 800 305 Z",
     "M 810 335 L 900 325 L 940 375 L 890 425 L 820 395 Z"
     ];
-
+ 
     const cities = [
     {x: 225, y: 120}, {x: 320, y: 125}, {x: 340, y: 330}, {x: 480, y: 80},
     {x: 520, y: 230}, {x: 720, y: 190}, {x: 880, y: 150}, {x: 880, y: 390}
     ];
     
-    // --- GENERATE REALISTIC NIGHT LIGHTS ---
-    const extraLights = [];
-    
-    const zones = [
-        { name: 'US East', bounds: [280, 360, 100, 180], density: 50 },
-        { name: 'US West', bounds: [160, 240, 80, 180], density: 30 },
-        { name: 'Europe', bounds: [450, 550, 50, 120], density: 80 },
-        { name: 'India/China', bounds: [600, 850, 100, 220], density: 70 },
-        { name: 'Japan/Korea', bounds: [850, 920, 130, 180], density: 40 },
-        { name: 'S. America', bounds: [280, 350, 250, 380], density: 30 },
-        { name: 'Africa', bounds: [460, 560, 180, 320], density: 25 },
-        { name: 'Australia', bounds: [820, 920, 320, 400], density: 20 },
+    // --- GENERATE NIGHT LIGHTS (constrained to land masses) ---
+    // Build Path2D objects for the continents so we can reject any
+    // candidate point that would otherwise spill into the ocean.
+    const continentPaths = worldMapPaths.map(p => new Path2D(p));
+ 
+    function isOnLand(x, y) {
+        for (let k = 0; k < continentPaths.length; k++) {
+            if (mapCtx.isPointInPath(continentPaths[k], x, y)) return true;
+        }
+        return false;
+    }
+ 
+    // Regional "target" counts keep the populated look of Earth-at-night,
+    // while rejection sampling guarantees every light sits inside land.
+    const lightZones = [
+        { bounds: [105, 385,  35, 220], target: 90 },   // North America
+        { bounds: [250, 380, 230, 450], target: 35 },   // South America
+        { bounds: [440, 580,  45, 125], target: 110 },  // Europe
+        { bounds: [415, 585, 125, 350], target: 45 },   // Africa
+        { bounds: [555, 945,  55, 265], target: 150 },  // Asia
+        { bounds: [810, 945, 320, 430], target: 28 },   // Australia
     ];
-
-    zones.forEach(zone => {
-        for(let i=0; i<zone.density; i++) {
+ 
+    const extraLights = [];
+    lightZones.forEach(zone => {
+        let placed = 0, attempts = 0;
+        const maxAttempts = zone.target * 60;
+        while (placed < zone.target && attempts < maxAttempts) {
+            attempts++;
+            const x = zone.bounds[0] + Math.random() * (zone.bounds[1] - zone.bounds[0]);
+            const y = zone.bounds[2] + Math.random() * (zone.bounds[3] - zone.bounds[2]);
+            if (!isOnLand(x, y)) continue;
             extraLights.push({
-                x: zone.bounds[0] + Math.random() * (zone.bounds[1] - zone.bounds[0]),
-                y: zone.bounds[2] + Math.random() * (zone.bounds[3] - zone.bounds[2]),
-                intensity: Math.random(),
-                size: Math.random() * 1.5 + 0.5,
+                x: x,
+                y: y,
+                intensity: Math.random() * 0.7 + 0.3,
+                size: Math.random() * 1.1 + 0.4,
                 blinkOffset: Math.random() * 100
             });
+            placed++;
         }
     });
-
+ 
     let ripples = []; 
-
+ 
     function initMap() {
         mapW = mapCanvas.width = mapCanvas.parentElement.offsetWidth;
         mapH = mapCanvas.height = mapCanvas.parentElement.offsetHeight;
     }
-
+ 
     function spawnRipple() {
         const city = cities[Math.floor(Math.random() * cities.length)];
         const svgW = 1000;
@@ -1010,7 +934,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const renderH = svgH * scale;
         const offsetX = (mapW - renderW) / 2;
         const offsetY = (mapH - renderH) / 2 - 70;
-
+ 
         ripples.push({
             x: offsetX + city.x * scale,
             y: offsetY + city.y * scale,
@@ -1019,12 +943,12 @@ document.addEventListener("DOMContentLoaded", () => {
             speed: Math.random() * 0.4 + 0.3
         });
     }
-
+ 
     function drawMapAndRipples() {
         mapCtx.clearRect(0, 0, mapW, mapH);
-
+ 
         const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-
+ 
         const svgW = 1000;
         const svgH = 500;
         const scale = Math.min(mapW / svgW, mapH / svgH) * 0.85;
@@ -1033,22 +957,22 @@ document.addEventListener("DOMContentLoaded", () => {
         const renderH = svgH * scale;
         const offsetX = (mapW - renderW) / 2;
         const offsetY = (mapH - renderH) / 2 - 70;
-
+ 
         mapCtx.save();
         mapCtx.translate(offsetX, offsetY);
         mapCtx.scale(scale, scale);
-
+ 
         if (isDark) {
             mapCtx.fillStyle = 'rgba(30, 41, 59, 0.7)'; 
         } else {
             mapCtx.fillStyle = 'rgba(170, 200, 230, 0.25)'; 
         }
-
+ 
         worldMapPaths.forEach(pathStr => {
             const path = new Path2D(pathStr);
             mapCtx.fill(path);
         });
-
+ 
         if (isDark) {
             mapCtx.globalCompositeOperation = 'lighter';
             
@@ -1062,7 +986,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 mapCtx.arc(city.x, city.y, 10, 0, Math.PI*2);
                 mapCtx.fill();
             });
-
+ 
             const time = Date.now() / 200;
             extraLights.forEach(light => {
                  const blink = Math.sin(time + light.blinkOffset) * 0.2 + 0.8; 
@@ -1076,14 +1000,14 @@ document.addEventListener("DOMContentLoaded", () => {
             
             mapCtx.globalCompositeOperation = 'source-over';
         }
-
+ 
         mapCtx.restore();
-
+ 
         const transformedCities = cities.map(c => ({
             x: offsetX + c.x * scale,
             y: offsetY + c.y * scale
         }));
-
+ 
         mapCtx.strokeStyle = isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 62, 128, 0.08)'; 
         mapCtx.lineWidth = 1;
         mapCtx.beginPath();
@@ -1100,12 +1024,12 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
         mapCtx.stroke();
-
+ 
         for (let i = ripples.length - 1; i >= 0; i--) {
             const r = ripples[i];
             r.radius += r.speed; 
             r.alpha -= 0.008; 
-
+ 
             if (r.alpha <= 0) {
                 ripples.splice(i, 1);
             } else {
@@ -1128,7 +1052,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
         requestAnimationFrame(drawMapAndRipples);
     }
-
+ 
     window.addEventListener('resize', initMap);
     setTimeout(() => {
         initMap();
@@ -1136,77 +1060,6 @@ document.addEventListener("DOMContentLoaded", () => {
         drawMapAndRipples();
     }, 100);
 </script>
-
-<script>
-    // --- ARTS CANVAS ---
-    const artsCanvas = document.getElementById('arts-canvas');
-    const artsCtx = artsCanvas.getContext('2d');
-    let artsW, artsH;
-    let ribbons = [];
-
-    function initArtsBg() {
-        artsW = artsCanvas.width = artsCanvas.parentElement.offsetWidth;
-        artsH = artsCanvas.height = artsCanvas.parentElement.offsetHeight;
-        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-        
-        ribbons = [];
-        for (let i = 0; i < 7; i++) {
-            const hue = 200 + Math.random() * 40;
-            const sat = isDark ? '90%' : '70%';
-            const light = isDark ? '60%' : '75%';
-            const alpha = isDark ? 0.2 : 0.4;
-
-            ribbons.push({
-                x: Math.random() * artsW,
-                y: artsH + Math.random() * 100,
-                speed: Math.random() * 0.5 + 0.2,
-                angle: Math.random() * Math.PI * 2,
-                angleSpeed: Math.random() * 0.02 + 0.01,
-                width: Math.random() * 30 + 10,
-                color: `hsla(${hue}, ${sat}, ${light}, ${alpha})`
-            });
-        }
-    }
-
-    function animateArtsBg() {
-        artsCtx.clearRect(0, 0, artsW, artsH);
-
-        ribbons.forEach(r => {
-            r.y -= r.speed;
-            r.angle += r.angleSpeed;
-            
-            if (r.y < -100) {
-                r.y = artsH + 100;
-                r.x = Math.random() * artsW;
-            }
-
-            artsCtx.beginPath();
-            const startX = r.x + Math.sin(r.angle) * 30;
-            artsCtx.moveTo(startX, r.y);
-            
-            for (let i = 0; i < 150; i+=5) {
-                const yPos = r.y + i;
-                const wave = Math.sin(r.angle + i * 0.05) * 30;
-                artsCtx.lineTo(r.x + wave, yPos);
-            }
-            
-            artsCtx.strokeStyle = r.color;
-            artsCtx.lineWidth = r.width;
-            artsCtx.lineCap = 'round';
-            artsCtx.lineJoin = 'round';
-            artsCtx.stroke();
-        });
-
-        requestAnimationFrame(animateArtsBg);
-    }
-    
-    window.addEventListener('resize', initArtsBg);
-    setTimeout(() => {
-        initArtsBg();
-        animateArtsBg();
-    }, 100);
-</script>
-
+ 
 </body>
-</html>
 </html>
