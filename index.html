@@ -109,31 +109,44 @@
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     }
 
-    /* Pixel Art Campus Card in Sidebar */
+    /* Pixel Art Campus Card in Sidebar (Expanded Vertical Height) */
     .sidebar-pixel-banner {
         width: 100%;
+        height: 180px;
         border-radius: 8px;
         overflow: hidden;
         border: 1px solid var(--border-color);
-        margin: 6px 0 16px 0;
+        margin: 8px 0 16px 0;
         box-shadow: 0 2px 5px rgba(0,0,0,0.04);
         background: var(--tag-bg);
-        display: block;
+        position: relative;
+        flex-shrink: 0;
     }
     .sidebar-pixel-banner img {
         width: 100%;
-        height: auto;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 30%;
         display: block;
         image-rendering: pixelated;
     }
     .sidebar-pixel-caption {
-        font-size: 0.7rem;
-        color: var(--text-sub);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        font-size: 0.72rem;
+        color: var(--text-main);
         text-align: center;
         padding: 4px 0;
-        font-weight: 500;
+        font-weight: 600;
+        background: rgba(255, 255, 255, 0.88);
+        backdrop-filter: blur(4px);
         border-top: 1px solid var(--border-color);
-        background: var(--sidebar-bg);
+    }
+    [data-theme="dark"] .sidebar-pixel-caption {
+        background: rgba(17, 24, 39, 0.88);
+        color: #f1f5f9;
     }
  
     .sidebar-contact {
@@ -444,7 +457,7 @@
             text-align: center; 
         }
         .profile-img { margin: 0 auto 12px auto; width: 120px; height: 120px; }
-        .sidebar-pixel-banner { max-width: 320px; margin: 0 auto 20px auto; }
+        .sidebar-pixel-banner { max-width: 320px; height: 200px; margin: 0 auto 20px auto; }
         .sidebar-contact { align-items: center; }
         .nav-links { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
         .nav-links a { text-align: center; border: 1px solid var(--border-color); }
@@ -555,8 +568,8 @@
                 <div class="welcome-box">
                     <strong style="font-size:1.1em; color:var(--primary-color);">Welcome to my homepage!</strong><br>
                     <div style="margin-top:10px; color: var(--welcome-text);">
-                        I am a Ph.D. student in the <a href="https://sail.usc.edu" target="_blank">Signal Analysis and Interpretation Laboratory (SAIL)</a> at the University of Southern California (USC), advised by <a href="https://sail.usc.edu/people/shri.html" target="_blank">Prof. Shrikanth (Shri) Narayanan</a> <span class="fellow-titles">(NAE Member, Guggenheim Fellow, Fellow of IEEE/ISCA/ACM/AAAS/ASA/APS/AIMBE/NAI/AAAC)</span>.<br><br>
-                        My academic interests lie at the intersection of linguistics and artificial intelligence. In particular, I enjoy exploring speech AI, phonetics, phonology, and language typology, connecting linguistic theories with computational and representation learning approaches.<br><br>
+                        I am a doctoral researcher in the <a href="https://sail.usc.edu" target="_blank">Signal Analysis and Interpretation Laboratory (SAIL)</a> at the University of Southern California (USC), advised by <a href="https://sail.usc.edu/people/shri.html" target="_blank">Prof. Shrikanth (Shri) Narayanan</a> <span class="fellow-titles">(NAE Member, Guggenheim Fellow, Fellow of IEEE/ISCA/ACM/AAAS/ASA/APS/AIMBE/NAI/AAAC)</span>.<br><br>
+                        My academic interests lie at the intersection of linguistics and artificial intelligence. In particular, I enjoy exploring phonetics, phonology, and language typology, connecting linguistic theories with computational and representation learning approaches.<br><br>
                         My research focuses on applying this interdisciplinary perspective to <strong>inclusive speech technologies (e.g., low-resource language transfer, non-native/atypical speech, and phonetic representation learning)</strong>.
                     </div>
                 </div>
@@ -880,7 +893,7 @@
         const svgH = 500;
         const scale = Math.min(mapW / svgW, mapH / svgH) * 0.88; 
         const offsetX = (mapW - svgW * scale) / 2;
-        const offsetY = (mapH - svgH * scale) / 2 - 60;
+        const offsetY = (mapH - svgH * scale) / 2 - 60; 
  
         ripples.push({
             x: offsetX + city.x * scale,
