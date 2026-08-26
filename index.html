@@ -83,7 +83,7 @@
         background: var(--sidebar-bg);
         height: 100vh;
         position: fixed;
-        padding: 35px 24px;
+        padding: 30px 20px;
         box-sizing: border-box;
         border-right: 1px solid var(--border-color);
         overflow-y: auto;
@@ -93,27 +93,32 @@
         transition: background-color 0.3s, border-color 0.3s;
     }
  
-    .profile-section { margin-bottom: 16px; }
+    .profile-section { 
+        margin-bottom: 12px; 
+        text-align: center;
+    }
     
     .profile-img {
-        width: 130px;
-        height: 130px;
+        width: 120px;
+        height: 120px;
         border-radius: 50%;
         object-fit: cover;
-        margin-bottom: 14px;
+        margin: 0 auto 10px auto;
+        display: block;
         border: 3px solid var(--primary-color);
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     }
 
-    /* Pixel Art Campus Mini Card in Sidebar */
+    /* Pixel Art Campus Card in Sidebar */
     .sidebar-pixel-banner {
         width: 100%;
-        border-radius: 10px;
+        border-radius: 8px;
         overflow: hidden;
         border: 1px solid var(--border-color);
-        margin-bottom: 20px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        margin: 6px 0 16px 0;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.04);
         background: var(--tag-bg);
+        display: block;
     }
     .sidebar-pixel-banner img {
         width: 100%;
@@ -122,20 +127,21 @@
         image-rendering: pixelated;
     }
     .sidebar-pixel-caption {
-        font-size: 0.72rem;
+        font-size: 0.7rem;
         color: var(--text-sub);
         text-align: center;
         padding: 4px 0;
         font-weight: 500;
         border-top: 1px solid var(--border-color);
+        background: var(--sidebar-bg);
     }
  
     .sidebar-contact {
         display: flex;
         flex-direction: column;
         gap: 8px;
-        margin-bottom: 20px;
-        padding-bottom: 20px;
+        margin-bottom: 18px;
+        padding-bottom: 18px;
         border-bottom: 1px solid var(--border-color);
     }
  
@@ -152,13 +158,13 @@
     .contact-item:hover { color: var(--primary-color); }
     .contact-item i { width: 16px; text-align: center; color: var(--primary-color); font-size: 0.9rem; }
  
-    .nav-links { display: flex; flex-direction: column; gap: 6px; }
+    .nav-links { display: flex; flex-direction: column; gap: 4px; }
     .nav-links a {
         color: var(--text-sub);
         font-weight: 500;
-        padding: 8px 12px;
+        padding: 7px 10px;
         border-radius: 6px;
-        font-size: 0.92rem;
+        font-size: 0.9rem;
         transition: all 0.2s;
         text-decoration: none;
     }
@@ -167,7 +173,7 @@
         color: var(--primary-color); 
         transform: translateX(4px); 
     }
-    .sidebar-bottom { margin-top: auto; font-size: 0.8rem; color: #9ca3af; padding-top: 25px; }
+    .sidebar-bottom { margin-top: auto; font-size: 0.78rem; color: #9ca3af; padding-top: 20px; text-align: center; }
  
     /* --- Main Content --- */
     .main-content {
@@ -252,6 +258,14 @@
         display: flex;
         flex-direction: column;
         gap: 4px;
+    }
+
+    .fellow-titles {
+        font-size: 0.82em;
+        font-style: italic;
+        color: var(--text-sub);
+        opacity: 0.9;
+        display: inline;
     }
     
     /* --- Content Sections --- */
@@ -541,8 +555,8 @@
                 <div class="welcome-box">
                     <strong style="font-size:1.1em; color:var(--primary-color);">Welcome to my homepage!</strong><br>
                     <div style="margin-top:10px; color: var(--welcome-text);">
-                        I am a doctoral researcher in the <a href="https://sail.usc.edu" target="_blank">Signal Analysis and Interpretation Laboratory (SAIL)</a> at the University of Southern California (USC), advised by <a href="https://sail.usc.edu/people/shri.html" target="_blank">Prof. Shrikanth (Shri) Narayanan</a> (NAE Member, Guggenheim Fellow, Fellow of IEEE/ISCA/ACM/AAAS/ASA/APS/AIMBE/NAI/AAAC).<br><br>
-                        My academic interests lie at the intersection of linguistics and artificial intelligence. In particular, I enjoy exploring phonetics, phonology, and language typology, connecting linguistic theories with computational and representation learning approaches.<br><br>
+                        I am a Ph.D. student in the <a href="https://sail.usc.edu" target="_blank">Signal Analysis and Interpretation Laboratory (SAIL)</a> at the University of Southern California (USC), advised by <a href="https://sail.usc.edu/people/shri.html" target="_blank">Prof. Shrikanth (Shri) Narayanan</a> <span class="fellow-titles">(NAE Member, Guggenheim Fellow, Fellow of IEEE/ISCA/ACM/AAAS/ASA/APS/AIMBE/NAI/AAAC)</span>.<br><br>
+                        My academic interests lie at the intersection of linguistics and artificial intelligence. In particular, I enjoy exploring speech AI, phonetics, phonology, and language typology, connecting linguistic theories with computational and representation learning approaches.<br><br>
                         My research focuses on applying this interdisciplinary perspective to <strong>inclusive speech technologies (e.g., low-resource language transfer, non-native/atypical speech, and phonetic representation learning)</strong>.
                     </div>
                 </div>
@@ -774,9 +788,8 @@
     const mapCtx = mapCanvas.getContext('2d');
     let mapW, mapH;
     
-    // Accurate vector outlines for major continental landmasses and archipelagos (normalized to 1000 x 500)
     const worldMapPaths = [
-        // North America (Alaska, Canada, US, Mexico, Central America)
+        // North America
         "M 90 60 C 130 45, 175 40, 220 40 C 270 42, 330 35, 360 48 C 365 70, 340 85, 335 110 C 330 135, 300 145, 290 170 C 275 195, 235 220, 215 225 C 205 200, 175 185, 160 160 C 140 135, 110 120, 95 90 Z",
         // Greenland
         "M 370 20 C 400 15, 430 22, 440 38 C 435 65, 410 75, 385 68 C 370 55, 365 35, 370 20 Z",
@@ -790,13 +803,13 @@
         "M 445 135 C 490 130, 545 145, 575 185 C 595 225, 580 285, 555 335 C 530 375, 495 380, 475 345 C 450 305, 430 245, 425 195 C 420 160, 430 145, 445 135 Z",
         // Madagascar
         "M 585 315 C 595 310, 600 325, 595 350 C 588 360, 582 350, 585 315 Z",
-        // Eurasia (North, East, South, Southeast Asia)
+        // Eurasia
         "M 550 50 C 620 40, 710 45, 800 55 C 880 70, 935 110, 920 165 C 905 210, 860 235, 810 240 C 765 245, 735 220, 695 195 C 655 175, 605 155, 575 115 C 560 90, 545 65, 550 50 Z",
         // Indian Peninsula
         "M 690 195 C 720 200, 745 225, 730 265 C 715 285, 700 270, 685 240 C 675 215, 680 200, 690 195 Z",
-        // East Asian Islands (Japan, Korean Peninsula contour arc)
+        // East Asian Islands
         "M 885 140 C 900 135, 915 155, 910 185 C 900 195, 890 180, 885 140 Z",
-        // Maritime Southeast Asia (Indonesia/Philippines archipelago)
+        // Maritime Southeast Asia
         "M 780 265 C 825 260, 865 280, 850 310 C 820 320, 785 305, 775 285 Z",
         // Australia
         "M 805 330 C 855 315, 910 325, 935 365 C 940 405, 895 440, 845 435 C 810 420, 795 375, 805 330 Z",
@@ -804,7 +817,6 @@
         "M 950 420 C 960 415, 968 430, 960 450 C 950 455, 945 440, 950 420 Z"
     ];
  
-    // Curated global linguistic/technological hub coordinates
     const cities = [
         {x: 180, y: 145, name: "Los Angeles (USC)"},
         {x: 285, y: 125, name: "New York"},
@@ -827,12 +839,12 @@
     }
 
     const lightZones = [
-        { bounds: [100, 360, 40, 220], target: 90 },   // North America
-        { bounds: [250, 375, 235, 450], target: 40 },  // South America
-        { bounds: [440, 570, 40, 125], target: 100 },  // Europe
-        { bounds: [425, 590, 135, 360], target: 45 },  // Africa
-        { bounds: [550, 925, 50, 270], target: 160 },  // Asia
-        { bounds: [800, 940, 320, 440], target: 30 },  // Australia
+        { bounds: [100, 360, 40, 220], target: 90 },
+        { bounds: [250, 375, 235, 450], target: 40 },
+        { bounds: [440, 570, 40, 125], target: 100 },
+        { bounds: [425, 590, 135, 360], target: 45 },
+        { bounds: [550, 925, 50, 270], target: 160 },
+        { bounds: [800, 940, 320, 440], target: 30 },
     ];
 
     const extraLights = [];
@@ -930,7 +942,6 @@
             y: offsetY + c.y * scale
         }));
 
-        // Subtle network arches linking major research nodes
         mapCtx.strokeStyle = isDark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(140, 21, 21, 0.07)'; 
         mapCtx.lineWidth = 1;
         mapCtx.beginPath();
@@ -948,7 +959,6 @@
         }
         mapCtx.stroke();
  
-        // Animated signal pulse rings
         for (let i = ripples.length - 1; i >= 0; i--) {
             const r = ripples[i];
             r.radius += r.speed; 
