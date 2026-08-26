@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Minu Kim | Computational Linguist</title>
+<title>Minu Kim | USC SAIL</title>
  
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mongolian&family=Noto+Sans+SC&family=Noto+Sans+TC&family=Noto+Sans+JP&family=Noto+Sans+KR&family=Noto+Sans+Arabic&family=Noto+Sans+Thai&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
  
@@ -20,50 +20,52 @@
 </script>
  
 <style>
-    /* --- CSS Variables & Theme --- */
+    /* --- CSS Variables & Theme (USC Cardinal & Gold Palette) --- */
     :root {
-        /* Light Mode (Default) */
-        --primary-color: #003e80; 
-        --bg-color: #f9fafb;
+        /* Light Mode (USC Cardinal & Warm Cream) */
+        --primary-color: #990000;       /* USC Cardinal */
+        --primary-hover: #73000a;
+        --accent: #d97706;              /* USC Gold/Amber */
+        --accent-subtle: #fef3c7;
+        --bg-color: #faf8f5;
         --sidebar-bg: #ffffff;
         --text-main: #1f2937;
         --text-sub: #4b5563;
-        --accent: #2563eb;
-        --border-color: #e5e7eb;
+        --border-color: #e5e0d8;
         --card-bg: #ffffff;
-        --card-hover-shadow: rgba(0, 0, 0, 0.05);
+        --card-hover-shadow: rgba(153, 0, 0, 0.08);
         --header-grad-1: #ffffff;
-        --header-grad-2: #f1f5f9;
-        --header-grad-3: #f9fafb;
-        --welcome-box-bg: rgba(255, 255, 255, 0.3);
-        --welcome-box-border: rgba(255, 255, 255, 0.5);
-        --welcome-text: #111;
-        --section-title-color: #111;
-        --arts-bg-1: #f9fafb;
-        --arts-bg-2: #f0f4f8;
+        --header-grad-2: #fcf5f2;
+        --header-grad-3: #faf8f5;
+        --welcome-box-bg: rgba(255, 255, 255, 0.75);
+        --welcome-box-border: rgba(153, 0, 0, 0.15);
+        --welcome-text: #1f2937;
+        --section-title-color: #111827;
+        --banner-border: rgba(153, 0, 0, 0.12);
         --sidebar-width: 280px;
     }
  
     [data-theme="dark"] {
-        /* Dark Mode */
-        --primary-color: #60a5fa; 
-        --bg-color: #0f172a;      
-        --sidebar-bg: #1e293b;    
-        --text-main: #f1f5f9;     
-        --text-sub: #94a3b8;      
-        --accent: #3b82f6;
-        --border-color: #334155;
-        --card-bg: #1e293b;
-        --card-hover-shadow: rgba(0, 0, 0, 0.3);
-        --header-grad-1: #0f172a;
-        --header-grad-2: #1e293b;
-        --header-grad-3: #0f172a;
-        --welcome-box-bg: rgba(30, 41, 59, 0.6);
-        --welcome-box-border: rgba(255, 255, 255, 0.1);
-        --welcome-text: #f1f5f9;
-        --section-title-color: #f8fafc;
-        --arts-bg-1: #0f172a;
-        --arts-bg-2: #172554;
+        /* Dark Mode (Deep Garnet & Metallic Gold) */
+        --primary-color: #f87171;       
+        --primary-hover: #fca5a5;
+        --accent: #fbbf24;
+        --accent-subtle: rgba(251, 191, 36, 0.15);
+        --bg-color: #0f1117;          
+        --sidebar-bg: #181b24;        
+        --text-main: #f3f4f6;         
+        --text-sub: #9ca3af;          
+        --border-color: #2e3344;
+        --card-bg: #181b24;
+        --card-hover-shadow: rgba(0, 0, 0, 0.4);
+        --header-grad-1: #0f1117;
+        --header-grad-2: #1e171b;
+        --header-grad-3: #0f1117;
+        --welcome-box-bg: rgba(24, 27, 36, 0.8);
+        --welcome-box-border: rgba(248, 113, 113, 0.2);
+        --welcome-text: #e5e7eb;
+        --section-title-color: #f9fafb;
+        --banner-border: rgba(248, 113, 113, 0.2);
     }
  
     body {
@@ -85,7 +87,7 @@
         background: var(--sidebar-bg);
         height: 100vh;
         position: fixed;
-        padding: 40px 30px;
+        padding: 35px 25px;
         box-sizing: border-box;
         border-right: 1px solid var(--border-color);
         overflow-y: auto;
@@ -95,24 +97,40 @@
         transition: background-color 0.3s, border-color 0.3s;
     }
  
-    .profile-section { margin-bottom: 24px; }
+    .profile-section { margin-bottom: 20px; }
     
     .profile-img {
-        width: 150px;
-        height: 150px;
+        width: 140px;
+        height: 140px;
         border-radius: 50%;
         object-fit: cover;
-        margin-bottom: 20px;
-        border: 4px solid var(--bg-color);
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        margin-bottom: 16px;
+        border: 3px solid var(--primary-color);
+        box-shadow: 0 4px 10px -2px rgba(153, 0, 0, 0.2);
+    }
+ 
+    .usc-badge-mini {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        background: var(--accent-subtle);
+        color: #990000;
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 3px 8px;
+        border-radius: 6px;
+        margin-top: 6px;
+    }
+    [data-theme="dark"] .usc-badge-mini {
+        color: #fbbf24;
     }
  
     .sidebar-contact {
         display: flex;
         flex-direction: column;
         gap: 8px;
-        margin-bottom: 24px;
-        padding-bottom: 24px;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
         border-bottom: 1px solid var(--border-color);
     }
  
@@ -126,26 +144,25 @@
         transition: color 0.2s;
         line-height: 1.4;
     }
-    .contact-item:hover { color: var(--accent); }
-    .contact-item i { width: 18px; text-align: center; color: #9ca3af; font-size: 0.95rem; }
-    .contact-item:hover i { color: var(--accent); }
+    .contact-item:hover { color: var(--primary-color); }
+    .contact-item i { width: 18px; text-align: center; color: var(--accent); font-size: 0.95rem; }
  
-    .nav-links { display: flex; flex-direction: column; gap: 8px; }
+    .nav-links { display: flex; flex-direction: column; gap: 6px; }
     .nav-links a {
         color: var(--text-sub);
         font-weight: 500;
         padding: 8px 12px;
         border-radius: 6px;
-        font-size: 0.95rem;
+        font-size: 0.92rem;
         transition: all 0.2s;
         text-decoration: none;
     }
     .nav-links a:hover { 
         background-color: var(--bg-color); 
-        color: var(--accent); 
+        color: var(--primary-color); 
         transform: translateX(4px); 
     }
-    .sidebar-bottom { margin-top: auto; font-size: 0.8rem; color: #9ca3af; padding-top:40px; }
+    .sidebar-bottom { margin-top: auto; font-size: 0.8rem; color: #9ca3af; padding-top:20px; }
  
     /* --- Main Content --- */
     .main-content {
@@ -159,7 +176,7 @@
     /* --- Header Area --- */
     header {
         position: relative;
-        padding: 60px 80px 0px 80px; 
+        padding: 50px 70px 0px 70px; 
         overflow: hidden;
         background: linear-gradient(to bottom, var(--header-grad-1) 0%, var(--header-grad-2) 70%, var(--header-grad-3) 100%);
         transition: background 0.3s;
@@ -180,33 +197,61 @@
         z-index: 1;
     }
  
+    /* Pixel Art Hero Art Card */
+    .hero-pixel-banner {
+        position: relative;
+        width: 100%;
+        height: 180px;
+        border-radius: 12px;
+        overflow: hidden;
+        margin-bottom: 24px;
+        border: 1px solid var(--banner-border);
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    }
+    .hero-pixel-banner img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 60%;
+        image-rendering: pixelated;
+    }
+    .banner-overlay {
+        position: absolute;
+        bottom: 8px;
+        right: 12px;
+        background: rgba(0, 0, 0, 0.65);
+        backdrop-filter: blur(4px);
+        color: #fff;
+        font-size: 0.72rem;
+        padding: 3px 8px;
+        border-radius: 4px;
+        font-weight: 500;
+    }
+ 
     .welcome-box {
         background: var(--welcome-box-bg); 
-        backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
         padding: 24px; 
         border-radius: 12px; 
         border: 1px solid var(--welcome-box-border); 
-        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
-        margin-top: 140px; 
+        box-shadow: 0 8px 30px 0 rgba(0, 0, 0, 0.04);
+        margin-top: 15px; 
         transition: background 0.3s, border 0.3s;
     }
  
     h1.name {
-        font-size: 2.5rem;
-        margin: 0 0 10px 0;
+        font-size: 2.3rem;
+        margin: 0 0 8px 0;
         font-weight: 800;
         letter-spacing: -0.5px;
         color: var(--section-title-color);
         line-height: 1.2;
-        position: relative;     
-        z-index: 10;            
-        display: flex;            
-        align-items: center;      
-        height: 60px;            
-        white-space: nowrap;      
+        display: flex; 
+        align-items: center; 
+        height: 55px; 
+        white-space: nowrap; 
         overflow: visible; 
-        transition: color 0.3s;       
     }
  
     .mongolian-vertical {
@@ -214,40 +259,56 @@
         text-orientation: sideways;
         font-family: 'Noto Sans Mongolian', sans-serif;
         display: inline-block;
-        height: 85px;             
-        white-space: normal;      
+        height: 80px; 
+        white-space: normal; 
         vertical-align: middle;
-        margin-left: 15px;        
+        margin-left: 12px; 
         line-height: 1;
-        text-align: left;
-        font-size: 0.6em;       
+        font-size: 0.6em; 
     }
     
     .affiliation {
-        font-size: 1.1rem;
+        font-size: 1.05rem;
         color: var(--text-sub);
-        margin-bottom: 10px; 
+        margin-bottom: 8px; 
         display: flex;
         flex-direction: column;
-        gap: 5px;
+        gap: 4px;
+    }
+    .affiliation .school-tag {
+        font-weight: 600;
+        color: var(--primary-color);
+    }
+ 
+    .advisor-pill {
+        display: inline-block;
+        background: var(--accent-subtle);
+        border: 1px solid var(--accent);
+        border-radius: 8px;
+        padding: 10px 14px;
+        margin-top: 12px;
+        font-size: 0.85rem;
+        color: var(--text-main);
+    }
+    .advisor-pill strong {
+        color: var(--primary-color);
     }
     
     /* --- Content Sections --- */
     .content-section {
-        padding: 0 80px;
+        padding: 0 70px;
     }
  
     .section-title {
-        font-size: 1.5rem;
+        font-size: 1.45rem;
         font-weight: 700;
-        margin-top: 70px;
-        margin-bottom: 24px;
-        padding-bottom: 12px;
-        border-bottom: 2px solid var(--border-color);
+        margin-top: 60px;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid var(--primary-color);
         color: var(--section-title-color);
         display: flex;
         align-items: center;
-        transition: color 0.3s, border-color 0.3s;
     }
     
     .year-header {
@@ -259,30 +320,30 @@
     }
  
     /* --- Card Design --- */
-    .card-list { display: flex; flex-direction: column; gap: 16px; }
+    .card-list { display: flex; flex-direction: column; gap: 14px; }
  
     .card {
         background: var(--card-bg);
-        border-radius: 12px;
-        padding: 24px;
-        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
         border: 1px solid var(--border-color);
         display: flex;
-        gap: 24px;
-        transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s, border-color 0.3s;
+        gap: 20px;
+        transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
     }
  
     .card:hover {
         transform: translateY(-2px);
-        box-shadow: 0 10px 15px -3px var(--card-hover-shadow);
-        border-color: var(--border-color);
+        box-shadow: 0 8px 16px -2px var(--card-hover-shadow);
+        border-color: var(--primary-color);
     }
  
     .date-col {
         min-width: 130px;
         font-weight: 600;
         color: var(--text-sub);
-        font-size: 0.9rem;
+        font-size: 0.88rem;
         flex-shrink: 0;
     }
  
@@ -290,8 +351,8 @@
     .content-col strong { color: var(--section-title-color); }
  
     .paper-thumb {
-        width: 140px;
-        height: 80px;
+        width: 130px;
+        height: 75px;
         border-radius: 6px;
         object-fit: cover;
         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -306,14 +367,16 @@
     }
     .simple-list li {
         background: var(--card-bg);
-        padding: 16px 20px;
+        padding: 14px 18px;
         border-radius: 8px;
-        margin-bottom: 10px;
+        margin-bottom: 8px;
         border: 1px solid var(--border-color);
-        box-shadow: 0 1px 2px rgba(0,0,0,0.03);
         display: flex;
         align-items: flex-start;
-        transition: background-color 0.3s, border-color 0.3s;
+        transition: border-color 0.2s;
+    }
+    .simple-list li:hover {
+        border-color: var(--accent);
     }
     .list-icon {
         margin-right: 12px;
@@ -321,49 +384,9 @@
         margin-top: 4px;
     }
  
-    /* --- Galleries --- */
-    #arts {
-        position: relative;
-        padding: 60px 80px; 
-        margin-left: -80px;
-        margin-right: -80px;
-        overflow: hidden;
-        background: linear-gradient(to bottom, var(--arts-bg-1), var(--arts-bg-2));
-        transition: background 0.3s;
-    }
-    #arts-canvas {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 0;
-        pointer-events: none;
-    }
-    .arts-content {
-        position: relative;
-        z-index: 1;
-    }
- 
-    .hobby-gallery {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 16px;
-        margin-top: 20px;
-    }
-    .HobbyPhoto {
-        width: 100%;
-        height: 250px;
-        object-fit: cover;
-        border-radius: 8px;
-        transition: transform 0.3s ease;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    .HobbyPhoto:hover { transform: scale(1.03); }
- 
     /* --- Typing Effect --- */
     #typed-text {
-        color: var(--accent);
+        color: var(--primary-color);
         font-family: "Noto Sans", "Noto Sans SC", "Noto Sans TC", "Noto Sans JP", sans-serif;
         display: inline-flex;
         align-items: center;
@@ -380,24 +403,25 @@
  
     /* --- Tags --- */
     .tag-oral {
-        background-color: #dbeafe;
-        color: #1e40af;
+        background-color: var(--accent-subtle);
+        color: #990000;
         font-size: 0.75rem;
         padding: 2px 8px;
         border-radius: 9999px;
         font-weight: 700;
         vertical-align: middle;
         margin-left: 6px;
+        border: 1px solid var(--accent);
     }
     [data-theme="dark"] .tag-oral {
-        background-color: #1e3a8a;
-        color: #bfdbfe;
+        background-color: rgba(251, 191, 36, 0.2);
+        color: #fbbf24;
     }
  
     /* --- THEME TOGGLE SWITCH --- */
     .theme-switch-container {
         position: absolute; 
-        top: 30px;
+        top: 25px;
         right: 30px;
         z-index: 50;
         display: flex;
@@ -406,154 +430,55 @@
  
     .theme-checkbox { opacity: 0; width: 0; height: 0; }
     .theme-label {
-        width: 66px; height: 32px;
-        background-color: #87ceeb; /* Sky blue */
+        width: 60px; height: 30px;
+        background-color: #e5e0d8;
         border-radius: 50px;
         position: relative;
         cursor: pointer;
-        box-shadow: inset 0 2px 5px rgba(0,0,0,0.2), 0 0 0 2px rgba(255,255,255,0.2);
+        box-shadow: inset 0 2px 4px rgba(0,0,0,0.15);
         transition: background-color 0.4s ease;
-        display: flex; align-items: center; justify-content: space-between; padding: 5px; box-sizing: border-box;
+        display: flex; align-items: center; justify-content: space-between; padding: 4px; box-sizing: border-box;
     }
     .theme-label .ball {
-        width: 24px; height: 24px;
-        background-color: #fcd34d; 
+        width: 22px; height: 22px;
+        background-color: var(--primary-color); 
         border-radius: 50%;
-        position: absolute; top: 4px; left: 5px;
+        position: absolute; top: 4px; left: 4px;
         transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55), background-color 0.4s;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.3), 0 0 10px 2px rgba(252, 211, 77, 0.6);
-        overflow: hidden;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     }
-    .theme-label .ball::before, .theme-label .ball::after {
-        content: ''; position: absolute; background-color: #94a3b8; border-radius: 50%; opacity: 0; transition: opacity 0.4s;
-    }
-    .theme-label .ball::before { width: 6px; height: 6px; top: 5px; left: 10px; }
-    .theme-label .ball::after { width: 4px; height: 4px; top: 12px; left: 6px; }
  
-    .theme-checkbox:checked + .theme-label { background-color: #1e293b; box-shadow: inset 0 2px 5px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.1); }
-    .theme-checkbox:checked + .theme-label .ball { transform: translateX(32px); background-color: #e2e8f0; box-shadow: 0 0 8px 1px rgba(226, 232, 240, 0.4); }
-    .theme-checkbox:checked + .theme-label .ball::before, .theme-checkbox:checked + .theme-label .ball::after { opacity: 1; }
- 
-    .drag-hint {
-        position: absolute;
-        right: 80px;
-        top: 4px;
-        background: var(--accent);
-        color: white;
-        padding: 4px 10px;
-        border-radius: 20px;
-        font-size: 0.75rem;
-        font-weight: bold;
-        white-space: nowrap;
-        animation: hintBlink 2s infinite;
-        pointer-events: none;
-    }
-    .drag-hint::after {
-        content: ''; position: absolute; top: 50%; right: -6px; margin-top: -6px;
-        border-width: 6px 0 6px 6px; border-style: solid; border-color: transparent transparent transparent var(--accent);
-    }
-    @keyframes hintBlink { 0%, 100% { opacity: 1; transform: translateX(0); } 50% { opacity: 0.6; transform: translateX(-3px); } }
+    .theme-checkbox:checked + .theme-label { background-color: #2e3344; }
+    .theme-checkbox:checked + .theme-label .ball { transform: translateX(30px); background-color: var(--accent); }
  
     /* --- MOBILE RESPONSIVE OPTIMIZATION --- */
     @media (max-width: 900px) {
-        body { 
-            flex-direction: column; 
-        }
- 
-        /* 1. Transform Sidebar to Top Nav */
+        body { flex-direction: column; }
         .sidebar { 
             position: relative; 
             width: 100%; 
             height: auto; 
             border-right: none; 
-            border-bottom: 1px solid var(--border-color);
-            padding: 30px 20px;
-            text-align: center;
-        }
- 
-        .profile-img {
-            margin: 0 auto 15px auto;
-            width: 120px;
-            height: 120px;
-        }
- 
-        .sidebar-contact { 
-            align-items: center; 
             border-bottom: 1px solid var(--border-color); 
-            margin-bottom: 20px; 
-            padding-bottom: 20px;
+            padding: 25px 20px; 
+            text-align: center; 
         }
- 
-        /* Grid Layout for Links on Mobile */
-        .nav-links { 
-            display: grid; 
-            grid-template-columns: repeat(2, 1fr); 
-            gap: 10px;
-        }
-        
-        .nav-links a {
-            text-align: center;
-            border: 1px solid var(--border-color);
-        }
- 
-        /* 2. Main Content Adjustments */
+        .profile-img { margin: 0 auto 12px auto; width: 110px; height: 110px; }
+        .sidebar-contact { align-items: center; }
+        .nav-links { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+        .nav-links a { text-align: center; border: 1px solid var(--border-color); }
         .main-content { margin-left: 0; }
-        
-        header { padding: 50px 20px 30px 20px; } 
-        
-        .header-content {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
- 
-        /* 3. Typography & Spacing */
-        h1.name { 
-            font-size: 1.8rem; 
-            height: auto; 
-            white-space: normal; 
-            flex-wrap: wrap;
-            margin-bottom: 15px;
-        }
-        .mongolian-vertical { height: 60px; margin-left: 10px; }
-        
-        .welcome-box { margin-top: 40px; }
- 
+        header { padding: 40px 20px 20px 20px; } 
+        h1.name { font-size: 1.7rem; height: auto; white-space: normal; flex-wrap: wrap; }
+        .hero-pixel-banner { height: 140px; }
         .content-section { padding: 0 20px; }
-        #arts { padding: 40px 20px; margin-left: -20px; margin-right: -20px; }
- 
-        /* 4. Switch & Layout */
-        .theme-switch-container {
-            top: 15px;
-            right: 15px;
-        }
-        .drag-hint { right: 75px; font-size: 0.7rem; }
- 
-        /* 5. Cards Mobile View */
-        .card { flex-direction: column; gap: 15px; }
-        .date-col { min-width: auto; margin-bottom: 5px; }
-        .paper-thumb { width: 100%; height: auto; max-width: 100%; aspect-ratio: 16/9; }
+        .card { flex-direction: column; gap: 12px; }
+        .paper-thumb { width: 100%; height: auto; aspect-ratio: 16/9; }
     }
  
-    /* Prevent any accidental horizontal scrolling on small screens */
-    html, body { max-width: 100%; overflow-x: hidden; }
-    img { max-width: 100%; }
- 
-    /* --- VERY SMALL PHONES --- */
     @media (max-width: 480px) {
-        .sidebar { padding: 24px 16px; }
         .nav-links { grid-template-columns: 1fr; }
-        .profile-img { width: 100px; height: 100px; }
- 
-        header { padding: 45px 16px 24px 16px; }
-        h1.name { font-size: 1.5rem; }
-        .welcome-box { margin-top: 24px; padding: 18px; }
-        .affiliation { font-size: 1rem; }
- 
-        .content-section { padding: 0 16px; }
-        .section-title { margin-top: 50px; font-size: 1.3rem; }
-        .card { padding: 18px; }
-        .simple-list li { padding: 14px 16px; }
+        h1.name { font-size: 1.4rem; }
     }
 </style>
 </head>
@@ -563,24 +488,33 @@
     <nav class="sidebar">
         <div class="profile-section">
             <img src="./mainfiles/picture.jpg" alt="Minu Kim" class="profile-img">
-            <div style="margin-top: 10px;">
-                <h2 style="margin:0; font-size:1.4rem; color: var(--section-title-color);">Minu Kim</h2>
-                <span style="font-size: 0.9rem; color: var(--text-sub); display:block; margin-top:4px;">M.S. Student @ KAIST</span>
+            <div style="margin-top: 8px;">
+                <h2 style="margin:0; font-size:1.35rem; color: var(--section-title-color);">Minu Kim</h2>
+                <span style="font-size: 0.88rem; color: var(--text-sub); display:block; margin-top:3px; font-weight: 500;">
+                    Doctoral Researcher @ USC
+                </span>
+                <span class="usc-badge-mini">
+                    <i class="fa-solid fa-shield-halved"></i> USC SAIL
+                </span>
             </div>
         </div>
  
         <div class="sidebar-contact">
             <div class="contact-item">
                 <i class="fa-solid fa-location-dot"></i>
-                Daejeon, Rep. of Korea
+                Los Angeles, CA, USA
             </div>
-            <a href="mailto:minus@kaist.ac.kr" class="contact-item">
+            <a href="mailto:minukim@usc.edu" class="contact-item">
                 <i class="fa-solid fa-envelope"></i>
-                minus@kaist.ac.kr
+                minukim@usc.edu
             </a>
             <a href="https://www.linkedin.com/in/minukims" target="_blank" class="contact-item">
                 <i class="fa-brands fa-linkedin"></i>
                 LinkedIn
+            </a>
+            <a href="https://sail.usc.edu" target="_blank" class="contact-item">
+                <i class="fa-solid fa-flask-vial"></i>
+                USC SAIL Lab
             </a>
         </div>
         
@@ -593,7 +527,7 @@
         </div>
         
         <div class="sidebar-bottom">
-            Updated: Jun. 2026
+            Updated: Aug. 2026
         </div>
     </nav>
  
@@ -603,14 +537,19 @@
             <canvas id="world-map-canvas"></canvas>
             
             <div class="theme-switch-container">
-                <div class="drag-hint" id="drag-hint">Click!</div>
                 <input type="checkbox" class="theme-checkbox" id="theme-toggle">
-                <label for="theme-toggle" class="theme-label" title="Switch Theme">
+                <label for="theme-toggle" class="theme-label" title="Toggle Theme">
                     <div class="ball"></div>
                 </label>
             </div>
  
             <div class="header-content">
+                <!-- Pixel Art Campus Banner -->
+                <div class="hero-pixel-banner">
+                    <img src="./images/usc_campus_pixel.png" alt="USC Campus Pixel Art">
+                    <div class="banner-overlay"><i class="fa-solid fa-compass"></i> University of Southern California</div>
+                </div>
+
                 <h1 class="name">
                     Minu Kim 
                     <span style="font-weight:300; font-size: 0.6em; color:var(--text-sub); vertical-align: middle; margin:0 8px;">|</span> 
@@ -618,16 +557,25 @@
                 </h1>
                 
                 <div class="affiliation">
-                    <div><a href="https://www.kaist.ac.kr/en/">KAIST School of Electrical Engineering</a></div>
+                    <div class="school-tag">USC Signal Analysis and Interpretation Laboratory (SAIL)</div>
+                    <div>Thomas Lord Department of Computer Science &middot; USC Viterbi School of Engineering</div>
                     <div>Computational Linguist & Speech Scientist</div>
                 </div>
  
                 <div class="welcome-box">
-                    <strong style="font-size:1.1em; color:var(--primary-color);">Welcome to my page!</strong><br>
+                    <strong style="font-size:1.1em; color:var(--primary-color);">Welcome to my homepage!</strong><br>
                     <div style="margin-top:10px; color: var(--welcome-text);">
-                        I am a research associate in the <a href="https://sites.google.com/site/kaistsssclab/home">SSSC Lab at KAIST</a> (Statistical Speech and Sound Computing Laboratory), advised by Prof. Hoirin Kim.<br><br>
-                        My academic interests lie at the intersection of linguistics and artificial intelligence. In particular, I enjoy exploring phonetics, phonology, and language typology, and I am passionate about connecting linguistic theories with computational approaches.<br><br>
-                        My research focuses on applying this interdisciplinary perspective to <strong>inclusive speech technologies (e.g., low-resource, non-native, dysarthric, child speech, etc.)</strong>.
+                        I am a Ph.D. student and Doctoral Researcher in the <a href="https://sail.usc.edu" target="_blank">Signal Analysis and Interpretation Laboratory (SAIL)</a> at the <strong>University of Southern California (USC)</strong>.
+                        <div class="advisor-pill">
+                            <i class="fa-solid fa-graduation-cap" style="color:var(--primary-color); margin-right:4px;"></i>
+                            Advised by <strong><a href="https://sail.usc.edu/people/shri.html" target="_blank">Prof. Shrikanth (Shri) Narayanan</a></strong><br>
+                            <span style="font-size:0.8em; color:var(--text-sub);">
+                                NAE Member &middot; Guggenheim Fellow &middot; Fellow of IEEE / ISCA / ACM / AAAS / ASA / APS / AIMBE / NAI / AAAC
+                            </span>
+                        </div>
+                        <br><br>
+                        My academic interests lie at the intersection of <strong>linguistics and speech artificial intelligence</strong>. In particular, I explore phonetics, phonology, and language typology, connecting linguistic theory with scalable machine learning representations.<br><br>
+                        My research focuses on advancing <strong>inclusive speech technologies (e.g., low-resource language transfer, atypical/dysarthric speech, and phonetic representation learning)</strong>.
                     </div>
                 </div>
             </div>
@@ -638,22 +586,30 @@
                 <span class="section-title">Education</span>
                 <div class="card-list">
                     <div class="card">
+                        <div class="date-col">08/2026 – Present</div>
+                        <div class="content-col">
+                            <strong>University of Southern California (USC)</strong>, Los Angeles, USA<br>
+                            Ph.D. in Computer Science &middot; Viterbi School of Engineering<br>
+                            <span style="font-size:0.88em; color:var(--text-sub);">Signal Analysis and Interpretation Laboratory (SAIL)</span>
+                        </div>
+                    </div>
+                    <div class="card">
                         <div class="date-col">03/2024 – 02/2026</div>
                         <div class="content-col">
-                            <strong>Korea Advanced Institute of Science and Technology (KAIST)</strong>, Daejeon<br>
+                            <strong>Korea Advanced Institute of Science and Technology (KAIST)</strong>, Daejeon, Korea<br>
                             M.S. in Electrical Engineering
                         </div>
                     </div>
                     <div class="card">
                         <div class="date-col">03/2017 – 02/2024</div>
                         <div class="content-col">
-                            <strong>Seoul National University (SNU)</strong>, <em>Cum Laude</em>, Seoul<br>
+                            <strong>Seoul National University (SNU)</strong>, <em>Cum Laude</em>, Seoul, Korea<br>
                             B.B.A. in Business Administration<br>
                             B.A. in Linguistics<br>
                             B.S. in Computational Sciences<br>
                             B.S. in Artificial Intelligence<br>
                             B.S. in Industrial Engineering<br>
-                            <div style="margin-top:8px; font-size: 0.85em; color: var(--text-sub); background:rgba(0,0,0,0.05); padding:8px; border-radius:6px; display:inline-block;">
+                            <div style="margin-top:8px; font-size: 0.85em; color: var(--text-sub); background:rgba(0,0,0,0.04); padding:6px 10px; border-radius:6px; display:inline-block;">
                                 Leave of Absence for Mandatory Military Service (09/2021 – 08/2022)
                             </div>
                         </div>
@@ -663,7 +619,7 @@
  
             <section id="publications">
                 <span class="section-title">Publications</span>
-                <p style="font-size:0.9rem; color:var(--text-sub); margin-bottom:20px;">* indicates equal contribution.</p>
+                <p style="font-size:0.9rem; color:var(--text-sub); margin-bottom:18px;">* indicates equal contribution.</p>
  
                 <span class="year-header">Preparation</span>
                 <div class="card-list">
@@ -676,7 +632,7 @@
                         </div>
                     </div>  
                 </div>
- 
+
                 <span class="year-header">2026</span>
                 <div class="card-list">
                     <div class="card">
@@ -685,7 +641,7 @@
                             <strong>Scaling Self-Supervised Speech Models Uncovers Deep Linguistic Relationships: Evidence from the Pacific Cluster</strong><br>
                             <strong>M. Kim</strong>, H. Kim, D.R. Mortensen.<br>
                             <em>Interspeech 2026.</em><br>
-                            [<a href="https://arxiv.org/pdf/2603.07238">pdf</a>]
+                            [<a href="https://arxiv.org/pdf/2603.07238" target="_blank">pdf</a>]
                         </div>
                     </div>
                     <div class="card">
@@ -702,7 +658,7 @@
                             <strong>How Far Do SSL Speech Models Listen for Tone? Temporal Focus of Tone Representation under Low-resource Transfer</strong><br>
                             <strong>M. Kim</strong>, J.S. Um, H. Kim.<br>
                             <em>IEEE ICASSP 2026.</em><br>
-                            [<a href="https://arxiv.org/pdf/2511.12285">pdf</a>]
+                            [<a href="https://arxiv.org/pdf/2511.12285" target="_blank">pdf</a>]
                         </div>
                     </div>
                 </div>
@@ -715,7 +671,7 @@
                             <strong>Compositional Phoneme Approximation for L1-Grounded L2 Pronunciation Training</strong><br>
                             J. Park*, <strong>M. Kim*</strong>, D.Y. Hong, J. Lee.<br>
                             <em>IJCNLP-AACL 2025.</em><br>
-                            [<a href="https://arxiv.org/pdf/2411.10927">pdf</a>]
+                            [<a href="https://arxiv.org/pdf/2411.10927" target="_blank">pdf</a>]
                         </div>
                     </div>
  
@@ -725,7 +681,7 @@
                             <strong>ParaNoise-SV: Integrated Approach for Noise-Robust Speaker Verification with Parallel Joint Learning of Speech Enhancement and Noise Extraction</strong><br>
                             <strong>M. Kim</strong>, K. Jang, H. Kim.<br>
                             <em>Interspeech 2025.</em> <span class="tag-oral">Oral Presentation</span><br>
-                            [<a href="https://arxiv.org/pdf/2508.07219">pdf</a>]
+                            [<a href="https://arxiv.org/pdf/2508.07219" target="_blank">pdf</a>]
                         </div>
                     </div>
  
@@ -735,7 +691,7 @@
                             <strong>Improving Cross-Lingual Phonetic Representation of Low-Resource Languages Through Language Similarity Analysis</strong><br>
                             <strong>M. Kim</strong>, K. Jang, H. Kim.<br>
                             <em>IEEE ICASSP 2025.</em><br>
-                            [<a href="https://arxiv.org/pdf/2501.06810">pdf</a>]
+                            [<a href="https://arxiv.org/pdf/2501.06810" target="_blank">pdf</a>]
                         </div>
                     </div>
                 </div>
@@ -756,6 +712,7 @@
             <section id="honors">
                 <span class="section-title">Honors & Scholarships</span>
                 <ul class="simple-list">
+                    <li><i class="fa-solid fa-medal list-icon"></i><div><strong>USC Graduate School Fellowship (University Fellowship)</strong>, University of Southern California (2026)</div></li>
                     <li><i class="fa-solid fa-medal list-icon"></i><div><strong>Korean Government Scholarship</strong> – Full tuition and stipend support (2024–2025)</div></li>
                     <li><i class="fa-solid fa-medal list-icon"></i><div><strong>Cum Laude</strong>, SNU (2024)</div></li>
                     <li><i class="fa-solid fa-medal list-icon"></i><div><strong>Chiak Foundation Scholarship</strong> – Full tuition support (2017–2023)</div></li>
@@ -767,23 +724,21 @@
                 </ul>
             </section>
  
-            <footer style="margin-top: 40px; border-top: 1px solid var(--border-color); padding-top: 30px; padding-bottom:30px; font-size: 0.85rem; color: var(--text-sub); text-align: center;">
-                &copy; 2025 Minu Kim.
+            <footer style="margin-top: 50px; border-top: 1px solid var(--border-color); padding-top: 25px; padding-bottom:30px; font-size: 0.85rem; color: var(--text-sub); text-align: center;">
+                &copy; 2026 Minu Kim. Fight On! ✌️
             </footer>
-        </div> </main>
+        </div> 
+    </main>
  
 <script>
     // --- THEME SWITCHER LOGIC ---
     const toggle = document.getElementById('theme-toggle');
-    const dragHint = document.getElementById('drag-hint');
     const htmlEl = document.documentElement;
  
     const currentTheme = localStorage.getItem('theme');
     if (currentTheme) {
         htmlEl.setAttribute('data-theme', currentTheme);
-        if (currentTheme === 'dark') {
-            toggle.checked = true;
-        }
+        if (currentTheme === 'dark') toggle.checked = true;
     }
  
     toggle.addEventListener('change', function(e) {
@@ -796,18 +751,20 @@
         }
     });
  
-    // --- TYPING EFFECT ---
+    // --- MULTI-LANGUAGE TYPING EFFECT (ALL 52 SCRIPTS & LANGUAGES RESTORED) ---
     const names = [
-      { text: "김민우" }, { text: "金民友" }, { text: "Мину Ким" }, { text: "مينوو كيم", rtl: true }, { text: "මිනු කිම්" }, { text: "મિનુ કિમ" }, { text: "ⵎⵉⵏⵓ ⴽⵉⵎ" }, { text: "ꦩꦶꦤꦸ ꦏꦶꦩ꧀" }, { text: "मीनू किम" }, { text: "ᨆᨗᨊᨘ ᨀᨗᨆ" }, { text: "ମିନୁ କିମ୍" }, { text: "মিনু কিম্" }, { text: "キム・ミヌ" }, { text: "ᠬᠢᠮ ᠮᠢᠨᠦ", vertical: true }, { text: "מִינוּ קִים", rtl: true }, { text: "Μίνου Κιμ" }, { text: "⠠⠍⠊⠝⠥ ⠠⠅⠊⠍" }, { text: "มินู คิม" }, { text: "មីនុ គីម" }, { text: "မီနူး ကင်" }, { text: "ᛗᛁᚾᚢ ᚲᛁᛗ" }, { text: "ມິນູ ຄິມ" }, { text: "ᒥᓄ ᑭᒻ" }, { text: "𓅓𓇋𓈖𓅱 𓎡𓇋𓅓" }, { text: "ᠮᡳᠨᡠ ᡴᡳᠮ", vertical: true }, { text: "ᎻᏄ ᎩᎻ" }, { text: "མི་ནུ་ཁིམ" }, { text: "მინუ კიმ" }, { text: "𐤌𐤉𐤍𐤅 𐤊𐤉𐤌", rtl: true }, { text: "ᚋᛁᚅᚒ ᚉᛁᚋ" }, { text: "ⰏⰞⰐⰖ ⰍⰞⰏ" }, { text: "Մինու Քիմ" }, { text: "மினு கிம்" }, { text: "-- .. -. ..-  -.- .. --" }, { text: "ߡߌߣߎ ߞߌߡ", rtl: true }, { text: "𐎎𐎛𐎐𐎢 𐎋𐎛𐎐", rtl: true }, { text: "ਮਿਨੂ ਕਿਮ" }, { text: "മിനു കിം" }, { text: "މިނޫ ކިމް", rtl: true }, { text: "Ⲙⲓⲛⲟⲩ Ⲕⲓⲙ" }, { text: "ܡܝܢܘ ܟܝܡ", rtl: true }, { text: "మినూ కిమ్" }, { text: "𒈪 𒉡 𒆠 𒅎" }, { text: "ꂠꆹ ꈾꃀ" }, { text: "ሚኑ ኪም" }, { text: "ಮಿನು ಕಿಮ್" }, { text: "𐒄𐒘𐒒𐒖 𐒏𐒘𐒑" }, { text: "ꃘꆀꁯ ꑭꁮ" }, { text: "𐑕𐑦𐑯𐑵 𐑒𐑦𐑥" }, { text: "0x4D696E75 0x4B696D" }, { text: "01001101 01101001 01101110 01110101 00100000 01001011 01101001 01101101" },
+      { text: "김민우" }, { text: "金民友" }, { text: "Мину Ким" }, { text: "مينوو كيم", rtl: true }, { text: "මිනු කිම්" }, { text: "મિનુ કિમ" }, { text: "ⵎⵉⵏⵓ ⴽⵉⵎ" }, { text: "ꦩꦶꦤꦸ ꦏꦶꦩ꧀" }, { text: "मीनू किम" }, { text: "ᨆᨗᨊᨘ ᨀᨗᨆ" }, { text: "ମିନୁ କିମ୍" }, { text: "মিনু কিম্" }, { text: "キム・ミヌ" }, { text: "ᠬᠢᠮ ᠮᠢᠨᠦ", vertical: true }, { text: "מִינוּ קִים", rtl: true }, { text: "Μίνου Κιμ" }, { text: "⠠⠍⠊⠝⠥ ⠠⠅⠊⠍" }, { text: "มินู คิม" }, { text: "មីនុ គីម" }, { text: "မီနူး ကင်" }, { text: "ᛗᛁᚾᚢ ᚲᛁᛗ" }, { text: "ມິນູ ຄິມ" }, { text: "ᒥᓄ ᑭᒻ" }, { text: "𓅓𓇋𓈖𓅱 𓎡𓇋𓅓" }, { text: "ᠮᡳᠨᡠ ᡴᡳᠮ", vertical: true }, { text: "ᎻᏄ ᎩᎻ" }, { text: "མི་ནུ་ཁིམ" }, { text: "მინუ კიმ" }, { text: "𐤌𐤉𐤍𐤅 𐤊𐤉𐤌", rtl: true }, { text: "ᚋᛁᚅᒣ ᚉᛁᚋ" }, { text: "ⰏⰞⰐⰖ ⰍⰞⰏ" }, { text: "Մինու Քիմ" }, { text: "மினு கிம்" }, { text: "-- .. -. ..-  -.- .. --" }, { text: "ߡߌߣߎ ߞߌߡ", rtl: true }, { text: "𐎎𐎛𐎐𐎢 𐎋𐎛𐎐", rtl: true }, { text: "ਮਿਨੂ ਕਿਮ" }, { text: "മിനു കിം" }, { text: "މިނޫ ކިމް", rtl: true }, { text: "Ⲙⲓⲛⲟⲩ Ⲕⲓⲙ" }, { text: "ܡܝܢܘ ܟܝܡ", rtl: true }, { text: "మినూ కిమ్" }, { text: "𒈪 𒉡 𒆠 𒅎" }, { text: "ꂠꆹ ꈾꃀ" }, { text: "ሚኑ ኪም" }, { text: "ಮಿನು ಕಿಮ್" }, { text: "𐒄𐒘𐒒𐒖 𐒏𐒘𐒑" }, { text: "ꃘꆀꁯ ꑭꁮ" }, { text: "𐑕𐑦𐑯𐑵 𐑒𐑦𐑥" }, { text: "0x4D696E75 0x4B696D" }, { text: "01001101 01101001 01101110 01110101 00100000 01001011 01101001 01101101" }
     ];
  
     const typedTextElement = document.getElementById("typed-text");
     const headerElement = document.querySelector("h1.name"); 
     let baseFontSize = parseFloat(window.getComputedStyle(typedTextElement).fontSize);
+    
     window.addEventListener('resize', () => {
         typedTextElement.style.fontSize = "";
         baseFontSize = parseFloat(window.getComputedStyle(typedTextElement).fontSize);
     });
+
     let currentIndex = 0, charIndex = 0, isDeleting = false;
     function typeEffect() {
       const { text, vertical, rtl } = names[currentIndex];
@@ -816,80 +773,75 @@
       const visibleText = text.substring(0, charIndex);
       typedTextElement.style.writingMode = "";
       typedTextElement.style.textOrientation = "";
-      if (vertical) { typedTextElement.innerHTML = `<span class="mongolian-vertical">${visibleText}</span>`; } else { typedTextElement.textContent = visibleText; }
-      if (!isDeleting) {
-          if (!vertical && headerElement.scrollWidth > headerElement.clientWidth) {
-              let currentSize = parseFloat(window.getComputedStyle(typedTextElement).fontSize);
-              if (currentSize > 10) { typedTextElement.style.fontSize = (currentSize * 0.9) + "px"; }
-          }
+      
+      if (vertical) { 
+          typedTextElement.innerHTML = `<span class="mongolian-vertical">${visibleText}</span>`; 
+      } else { 
+          typedTextElement.textContent = visibleText; 
       }
-      if (!isDeleting && charIndex < text.length) { charIndex++; setTimeout(typeEffect, 80); } 
-      else if (isDeleting && charIndex > 0) {
-        charIndex--;
-        if (!vertical) {
-            if (headerElement.scrollWidth <= headerElement.clientWidth) {
-                let currentSize = parseFloat(window.getComputedStyle(typedTextElement).fontSize);
-                if (currentSize < baseFontSize) {
-                    let newSize = currentSize * 1.15;
-                    if (newSize > baseFontSize) newSize = baseFontSize;
-                    typedTextElement.style.fontSize = newSize + "px";
-                }
-            }
-        }
-        setTimeout(typeEffect, 40);
-      } 
-      else {
-        let nextSpeed = 350;
-        if (!isDeleting) { isDeleting = true; nextSpeed = 1500; } else { isDeleting = false; currentIndex = (currentIndex + 1) % names.length; nextSpeed = 350; }
-        setTimeout(typeEffect, nextSpeed);
+
+      if (!isDeleting && headerElement.scrollWidth > headerElement.clientWidth && !vertical) {
+          let currentSize = parseFloat(window.getComputedStyle(typedTextElement).fontSize);
+          if (currentSize > 10) typedTextElement.style.fontSize = (currentSize * 0.9) + "px";
+      }
+
+      if (!isDeleting && charIndex < text.length) { 
+          charIndex++; 
+          setTimeout(typeEffect, 80); 
+      } else if (isDeleting && charIndex > 0) {
+          charIndex--;
+          if (!vertical) {
+              if (headerElement.scrollWidth <= headerElement.clientWidth) {
+                  let currentSize = parseFloat(window.getComputedStyle(typedTextElement).fontSize);
+                  if (currentSize < baseFontSize) {
+                      let newSize = currentSize * 1.15;
+                      if (newSize > baseFontSize) newSize = baseFontSize;
+                      typedTextElement.style.fontSize = newSize + "px";
+                  }
+              }
+          }
+          setTimeout(typeEffect, 40);
+      } else {
+          let nextSpeed = 350;
+          if (!isDeleting) { isDeleting = true; nextSpeed = 1500; } 
+          else { isDeleting = false; currentIndex = (currentIndex + 1) % names.length; nextSpeed = 350; }
+          setTimeout(typeEffect, nextSpeed);
       }
     }
     typeEffect();
 </script>
-  
-<script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    twemoji.parse(document.body, { folder: "svg", ext: ".svg" });
-});
-</script>
  
 <script>
-    // --- WORLD MAP CANVAS ---
+    // --- RED-GOLD WARM WORLD MAP CANVAS ---
     const mapCanvas = document.getElementById('world-map-canvas');
     const mapCtx = mapCanvas.getContext('2d');
     let mapW, mapH;
     
     const worldMapPaths = [
-    "M 160 50 L 220 50 L 280 40 L 340 35 L 370 45 L 385 50 L 345 105 L 315 125 L 295 155 L 235 200 L 215 220 L 175 180 L 135 145 L 105 95 L 135 65 Z",
-    "M 360 20 L 420 10 L 450 30 L 430 70 L 380 60 Z",
-    "M 260 230 L 340 250 L 380 300 L 360 380 L 320 450 L 290 390 L 270 330 L 250 280 Z",
-    "M 455 50 L 495 40 L 535 45 L 565 70 L 535 100 L 495 110 L 465 100 L 445 70 Z",
-    "M 440 130 L 510 130 L 550 160 L 580 220 L 560 300 L 500 350 L 460 300 L 430 220 L 420 160 Z",
-    "M 550 60 L 660 50 L 770 60 L 880 80 L 940 130 L 920 210 L 860 250 L 800 260 L 740 220 L 680 190 L 610 165 L 580 115 Z",
-    "M 770 255 L 820 245 L 850 275 L 800 305 Z",
-    "M 810 335 L 900 325 L 940 375 L 890 425 L 820 395 Z"
+        "M 160 50 L 220 50 L 280 40 L 340 35 L 370 45 L 385 50 L 345 105 L 315 125 L 295 155 L 235 200 L 215 220 L 175 180 L 135 145 L 105 95 L 135 65 Z",
+        "M 360 20 L 420 10 L 450 30 L 430 70 L 380 60 Z",
+        "M 260 230 L 340 250 L 380 300 L 360 380 L 320 450 L 290 390 L 270 330 L 250 280 Z",
+        "M 455 50 L 495 40 L 535 45 L 565 70 L 535 100 L 495 110 L 465 100 L 445 70 Z",
+        "M 440 130 L 510 130 L 550 160 L 580 220 L 560 300 L 500 350 L 460 300 L 430 220 L 420 160 Z",
+        "M 550 60 L 660 50 L 770 60 L 880 80 L 940 130 L 920 210 L 860 250 L 800 260 L 740 220 L 680 190 L 610 165 L 580 115 Z",
+        "M 770 255 L 820 245 L 850 275 L 800 305 Z",
+        "M 810 335 L 900 325 L 940 375 L 890 425 L 820 395 Z"
     ];
  
     const cities = [
-    {x: 225, y: 120}, {x: 320, y: 125}, {x: 340, y: 330}, {x: 480, y: 80},
-    {x: 520, y: 230}, {x: 720, y: 190}, {x: 880, y: 150}, {x: 880, y: 390}
+        {x: 225, y: 120}, {x: 320, y: 125}, {x: 340, y: 330}, {x: 480, y: 80},
+        {x: 520, y: 230}, {x: 720, y: 190}, {x: 880, y: 150}, {x: 880, y: 390}
     ];
-    
-    // --- GENERATE NIGHT LIGHTS (constrained to land masses) ---
-    // Build Path2D objects for the continents so we can reject any
-    // candidate point that would otherwise spill into the ocean.
+
     const continentPaths = worldMapPaths.map(p => new Path2D(p));
- 
+
     function isOnLand(x, y) {
         for (let k = 0; k < continentPaths.length; k++) {
             if (mapCtx.isPointInPath(continentPaths[k], x, y)) return true;
         }
         return false;
     }
- 
-    // Regional "target" counts keep the populated look of Earth-at-night,
-    // while rejection sampling guarantees every light sits inside land.
+
     const lightZones = [
         { bounds: [105, 385,  35, 220], target: 90 },   // North America
         { bounds: [250, 380, 230, 450], target: 35 },   // South America
@@ -898,7 +850,7 @@ document.addEventListener("DOMContentLoaded", () => {
         { bounds: [555, 945,  55, 265], target: 150 },  // Asia
         { bounds: [810, 945, 320, 430], target: 28 },   // Australia
     ];
- 
+
     const extraLights = [];
     lightZones.forEach(zone => {
         let placed = 0, attempts = 0;
@@ -918,7 +870,7 @@ document.addEventListener("DOMContentLoaded", () => {
             placed++;
         }
     });
- 
+    
     let ripples = []; 
  
     function initMap() {
@@ -928,13 +880,9 @@ document.addEventListener("DOMContentLoaded", () => {
  
     function spawnRipple() {
         const city = cities[Math.floor(Math.random() * cities.length)];
-        const svgW = 1000;
-        const svgH = 500;
-        const scale = Math.min(mapW / svgW, mapH / svgH) * 0.85; 
-        const renderW = svgW * scale;
-        const renderH = svgH * scale;
-        const offsetX = (mapW - renderW) / 2;
-        const offsetY = (mapH - renderH) / 2 - 70;
+        const scale = Math.min(mapW / 1000, mapH / 500) * 0.85; 
+        const offsetX = (mapW - 1000 * scale) / 2;
+        const offsetY = (mapH - 500 * scale) / 2 - 50;
  
         ripples.push({
             x: offsetX + city.x * scale,
@@ -947,69 +895,54 @@ document.addEventListener("DOMContentLoaded", () => {
  
     function drawMapAndRipples() {
         mapCtx.clearRect(0, 0, mapW, mapH);
- 
         const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
- 
-        const svgW = 1000;
-        const svgH = 500;
-        const scale = Math.min(mapW / svgW, mapH / svgH) * 0.85;
-        
-        const renderW = svgW * scale;
-        const renderH = svgH * scale;
-        const offsetX = (mapW - renderW) / 2;
-        const offsetY = (mapH - renderH) / 2 - 70;
+        const scale = Math.min(mapW / 1000, mapH / 500) * 0.85;
+        const offsetX = (mapW - 1000 * scale) / 2;
+        const offsetY = (mapH - 500 * scale) / 2 - 50;
  
         mapCtx.save();
         mapCtx.translate(offsetX, offsetY);
         mapCtx.scale(scale, scale);
- 
-        if (isDark) {
-            mapCtx.fillStyle = 'rgba(30, 41, 59, 0.7)'; 
-        } else {
-            mapCtx.fillStyle = 'rgba(170, 200, 230, 0.25)'; 
-        }
+        mapCtx.fillStyle = isDark ? 'rgba(248, 113, 113, 0.08)' : 'rgba(153, 0, 0, 0.05)'; 
  
         worldMapPaths.forEach(pathStr => {
             const path = new Path2D(pathStr);
             mapCtx.fill(path);
         });
- 
+
         if (isDark) {
             mapCtx.globalCompositeOperation = 'lighter';
-            
             cities.forEach(city => {
                 const grad = mapCtx.createRadialGradient(city.x, city.y, 0, city.x, city.y, 8);
-                grad.addColorStop(0, 'rgba(255, 255, 200, 1)'); 
-                grad.addColorStop(0.5, 'rgba(255, 200, 100, 0.5)'); 
+                grad.addColorStop(0, 'rgba(255, 230, 180, 1)'); 
+                grad.addColorStop(0.5, 'rgba(251, 191, 36, 0.5)'); 
                 grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
                 mapCtx.fillStyle = grad;
                 mapCtx.beginPath();
                 mapCtx.arc(city.x, city.y, 10, 0, Math.PI*2);
                 mapCtx.fill();
             });
- 
+
             const time = Date.now() / 200;
             extraLights.forEach(light => {
                  const blink = Math.sin(time + light.blinkOffset) * 0.2 + 0.8; 
                  const finalAlpha = light.intensity * 0.6 * blink;
-                 
-                 mapCtx.fillStyle = `rgba(255, 230, 150, ${finalAlpha})`;
+                 mapCtx.fillStyle = `rgba(255, 220, 140, ${finalAlpha})`;
                  mapCtx.beginPath();
                  mapCtx.arc(light.x, light.y, light.size, 0, Math.PI * 2);
                  mapCtx.fill();
             });
-            
             mapCtx.globalCompositeOperation = 'source-over';
         }
- 
+
         mapCtx.restore();
- 
+
         const transformedCities = cities.map(c => ({
             x: offsetX + c.x * scale,
             y: offsetY + c.y * scale
         }));
- 
-        mapCtx.strokeStyle = isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 62, 128, 0.08)'; 
+
+        mapCtx.strokeStyle = isDark ? 'rgba(251, 191, 36, 0.12)' : 'rgba(153, 0, 0, 0.07)'; 
         mapCtx.lineWidth = 1;
         mapCtx.beginPath();
         
@@ -1036,21 +969,13 @@ document.addEventListener("DOMContentLoaded", () => {
             } else {
                 mapCtx.beginPath();
                 mapCtx.arc(r.x, r.y, r.radius, 0, Math.PI * 2);
-                
-                if (isDark) {
-                    mapCtx.fillStyle = `rgba(100, 200, 255, ${r.alpha * 0.15})`;
-                    mapCtx.strokeStyle = `rgba(100, 200, 255, ${r.alpha * 0.4})`;
-                } else {
-                    mapCtx.fillStyle = `rgba(37, 99, 235, ${r.alpha * 0.25})`;
-                    mapCtx.strokeStyle = `rgba(37, 99, 235, ${r.alpha * 0.5})`;
-                }
-                
+                mapCtx.fillStyle = isDark ? `rgba(251, 191, 36, ${r.alpha * 0.15})` : `rgba(217, 119, 6, ${r.alpha * 0.2})`;
+                mapCtx.strokeStyle = isDark ? `rgba(251, 191, 36, ${r.alpha * 0.4})` : `rgba(153, 0, 0, ${r.alpha * 0.4})`;
                 mapCtx.fill();
                 mapCtx.lineWidth = 1;
                 mapCtx.stroke();
             }
         }
-        
         requestAnimationFrame(drawMapAndRipples);
     }
  
